@@ -1,0 +1,439 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "b2e9d643-c8f1-afbc-4ea5-bb8d5fdd5805",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "App data",
+        "dependsOn": [
+          {
+            "activity": "Scoring Table",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "2c7f0e0c-181b-9063-4ba5-33cd38f405f5",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Building List",
+        "dependsOn": [
+          {
+            "activity": "Past Tbf submissions",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Scoring Table",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "47277ad8-6b59-9f80-4487-9175a2aa8970",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Past Tbf submissions",
+        "dependsOn": [
+          {
+            "activity": "VFA Extract",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "09660650-11a3-b278-4eb3-35c04b135477",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Project Planner",
+        "dependsOn": [
+          {
+            "activity": "App data",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Building List",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Office365Email",
+        "typeProperties": {
+          "body": "<p>VFA Extract to Project Planner Dataflow Successful</p>",
+          "to": "infras.pmpi-corp-proj@gov.ab.ca",
+          "subject": "Project Planner Dataflow Successful"
+        },
+        "externalReferences": {
+          "connection": "66fc72b1-5ccb-47c4-8e4c-9ffae03532e3"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Success Message",
+        "dependsOn": [
+          {
+            "activity": "PowerBI Report Refresh",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "ecb0a61c-62eb-ae73-4283-cd8df2e061fa",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "VFA Extract",
+        "dependsOn": []
+      },
+      {
+        "type": "PBISemanticModelRefresh",
+        "typeProperties": {
+          "method": "post",
+          "groupId": "d6dd6348-2d7c-4a9f-a109-2eb833ebc56e",
+          "datasetId": "5ab08e1e-dc84-4f52-b3df-6b3a7a74ebff",
+          "commitMode": "Transactional",
+          "objects": [
+            {
+              "table": "projectreview"
+            },
+            {
+              "table": "requirementlist"
+            },
+            {
+              "table": "projectsummary"
+            },
+            {
+              "table": "datavalidation"
+            }
+          ],
+          "waitOnCompletion": true,
+          "operationType": "SemanticModelRefresh"
+        },
+        "externalReferences": {
+          "connection": "c9de6028-6097-4378-bd22-ac703ae2e71c"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "PowerBI Report Refresh",
+        "dependsOn": [
+          {
+            "activity": "Project Planner",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Data Validation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "DMT Score Upload",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Repeat Requirements",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Office365Email",
+        "typeProperties": {
+          "body": "<p>VFA Extract to Project Planner Dataflow Failed</p>",
+          "to": "infras.pmpi-corp-proj@gov.ab.ca",
+          "subject": "Dataflow Failed"
+        },
+        "externalReferences": {
+          "connection": "66fc72b1-5ccb-47c4-8e4c-9ffae03532e3"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Failure email",
+        "dependsOn": [
+          {
+            "activity": "PowerBI Report Refresh",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "DMT Score Upload",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "Data Validation",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "Project Planner",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "Building List",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "App data",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "VFA Extract",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "Past Tbf submissions",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "Scoring Table",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "26d0d156-9e8c-93f5-418a-fa6acd808e50",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Data Validation",
+        "dependsOn": [
+          {
+            "activity": "Building List",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "App data",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "4fc4f61a-6aad-8f6e-43cf-678cc4872bba",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "DMT Score Upload",
+        "dependsOn": [
+          {
+            "activity": "Building List",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "App data",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "30e1386f-0534-baa9-45c4-303e2edb8285",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Scoring Table",
+        "dependsOn": [
+          {
+            "activity": "VFA Extract",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "f3f17771-6e50-9075-4cd7-4acdb990d816",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Repeat Requirements",
+        "dependsOn": [
+          {
+            "activity": "App data",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Building List",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "d88426de-9a96-afef-41b6-7f4c9b9f663b",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "545f18d3-1b35-4f18-acb0-eb4b8be86efa"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Director Dashboard",
+        "dependsOn": [
+          {
+            "activity": "Success Message",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

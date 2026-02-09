@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_PROD_CP_CMR_ExternalData",
+    "description": "Refresh VFA_SSRS, RAP_SSRS, Building_List then execute the notebook PyScript to transform the data into the projectsummarydata and vfadatavalidation tables in the lakehouse. The credentials may fail in one or more of the dataflows, if this pipeline fails it will likely be the authentication of the dataflow source. Resolve the connection failures and run the pipeline again. Success / Fail notification via Teams is authenticated as crystal's domain account. "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1bfad3c7-7e5a-8b8a-4e07-4ba76b0afe4d"
+  }
+}

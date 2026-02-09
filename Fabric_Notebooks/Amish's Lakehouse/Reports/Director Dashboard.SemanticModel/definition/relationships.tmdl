@@ -1,0 +1,23 @@
+relationship AutoDetected_98aaab14-0db3-4f4d-a6e3-cbd6cec5e955
+	fromColumn: projectreview.ProjectName
+	toColumn: projectsummary.ProjectName
+
+relationship a83c424c-dd1c-7ece-9c60-efb523218b6d
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: projectreview.Building_ID
+	toColumn: projectsummary.Building_ID
+
+relationship 845ba068-9db9-280b-fb7a-e26342b1465c
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: requirementlist.Building_ID
+	toColumn: projectsummary.Building_ID
+
+relationship 120a2bc2-7347-fc30-7743-e20a567d7f25
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: repeatrequirements.Requirement_EID
+	toColumn: requirementlist.Requirement_EID
+

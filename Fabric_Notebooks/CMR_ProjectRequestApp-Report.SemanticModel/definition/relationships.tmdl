@@ -1,0 +1,36 @@
+relationship 0ff048f6-cd6a-95ea-cf05-9e683559f4e9
+	fromColumn: pmbcp_cmrprojreqmain.BID
+	toColumn: BuildingList.BLDGID
+
+relationship 5094380c-c2e1-ed0b-0b08-9b7f4b370641
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: pmbcp_cmrrequestprocess.Pmbcp_Cmrprojreqmain
+	toColumn: pmbcp_cmrprojreqmain.'Request ID'
+
+relationship 802531c6-5ca9-be02-e626-9850580ac56d
+	crossFilteringBehavior: bothDirections
+	fromColumn: pmbcp_cmrprojreqmain.'RAP ID'
+	toColumn: pmbcp_projectsummarydata.'RAP ID'
+
+relationship 77075dcf-f61f-df4a-08ef-c124a216144e
+	fromColumn: pmbcp_vfadatavalidation.'Related Project Request ID'
+	toColumn: pmbcp_cmrprojreqmain.'Request ID'
+
+relationship 4e58df93-21fc-054d-ec14-875e5cded9a1
+	fromColumn: BuildingList.'Facility Manager'
+	toColumn: pmbcp_pmbportfoliocode.'Portfolio Code'
+
+relationship AutoDetected_117de94a-eaa9-4456-8573-12224999bcc6
+	fromColumn: pmbcp_cmrprojreqmain.'Funding Classification'
+	toColumn: 'Capital Plan 2025-26 (Total)'.'Funding Classification'
+
+relationship AutoDetected_af66e20c-c6c9-4d59-860b-e53946d9826e
+	fromColumn: 'Capital Plan 2025-26'.'Funding Classification'
+	toColumn: 'Capital Plan 2025-26 (Total)'.'Funding Classification'
+
+relationship 70f7c3c0-fa77-1590-a9a7-93a2abd6f547
+	crossFilteringBehavior: bothDirections
+	fromColumn: pmbcp_cmrholdaction.'CMR Project Request ID'
+	toColumn: pmbcp_cmrprojreqmain.'Request ID'
+

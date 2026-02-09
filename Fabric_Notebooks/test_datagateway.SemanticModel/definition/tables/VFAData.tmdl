@@ -1,0 +1,228 @@
+table VFAData
+	lineageTag: 3e94fdb7-e446-411f-89c3-2ab538242474
+
+	column Portfolio_Name
+		dataType: string
+		lineageTag: 11d4c340-dcfa-4928-b74a-32202b393bd5
+		summarizeBy: none
+		sourceColumn: Portfolio_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Property_Name
+		dataType: string
+		lineageTag: d8e6f152-00e3-4b58-a35a-94040ec73c35
+		summarizeBy: none
+		sourceColumn: Property_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Asset_EID
+		dataType: string
+		lineageTag: 2ed966b4-69aa-41c7-a2e3-936fa91e4aeb
+		summarizeBy: none
+		sourceColumn: Asset_EID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Asset_Name
+		dataType: string
+		lineageTag: 6c62409d-b340-423e-bfad-624b611a5468
+		summarizeBy: none
+		sourceColumn: Asset_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_ID
+		dataType: string
+		lineageTag: cc8f37f5-bf50-4444-9e1c-3f504db4a568
+		summarizeBy: none
+		sourceColumn: Building_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Use_Type
+		dataType: string
+		lineageTag: 03fa35c7-b55c-4f7c-aa9a-4bc435261aac
+		summarizeBy: none
+		sourceColumn: Use_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Constructed_Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 9de808a5-6af0-4db5-8ff7-05bf964d8b26
+		summarizeBy: sum
+		sourceColumn: Constructed_Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_Priority_Detail
+		dataType: string
+		lineageTag: 93db231a-a3be-477a-92a9-0a3600a3661e
+		summarizeBy: none
+		sourceColumn: Building_Priority_Detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_EID
+		dataType: string
+		lineageTag: 050a6c13-04ec-4231-a532-000414848568
+		summarizeBy: none
+		sourceColumn: Requirement_EID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_Name
+		dataType: string
+		lineageTag: ef0816ab-d5fb-42fe-aa53-248480b32adc
+		summarizeBy: none
+		sourceColumn: Requirement_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_Description
+		dataType: string
+		lineageTag: 245163fc-da56-45a8-8847-cbc9041dc01c
+		summarizeBy: none
+		sourceColumn: Requirement_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Linked_System
+		dataType: string
+		lineageTag: 2145e2e8-c67f-4632-b2ce-249e1581577d
+		summarizeBy: none
+		sourceColumn: Linked_System
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: e816e381-decf-4748-b35b-27d44e330d83
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: 71d09a66-fafd-49fd-8671-626278efc9ff
+		summarizeBy: none
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impact
+		dataType: string
+		lineageTag: ea2109a4-a739-4cd6-833b-da44c5098271
+		summarizeBy: none
+		sourceColumn: Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedCost
+		dataType: int64
+		formatString: 0
+		lineageTag: 9625a37a-c5dd-434f-9a91-7247505531e0
+		summarizeBy: sum
+		sourceColumn: EstimatedCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column RankingOne
+		dataType: int64
+		formatString: 0
+		lineageTag: 07bd1496-0644-442c-8a34-d591591283f4
+		summarizeBy: sum
+		sourceColumn: RankingOne
+
+		annotation SummarizationSetBy = Automatic
+
+	column RankingTwo
+		dataType: string
+		lineageTag: 6e5c0e4d-8bc0-4c97-9e2b-d47f2e99883f
+		summarizeBy: none
+		sourceColumn: RankingTwo
+
+		annotation SummarizationSetBy = Automatic
+
+	column OutForAudit
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b64ff27c-49f8-471b-afd3-ed07347f3a38
+		summarizeBy: none
+		sourceColumn: OutForAudit
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsRenewal
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7a17397f-10fd-43ac-8e02-20ecc4bdc113
+		summarizeBy: none
+		sourceColumn: IsRenewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectID
+		dataType: string
+		lineageTag: 28ba8024-5cc3-44fd-9e02-8f623f73a571
+		summarizeBy: none
+		sourceColumn: RAPProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectStatus
+		dataType: string
+		lineageTag: aead3c37-9bd8-43bb-a6c4-d14cb8cdb56f
+		summarizeBy: none
+		sourceColumn: RAPProjectStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_EID
+		dataType: string
+		lineageTag: a7f02cbb-f057-48e9-8626-23b79ba6cbf5
+		summarizeBy: none
+		sourceColumn: System_EID
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Name
+		dataType: string
+		lineageTag: 7d471b95-b2c1-49e9-b844-101aabb856f2
+		summarizeBy: none
+		sourceColumn: System_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uniformat
+		dataType: string
+		lineageTag: 71c4d3b1-d715-4609-a90f-ae6d945b29b3
+		summarizeBy: none
+		sourceColumn: Uniformat
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Group
+		dataType: string
+		lineageTag: 59353d21-8e3e-46a1-bc91-236765235777
+		summarizeBy: none
+		sourceColumn: System_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VFAData = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://rpt.infrastructure.alberta.ca/ReportServer?%2FRAP-PM%2FVFA-LinkedRequirments&rs:Command=Render&rs:Format=CSV"),[Delimiter=",", Columns=26, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Portfolio_Name", type text}, {"Property_Name", type text}, {"Asset_EID", type text}, {"Asset_Name", type text}, {"Building_ID", type text}, {"Use_Type", type text}, {"Constructed_Year", Int64.Type}, {"Building_Priority_Detail", type text}, {"Requirement_EID", type text}, {"Requirement_Name", type text}, {"Requirement_Description", type text}, {"Linked_System", type text}, {"Category", type text}, {"Priority", type text}, {"Impact", type text}, {"EstimatedCost", Int64.Type}, {"RankingOne", Int64.Type}, {"RankingTwo", type text}, {"OutForAudit", type logical}, {"IsRenewal", type logical}, {"RAPProjectID", type text}, {"RAPProjectStatus", type text}, {"System_EID", type text}, {"System_Name", type text}, {"Uniformat", type text}, {"System_Group", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

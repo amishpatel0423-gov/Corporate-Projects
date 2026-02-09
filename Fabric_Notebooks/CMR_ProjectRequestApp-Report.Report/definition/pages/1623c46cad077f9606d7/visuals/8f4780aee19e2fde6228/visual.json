@@ -1,0 +1,211 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "8f4780aee19e2fde6228",
+  "position": {
+    "x": 0,
+    "y": 96,
+    "z": 0,
+    "height": 624,
+    "width": 1280,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_projectsummarydata"
+                    }
+                  },
+                  "Property": "RAP ID"
+                }
+              },
+              "queryRef": "pmbcp_projectsummarydata.RAP ID",
+              "nativeQueryRef": "RAP ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_projectsummarydata"
+                    }
+                  },
+                  "Property": "Project Priority Score"
+                }
+              },
+              "queryRef": "pmbcp_projectsummarydata.Project Priority Score",
+              "nativeQueryRef": "Project Priority Score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_projectsummarydata"
+                    }
+                  },
+                  "Property": "RAP Project Description"
+                }
+              },
+              "queryRef": "pmbcp_projectsummarydata.RAP Project Description",
+              "nativeQueryRef": "RAP Project Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_projectsummarydata"
+                    }
+                  },
+                  "Property": "RAP Project Reason"
+                }
+              },
+              "queryRef": "pmbcp_projectsummarydata.RAP Project Reason",
+              "nativeQueryRef": "RAP Project Reason"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_projectsummarydata"
+                    }
+                  },
+                  "Property": "RAP Project Consequence"
+                }
+              },
+              "queryRef": "pmbcp_projectsummarydata.RAP Project Consequence",
+              "nativeQueryRef": "RAP Project Consequence"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "BLANK()",
+                  "Name": "Calculation"
+                }
+              },
+              "queryRef": "select",
+              "nativeQueryRef": "Calculation",
+              "hidden": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request Status"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request Status",
+              "nativeQueryRef": "Request Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request ID"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request ID",
+              "nativeQueryRef": "Request ID"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "pmbcp_projectsummarydata"
+                  }
+                },
+                "Property": "RAP ID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "310.2474818621759D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_projectsummarydata.RAP Project Description"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "284.3049232631244D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_projectsummarydata.RAP Project Reason"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "308.8733629695813D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_projectsummarydata.RAP Project Consequence"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "150.6363652720991D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_projectsummarydata.Project Priority Score"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

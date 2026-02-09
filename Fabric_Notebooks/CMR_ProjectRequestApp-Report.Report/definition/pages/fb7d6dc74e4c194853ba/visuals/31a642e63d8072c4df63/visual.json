@@ -1,0 +1,185 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "31a642e63d8072c4df63",
+  "position": {
+    "x": 0,
+    "y": 160,
+    "z": 5000,
+    "height": 560.00000000000011,
+    "width": 560.00000000000011,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "GroupRef": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request Status (groups)",
+                  "GroupedColumns": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "pmbcp_cmrprojreqmain"
+                          }
+                        },
+                        "Property": "Request Status"
+                      }
+                    }
+                  ]
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request Status (groups)",
+              "nativeQueryRef": "Request Status (groups)",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Requested Quarter"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Requested Quarter",
+              "nativeQueryRef": "Requested Quarter"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request Total"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request Total",
+              "nativeQueryRef": "Request Total"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "GroupRef": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "pmbcp_cmrprojreqmain"
+                  }
+                },
+                "Property": "Request Status (groups)",
+                "GroupedColumns": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "Request Status"
+                    }
+                  }
+                ]
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Request Total by Request Status'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

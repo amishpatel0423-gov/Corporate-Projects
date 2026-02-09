@@ -1,0 +1,32 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "BuildingList_Dataverse",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "DefaultDestination": {
+      "queryId": "53b3094f-3e6c-42d5-a708-f56793cc2496",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "cr914_building_list": {
+      "queryId": "a1a476dc-ff52-4829-8973-308ffb42baaf",
+      "queryName": "cr914_building_list",
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"5adeea00-43cf-4ce1-805d-ae027fa38726\"}"
+    },
+    {
+      "path": "orgf4e4efec.crm3.dynamics.com",
+      "kind": "CommonDataService",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"232c9d5d-efe5-4fa6-aaf5-4a73228fd983\"}"
+    }
+  ]
+}

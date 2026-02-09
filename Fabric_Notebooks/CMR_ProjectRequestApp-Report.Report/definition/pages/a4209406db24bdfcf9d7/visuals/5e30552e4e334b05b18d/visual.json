@@ -1,0 +1,334 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "5e30552e4e334b05b18d",
+  "position": {
+    "x": 0,
+    "y": 176,
+    "z": 1000,
+    "height": 544,
+    "width": 1280,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request ID"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request ID",
+              "nativeQueryRef": "Request ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "RAP ID"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.RAP ID",
+              "nativeQueryRef": "RAP ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Title"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Title",
+              "nativeQueryRef": "Title"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request Status"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request Status",
+              "nativeQueryRef": "Request Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrrequestprocess"
+                    }
+                  },
+                  "Property": "Days in Current Stage"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrrequestprocess.Days in Active Stage)",
+              "nativeQueryRef": "Days in Current Stage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaystoInitialDecision"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaystoInitialDecision)",
+              "nativeQueryRef": "FM Decision",
+              "displayName": "FM Decision"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforTechRev"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforTechRev)",
+              "nativeQueryRef": "Technical Review",
+              "displayName": "Technical Review"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforFinalize"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforFinalize)",
+              "nativeQueryRef": "Finalize Request",
+              "displayName": "Finalize Request"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforDirDecision"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforDirDecision)",
+              "nativeQueryRef": "Director Decision",
+              "displayName": "Director Decision"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaystoFundclass"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaystoFundclass)",
+              "nativeQueryRef": "Funding Class.",
+              "displayName": "Funding Class."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforPD"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforPD)",
+              "nativeQueryRef": "Project Delivery",
+              "displayName": "Project Delivery"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforPrepApproval"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforPrepApproval)",
+              "nativeQueryRef": "Prep for Approval",
+              "displayName": "Prep for Approval"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforExecReview"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforExecReview)",
+              "nativeQueryRef": "Executive Review",
+              "displayName": "Executive Review"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforProjSetup"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforProjSetup)",
+              "nativeQueryRef": "Project Setup",
+              "displayName": "Project Setup"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaystoApprove"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaystoComplete)",
+              "nativeQueryRef": "To Approve",
+              "displayName": "To Approve"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Link to Record"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Link to Record",
+              "nativeQueryRef": "Link to Record"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "pmbcp_cmrprojreqmain"
+                  }
+                },
+                "Property": "Request ID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "221.5999235211061D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_cmrprojreqmain.Title"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.64516129032259D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_cmrprojreqmain.Request Status"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.62341453217968D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(pmbcp_cmrprojreqmain.DaystoInitialDecision)"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "urlIcon": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

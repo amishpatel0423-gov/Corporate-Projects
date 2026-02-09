@@ -1,0 +1,90 @@
+table pmbcp_pmbportfoliocode
+	lineageTag: c01e9d97-17f5-472e-8b4f-5c9093b236bb
+
+	column 'Portfolio Code'
+		dataType: string
+		lineageTag: a24e9f5b-ae51-43fa-8aca-c276a614da9a
+		summarizeBy: none
+		sourceColumn: pmbcp_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Portfolio Name'
+		dataType: string
+		lineageTag: fa2e1a80-419a-4284-9025-788bcc779c2e
+		summarizeBy: none
+		sourceColumn: pmbcp_portfolioname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Facilities Manager'
+		dataType: string
+		lineageTag: afe03039-70f1-4a1c-ac6e-592a660d9eba
+		summarizeBy: none
+		sourceColumn: pmbcp_fmname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FM Email'
+		dataType: string
+		lineageTag: 47663f86-6fea-4a0e-8bdf-f8ea6c904312
+		summarizeBy: none
+		sourceColumn: pmbcp_fmemail
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Portfolio Code'
+		dataType: string
+		lineageTag: 1f454a8c-a037-4e41-8e37-f78f6c85bfd4
+		summarizeBy: none
+		sourceColumn: pmbcp_dirportfoliocode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Portfolio Name'
+		dataType: string
+		lineageTag: 6497db1e-9cf4-49c7-a8dc-280f7d973d02
+		summarizeBy: none
+		sourceColumn: pmbcp_dirportfolioname
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: af399374-0a81-4f37-98a8-d5b362439ee8
+		summarizeBy: none
+		sourceColumn: pmbcp_directorname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Email'
+		dataType: string
+		lineageTag: 199d0c0d-86d3-4d9e-bc04-61d92da08742
+		summarizeBy: none
+		sourceColumn: pmbcp_directoremail
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Center'
+		dataType: string
+		lineageTag: ad751c08-609b-46d8-b9f9-69ff21efb6cd
+		summarizeBy: none
+		sourceColumn: pmbcp_costcenter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pmbcp_pmbportfoliocode = m
+		mode: import
+		source =
+				let
+				    Source = CommonDataService.Database("org509f7c88.crm3.dynamics.com"),
+				    dbo_pmbcp_pmbportfoliocode = Source{[Schema="dbo",Item="pmbcp_pmbportfoliocode"]}[Data],
+				    #"Choose Columns" = Table.SelectColumns(dbo_pmbcp_pmbportfoliocode,{"pmbcp_name", "pmbcp_portfolioname", "pmbcp_fmname", "pmbcp_fmemail", "pmbcp_directorname", "pmbcp_directoremail", "pmbcp_costcenter", "pmbcp_dirportfoliocode", "pmbcp_dirportfolioname"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Choose Columns",{"pmbcp_name", "pmbcp_portfolioname", "pmbcp_fmname", "pmbcp_fmemail", "pmbcp_dirportfoliocode", "pmbcp_dirportfolioname", "pmbcp_directorname", "pmbcp_directoremail", "pmbcp_costcenter"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

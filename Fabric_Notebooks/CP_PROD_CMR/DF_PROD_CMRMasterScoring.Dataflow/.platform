@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_PROD_CMRMasterScoring",
+    "description": "Run Only when an update to the master scoring tables has been made. Connection to SharePoint master scoring excel file with output to prod Lakehouse tables. The connection to SPO must use a domain account, the service account will not work. See query definition for where the source SPO file is.   "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b5bd19a1-4d73-99d7-4146-2877b5c10504"
+  }
+}

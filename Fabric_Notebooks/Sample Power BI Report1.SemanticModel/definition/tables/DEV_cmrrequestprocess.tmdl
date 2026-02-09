@@ -1,0 +1,341 @@
+table DEV_cmrrequestprocess
+	lineageTag: 302dbc95-7843-4db4-b6e4-49e0422190e8
+
+	column 'CMR Request Process'
+		dataType: string
+		lineageTag: c8d712f8-e160-448c-9b05-d48df610de58
+		summarizeBy: none
+		sourceColumn: businessprocessflowinstanceid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a0368b7f-faaf-44f7-8f7e-98559babb192
+		summarizeBy: none
+		sourceColumn: createdon
+
+		variation Variation
+			isDefault
+			relationship: e113b12e-209d-49a2-91dc-9ca85828ce2d
+			defaultHierarchy: LocalDateTable_8868d7be-3fc5-4d48-9d34-95aff809bafe.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdby
+		dataType: string
+		lineageTag: 14754e01-3c6f-4923-b7db-45e25dae0641
+		summarizeBy: none
+		sourceColumn: createdby
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5ea2bfc8-2574-4240-ac89-ec4e4b51f9b7
+		summarizeBy: none
+		sourceColumn: modifiedon
+
+		variation Variation
+			isDefault
+			relationship: 815873fe-3418-407c-8979-e8ba858ca760
+			defaultHierarchy: LocalDateTable_7da4a5f0-0f1b-4055-a99a-4ebacbe143fa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedby
+		dataType: string
+		lineageTag: 58bc70c6-3e97-40a4-b1da-404ac41d43d7
+		summarizeBy: none
+		sourceColumn: modifiedby
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdonbehalfby
+		dataType: string
+		lineageTag: c58382d3-87ca-44cd-b252-d799265a86b4
+		summarizeBy: none
+		sourceColumn: createdonbehalfby
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedonbehalfby
+		dataType: string
+		lineageTag: c576eacf-d5c0-4506-9415-65a94da5f6d6
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfby
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By'
+		dataType: string
+		lineageTag: 22d15270-e03e-4bd4-8843-035c8881ae5c
+		summarizeBy: none
+		sourceColumn: createdbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdbyyominame
+		dataType: string
+		lineageTag: 56edb0c6-24ef-4df2-8a14-727b97668055
+		summarizeBy: none
+		sourceColumn: createdbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By (Delegate)'
+		dataType: string
+		lineageTag: c491720b-a932-4098-bc42-be24c242a45c
+		summarizeBy: none
+		sourceColumn: createdonbehalfbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdonbehalfbyyominame
+		dataType: string
+		lineageTag: 6ab88130-885e-4e53-8f73-4b47dc822eb3
+		summarizeBy: none
+		sourceColumn: createdonbehalfbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified By'
+		dataType: string
+		lineageTag: ebd539d7-4bbd-4605-ab05-44bfba40f193
+		summarizeBy: none
+		sourceColumn: modifiedbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedbyyominame
+		dataType: string
+		lineageTag: 78928fae-b0bd-4ec4-a577-87c3de6779c1
+		summarizeBy: none
+		sourceColumn: modifiedbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified By (Delegate)'
+		dataType: string
+		lineageTag: 5e830e01-c5e6-4b47-9d12-224d6ffcebd8
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedonbehalfbyyominame
+		dataType: string
+		lineageTag: 70fbaa77-2e80-4a28-a23d-78513e6c59a1
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column organizationid
+		dataType: string
+		lineageTag: 23119cb9-f2ce-40fc-9d4a-b49d6174e6d4
+		summarizeBy: none
+		sourceColumn: organizationid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Organization Id'
+		dataType: string
+		lineageTag: ff145a26-b437-4658-ba06-9e01b8ed3972
+		summarizeBy: none
+		sourceColumn: organizationidname
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 333ad70b-7f5a-4f3f-9530-4341966d7ac8
+		summarizeBy: sum
+		sourceColumn: statecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column statecodename
+		dataType: string
+		lineageTag: 87ff73c8-25a0-40d6-b1af-d015a2570888
+		summarizeBy: none
+		sourceColumn: statecodename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Reason'
+		dataType: int64
+		formatString: 0
+		lineageTag: 34c193ed-f504-43ba-9967-e9bbe1a5a034
+		summarizeBy: sum
+		sourceColumn: statuscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column statuscodename
+		dataType: string
+		lineageTag: c14db312-0954-475d-b001-923fc3e5b1ef
+		summarizeBy: none
+		sourceColumn: statuscodename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Import Sequence Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: b567e7f2-b9d2-4834-9081-b8c945a0dd3b
+		summarizeBy: sum
+		sourceColumn: importsequencenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Record Created On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0ea78735-d26e-4d2a-bf26-491c6eec254b
+		summarizeBy: none
+		sourceColumn: overriddencreatedon
+
+		variation Variation
+			isDefault
+			relationship: eeded486-029d-4aa3-a802-0b53162b5edc
+			defaultHierarchy: LocalDateTable_0ba083c3-eede-4ae5-ab05-55845d7f77d9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Zone Rule Version Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: e5b1c24b-d0bd-4b9a-befd-2721120e09e9
+		summarizeBy: sum
+		sourceColumn: timezoneruleversionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UTC Conversion Time Zone Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: f7c318a7-dcdb-4c4a-84a6-672b1fcc24f2
+		summarizeBy: count
+		sourceColumn: utcconversiontimezonecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 1915dfb8-c053-4b88-b380-261910ffaa02
+		summarizeBy: none
+		sourceColumn: bpf_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column activestageid
+		dataType: string
+		lineageTag: ba0c12f1-1a55-4e49-a150-599c617df71d
+		summarizeBy: none
+		sourceColumn: activestageid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Active Stage'
+		dataType: string
+		lineageTag: 78a0b98e-b3b3-4178-984d-c96e602fffd9
+		summarizeBy: none
+		sourceColumn: activestageidname
+
+		annotation SummarizationSetBy = Automatic
+
+	column processid
+		dataType: string
+		lineageTag: 4bafb2dc-a20e-4c33-a286-5fee39ad865b
+		summarizeBy: none
+		sourceColumn: processid
+
+		annotation SummarizationSetBy = Automatic
+
+	column Process
+		dataType: string
+		lineageTag: bd6b46d4-639a-4153-9b82-83e6cbaf6278
+		summarizeBy: none
+		sourceColumn: processidname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Traversed Path'
+		dataType: string
+		lineageTag: 73ec8150-6009-49fb-a604-c0c8b1f3ce99
+		summarizeBy: none
+		sourceColumn: traversedpath
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Completed On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 69ac4314-8e99-44da-95c9-b4089a7a0c8a
+		summarizeBy: none
+		sourceColumn: completedon
+
+		variation Variation
+			isDefault
+			relationship: 3e562bd5-4820-4b09-8378-c8ca4315e0b5
+			defaultHierarchy: LocalDateTable_838cf9af-7757-476a-8dfd-b0ada50b49f1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Active Stage Started On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f75d18c3-a91a-4e3f-8f84-92b798ffbfe1
+		summarizeBy: none
+		sourceColumn: activestagestartedon
+
+		variation Variation
+			isDefault
+			relationship: 86b32dd5-33d9-4cd7-897f-66035a71bad5
+			defaultHierarchy: LocalDateTable_6d10fa38-9900-4b0f-9cad-30742297571c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column bpf_pmbcp_cmrprojreqmainid
+		dataType: string
+		lineageTag: 3b9adfc6-54db-41f4-80b6-d795d52f71f3
+		summarizeBy: none
+		sourceColumn: bpf_pmbcp_cmrprojreqmainid
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pmbcp_Cmrprojreqmain
+		dataType: string
+		lineageTag: c2ab0857-3fdd-49c3-b72b-162a3561dbfb
+		summarizeBy: none
+		sourceColumn: bpf_pmbcp_cmrprojreqmainidname
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: d181bcf8-1335-4114-b699-743ef01969fe
+		summarizeBy: sum
+		sourceColumn: bpf_duration
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DEV_cmrrequestprocess = m
+		mode: import
+		queryGroup: Reporting_Tables
+		source =
+				let
+				    Source = CommonDataService.Database("orgf4e4efec.crm3.dynamics.com"),
+				    dbo_pmbcp_cmrprojprocess = Source{[Schema = "dbo", Item = "pmbcp_cmrrequestprocess"]}[Data]
+				in
+				 dbo_pmbcp_cmrprojprocess
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

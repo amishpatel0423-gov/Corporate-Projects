@@ -1,0 +1,2509 @@
+table pmbcp_cmrprojreqmain
+	lineageTag: 44a417ba-631f-4f8f-a21e-09339715c642
+
+	measure 'Request Total' = COUNTROWS(pmbcp_cmrprojreqmain)
+		formatString: 0
+		lineageTag: ae54c596-a72f-457f-8454-4c1e6b4931b0
+
+	measure TotalRequestsCard = "Total Requests: " &pmbcp_cmrprojreqmain[Request Total]
+		lineageTag: c13913b7-d735-44c8-9b25-4cf61868c762
+
+	measure 'Avg for Initiate' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaystoInitialDecision])
+			)
+		lineageTag: ff4aae59-7192-40d2-95ef-fc8a479a1f91
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Technical Review' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforTechRev])
+			)
+		lineageTag: e2f84f26-f383-48af-a34c-5efd9ede81f2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Finalize' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforFinalize])
+			)
+		lineageTag: 0d83d2d4-71fb-4417-bce3-219f95b7df10
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Director Decision' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforDirDecision])
+			)
+		lineageTag: f6a0aaef-41eb-4fa8-96cf-8b030836fcb1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Funding Classification' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaystoFundclass])
+			)
+		lineageTag: 01d8425e-2cd5-4a90-9d75-cb474882529f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for PD Initiation' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforPD])
+			)
+		lineageTag: b8e84f4a-2bd6-44de-833c-98165d1dc8f5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Prep for Approval' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforPrepApproval])
+			)
+		lineageTag: 5c5005d1-4c52-4db9-9bd6-025b92f44048
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Exec Review' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforExecReview])
+			)
+		lineageTag: 0f4691a2-9bc4-444e-9219-6efbe42ed575
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Project Setup' =
+			
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforProjSetup])
+			)
+		lineageTag: 9bca6697-c6dc-47cb-b0d7-4d1b87be47fb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg to Approve' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaystoApprove]))
+		lineageTag: d4dd0e67-af26-4636-824a-8de83f152242
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgStageDuration = ```
+			
+			SWITCH(
+			    SELECTEDVALUE(BPFStageAxis[Stage]),
+			    "Initial FM Decision", [Avg for Initiate],
+			    "Technical Review", [Avg for Technical Review],
+			    "Finalize", [Avg for Finalize],
+			    "Director Decision", [Avg for Director Decision],
+			    "Funding Classification", [Avg for Funding Classification],
+			    "Project Delivery Initiation", [Avg for PD Initiation],
+			    "Prepare for Approval", [Avg for Prep for Approval],
+			    "Executive Review", [Avg for Exec Review],
+			    "Project Setup", [Avg for Project Setup]
+			)
+			
+			```
+		lineageTag: a241ab9b-400a-4d8a-9e8b-a096f7c25b16
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Tech Review Draft' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforTechRevDraftComp]))
+		lineageTag: d1fa9c01-fea1-458a-bb0f-424f78506200
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Tech Review BDS Manager' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforTechRevBDSMgr])
+			)
+		lineageTag: 17a7bab6-923a-409b-861c-d9aac20b1bea
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg for Tech Review Draft PMPI Director' =
+			CALCULATE(
+			    AVERAGE(pmbcp_cmrprojreqmain[DaysforTechRevPMPIDir]))
+		lineageTag: 6d6bc27a-6a4a-41b6-a284-4df60b217e58
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Requests Above Tech Review Average' = ```
+			
+			VAR AvgTechRev = [Avg for Technical Review]
+			RETURN
+			CALCULATE(
+			    COUNTROWS(pmbcp_cmrprojreqmain),
+			    FILTER(
+			        pmbcp_cmrprojreqmain,
+			        pmbcp_cmrprojreqmain[DaysforTechRev] > AvgTechRev
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 2b6befe6-8863-4936-b78b-051c7ed42b60
+
+	measure 'CutOff Score' = 85
+		formatString: 0
+		lineageTag: 181c3ee3-a93f-441a-a2a4-0cca4f002837
+
+	measure 'Requests Above PD Average' =
+			
+			VAR AvgPD = [Avg for PD Initiation]
+			RETURN
+			CALCULATE(
+			    COUNTROWS(pmbcp_cmrprojreqmain),
+			    FILTER(
+			        pmbcp_cmrprojreqmain,
+			        pmbcp_cmrprojreqmain[DaysforPD] > AvgPD
+			    )
+			)
+		formatString: 0
+		lineageTag: f4d113e9-d334-43bb-8da9-1becbc12435f
+
+	measure 'Total Project Value' = ```
+			
+			VAR RequestedTPC = SELECTEDVALUE(pmbcp_cmrprojreqmain[par requested tpc])
+			VAR SummaryTPC = 
+			    CALCULATE(
+			        SUM(pmbcp_projectsummarydata[Cost Factored TPC]),
+			        TREATAS(VALUES(pmbcp_cmrprojreqmain[RAP ID]), pmbcp_projectsummarydata[RAP ID])
+			    )
+			
+			VAR FinalValue = 
+			    IF(NOT(ISBLANK(RequestedTPC)) && RequestedTPC <> 0, RequestedTPC,
+			        SummaryTPC
+			        )
+			
+			
+			RETURN FinalValue
+			```
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: d42ac064-4dda-42bf-8808-4e048130dcf0
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure 'Total Project Value (Filtered)' =
+			
+			CALCULATE (
+			    SUMX (
+			        pmbcp_cmrprojreqmain,
+			        IF (
+			            ISBLANK ( pmbcp_cmrprojreqmain[par requested tpc] ) || pmbcp_cmrprojreqmain[par requested tpc] = 0,
+			            pmbcp_cmrprojreqmain[Estimated TPC (Cost Factored)],
+			            pmbcp_cmrprojreqmain[par requested tpc]
+			        )
+			    ),
+			    pmbcp_cmrprojreqmain[Request Status] <> "Cancelled"
+			)
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 3dd0a20b-e156-4aaf-b441-5e4186e6bb48
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure LinkText = "View Record"
+		lineageTag: 7453c236-9eff-4629-8857-3f8573767748
+
+	column 'CMR Project Request Main'
+		dataType: string
+		lineageTag: 1df15bee-d4b3-4878-b299-7c11c46cabc6
+		summarizeBy: none
+		sourceColumn: pmbcp_cmrprojreqmainid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b112d9d1-6a9a-4941-b840-938448b126e1
+		summarizeBy: none
+		sourceColumn: createdon
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdby
+		dataType: string
+		lineageTag: 810fa282-20c0-413d-b8eb-e50b4bfc52c5
+		summarizeBy: none
+		sourceColumn: createdby
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b7104e8d-d35f-426f-a73b-8d0fe3d4a5cb
+		summarizeBy: none
+		sourceColumn: modifiedon
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedby
+		dataType: string
+		lineageTag: a8d06c1a-2722-4853-8857-898c47cf66d1
+		summarizeBy: none
+		sourceColumn: modifiedby
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdonbehalfby
+		dataType: string
+		lineageTag: a8a548d2-770d-41da-b1ec-77365ec01e45
+		summarizeBy: none
+		sourceColumn: createdonbehalfby
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedonbehalfby
+		dataType: string
+		lineageTag: 028d06dd-c018-4a19-b27f-81cfb95bafbc
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfby
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By'
+		dataType: string
+		lineageTag: f06817be-725d-4fb1-8bb8-3e9a2bbadc98
+		summarizeBy: none
+		sourceColumn: createdbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdbyyominame
+		dataType: string
+		lineageTag: 8d89722b-5d43-42ca-b32f-25b7303faf97
+		summarizeBy: none
+		sourceColumn: createdbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By (Delegate)'
+		dataType: string
+		lineageTag: fd69af45-b620-4dad-8a50-f69b9272c8de
+		summarizeBy: none
+		sourceColumn: createdonbehalfbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdonbehalfbyyominame
+		dataType: string
+		lineageTag: fb550cb6-2688-41f2-9738-7303e1e4f5f4
+		summarizeBy: none
+		sourceColumn: createdonbehalfbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified By'
+		dataType: string
+		lineageTag: a45422ca-f534-4fab-913d-52da07d1dcb9
+		summarizeBy: none
+		sourceColumn: modifiedbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedbyyominame
+		dataType: string
+		lineageTag: a752d2a7-faf5-4d8b-881b-3a6ca4dac9f7
+		summarizeBy: none
+		sourceColumn: modifiedbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified By (Delegate)'
+		dataType: string
+		lineageTag: 30511c34-2175-42d0-a497-009b250a211d
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedonbehalfbyyominame
+		dataType: string
+		lineageTag: bb2f4d63-294b-42a3-a9d9-b55f54d9b52f
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column ownerid
+		dataType: string
+		lineageTag: 5dd6f631-d982-400d-84a9-af72f1ff9f2e
+		summarizeBy: none
+		sourceColumn: ownerid
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner
+		dataType: string
+		lineageTag: d5b8598f-3e16-4d28-bd96-938ce14f719d
+		summarizeBy: none
+		sourceColumn: owneridname
+
+		annotation SummarizationSetBy = Automatic
+
+	column owneridyominame
+		dataType: string
+		lineageTag: e51cbd98-d93f-4882-9416-4aa9dceb22ce
+		summarizeBy: none
+		sourceColumn: owneridyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column owningbusinessunit
+		dataType: string
+		lineageTag: 4f86dea5-bdaa-4e04-94ce-36bb32dc044d
+		summarizeBy: none
+		sourceColumn: owningbusinessunit
+
+		annotation SummarizationSetBy = Automatic
+
+	column owninguser
+		dataType: string
+		lineageTag: fa40baa2-53b6-41af-a83f-9fdb917bfd73
+		summarizeBy: none
+		sourceColumn: owninguser
+
+		annotation SummarizationSetBy = Automatic
+
+	column owningteam
+		dataType: string
+		lineageTag: fd91b9ec-ffdb-4484-9a92-11f2441c3f5b
+		summarizeBy: none
+		sourceColumn: owningteam
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Owning Business Unit'
+		dataType: string
+		lineageTag: ec884a78-2065-471a-bcae-db829a84ea27
+		summarizeBy: none
+		sourceColumn: owningbusinessunitname
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: int64
+		formatString: 0
+		lineageTag: a3f8a8ec-b892-4b29-bfa6-e853e2491974
+		summarizeBy: sum
+		sourceColumn: statecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column statecodename
+		dataType: string
+		lineageTag: fd959e86-9b50-4034-b053-c4910c01f1a7
+		summarizeBy: none
+		sourceColumn: statecodename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Reason'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f927d63-45e2-45ca-9343-e77a0c8c6173
+		summarizeBy: sum
+		sourceColumn: statuscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column statuscodename
+		dataType: string
+		lineageTag: b610dd17-a929-41e0-afc4-fb7af3da64dd
+		summarizeBy: none
+		sourceColumn: statuscodename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Import Sequence Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: aaaff95b-3268-494c-85ae-bfc5ba40216a
+		summarizeBy: sum
+		sourceColumn: importsequencenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Record Created On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 83008ff4-5351-4846-a667-1af6dcbda46a
+		summarizeBy: none
+		sourceColumn: overriddencreatedon
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Zone Rule Version Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1913227a-f83b-4bde-b552-3ccc2de153f5
+		summarizeBy: sum
+		sourceColumn: timezoneruleversionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UTC Conversion Time Zone Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: a77ce750-fb72-4714-b5ba-3a75646956dd
+		summarizeBy: count
+		sourceColumn: utcconversiontimezonecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request ID'
+		dataType: string
+		lineageTag: f61b5976-8321-4825-b166-29eb414ab152
+		summarizeBy: none
+		sourceColumn: pmbcp_reqid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset Info'
+		dataType: string
+		lineageTag: dfab12ac-bd0f-49bd-8071-eaf5c2344fc4
+		summarizeBy: none
+		sourceColumn: pmbcp_assetinfo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Available'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: ead6a375-36b2-4e80-a1d2-cbd08688efcb
+		summarizeBy: sum
+		sourceColumn: pmbcp_budgetavail
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column transactioncurrencyid
+		dataType: string
+		lineageTag: 4bc48482-bb9c-4475-a938-5a2681cf689e
+		summarizeBy: none
+		sourceColumn: transactioncurrencyid
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		lineageTag: 4e615ccf-dc4b-4343-beaa-f8ae98b02d73
+		summarizeBy: none
+		sourceColumn: transactioncurrencyidname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exchange Rate'
+		dataType: double
+		lineageTag: cf8f2c77-331c-47b6-874d-45ed461b38c3
+		summarizeBy: sum
+		sourceColumn: exchangerate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Budget Available (Base)'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a229f6ef-c63f-4c33-9195-2bd39a5f4136
+		summarizeBy: sum
+		sourceColumn: pmbcp_budgetavail_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Budget Available Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c91250cb-f3c5-48a4-b740-3e073d58e530
+		summarizeBy: none
+		sourceColumn: pmbcp_budgetdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_cancel
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 95d5756c-fc43-47fb-8ff8-aa153dd8abd4
+		summarizeBy: none
+		sourceColumn: pmbcp_cancel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cancel Request'
+		dataType: string
+		lineageTag: e89f4850-44e3-4ac0-97be-28d436197864
+		summarizeBy: none
+		sourceColumn: pmbcp_cancelname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cancel Requestor Email'
+		dataType: string
+		lineageTag: 17c1dc12-96fb-4969-b95d-98394efe77e0
+		summarizeBy: none
+		sourceColumn: pmbcp_cancelemail
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cancelled Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d8f238f9-b866-46ab-b8ff-916a727307e2
+		summarizeBy: none
+		sourceColumn: pmbcp_cancelleddate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cancelled Reason'
+		dataType: string
+		lineageTag: 034376c8-4612-41a7-81eb-36c791e0b785
+		summarizeBy: none
+		sourceColumn: pmbcp_cancelreason
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_changeurgency
+		dataType: int64
+		formatString: 0
+		lineageTag: 46fd8fd6-1c06-4bed-bfcf-4b6106904268
+		summarizeBy: sum
+		sourceColumn: pmbcp_changeurgency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Change Urgency'
+		dataType: string
+		lineageTag: eac77dae-847d-46ed-b770-e92d2dc7d175
+		summarizeBy: none
+		sourceColumn: pmbcp_changeurgencyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Change Urgency Reason'
+		dataType: string
+		lineageTag: f9782a44-7768-4d1a-8351-2cdb20f90b77
+		summarizeBy: none
+		sourceColumn: pmbcp_changeurgreason
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_complete
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5053c912-e040-4d6a-92b7-eb14ab0786f7
+		summarizeBy: none
+		sourceColumn: pmbcp_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Complete'
+		dataType: string
+		lineageTag: 60a23159-a728-4de4-a7e0-980de4fe08c0
+		summarizeBy: none
+		sourceColumn: pmbcp_completename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0b3d46ec-4ddd-4d29-b1f3-e57645ca2916
+		summarizeBy: none
+		sourceColumn: pmbcp_completedate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cashflow Current Year Amount'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 5bca28ac-98fd-436b-92c8-96e0229bcd24
+		summarizeBy: sum
+		sourceColumn: pmbcp_cyamount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Cashflow Current Year Amount (Base)'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 52f4b098-e2a0-44fa-a334-3b5d5cb979aa
+		summarizeBy: sum
+		sourceColumn: pmbcp_cyamount_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Director Comments'
+		dataType: string
+		lineageTag: 3e8d82d0-1d83-4905-b651-8351def3c05f
+		summarizeBy: none
+		sourceColumn: pmbcp_dircomments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Decision Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 302fd26e-d601-452e-86a5-35795c0ecf05
+		summarizeBy: none
+		sourceColumn: pmbcp_dirdecdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Decision Email'
+		dataType: string
+		lineageTag: 7564b9eb-1b3d-4200-85e2-5aa911041378
+		summarizeBy: none
+		sourceColumn: pmbcp_dirdecemail
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_dirdecision
+		dataType: int64
+		formatString: 0
+		lineageTag: 16789f3e-f726-4e0c-a020-e4c1729fedad
+		summarizeBy: sum
+		sourceColumn: pmbcp_dirdecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Decision'
+		dataType: string
+		lineageTag: cd51b676-9d0c-4722-a5a9-34a5e5a09e89
+		summarizeBy: none
+		sourceColumn: pmbcp_dirdecisionname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_dirresp
+		dataType: string
+		lineageTag: 2da2198a-732c-4980-98df-924c9d59a369
+		summarizeBy: none
+		sourceColumn: pmbcp_dirresp
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_eddecision
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b3b639f-15a0-49dd-a1a0-d3d93ec05b4f
+		summarizeBy: sum
+		sourceColumn: pmbcp_eddecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Executive Director Decision'
+		dataType: string
+		lineageTag: 3ed2a91d-1f69-44fc-b5d7-2d172ee814b9
+		summarizeBy: none
+		sourceColumn: pmbcp_eddecisionname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ED Decision Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 59e074d8-2029-42ec-b031-d2a2cca92b56
+		summarizeBy: none
+		sourceColumn: pmbcp_eddecisiondate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sent to EDO'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b51a6770-ef98-473f-b5e8-7cb5963f88ac
+		summarizeBy: none
+		sourceColumn: pmbcp_edsent
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Executive Review - Sent to PMPI Director'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d70af3a6-e8e9-4d72-9c13-f6b8f2ce49f8
+		summarizeBy: none
+		sourceColumn: pmbcp_ersentpmpidir
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Executive Review - Sent to PD Director'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 36a3be09-f1d5-439e-ae50-1afd69464c9e
+		summarizeBy: none
+		sourceColumn: pmbcp_ersenttopd
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estimated TPC (Cost Factored)'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 8c2ab41f-b397-419a-ac75-6b200cc53ca3
+		summarizeBy: sum
+		sourceColumn: pmbcp_esttpc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Estimated TPC (Cost Factored) (Base)'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: c7813f6d-08a3-4fa8-a321-6b8d1aecb8be
+		summarizeBy: sum
+		sourceColumn: pmbcp_esttpc_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Executive Review Start Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a4c4240a-8c0f-443d-9ae4-9dbb027da8f9
+		summarizeBy: none
+		sourceColumn: pmbcp_execreviewstartdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_facfinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 0252b2e3-6cab-4b24-9de7-4afd70df2f2f
+		summarizeBy: sum
+		sourceColumn: pmbcp_facfinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Facilities Finalization'
+		dataType: string
+		lineageTag: fd71352b-d008-480d-86ba-20fb9dabbbbb
+		summarizeBy: none
+		sourceColumn: pmbcp_facfinalname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Facilities Finalization Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0a131db6-da9c-435e-aa0f-ea9684214dcf
+		summarizeBy: none
+		sourceColumn: pmbcp_facfinaldate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Finance Notes'
+		dataType: string
+		lineageTag: 913407ac-8b86-4967-bc58-1c643fb51b02
+		summarizeBy: none
+		sourceColumn: pmbcp_finnotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Finance Response Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 360a6fb0-3cb2-4e96-9265-1246ade0622e
+		summarizeBy: none
+		sourceColumn: pmbcp_finrespdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sent to Finance Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 394f4686-b1f8-4046-85a4-f69091825513
+		summarizeBy: none
+		sourceColumn: pmbcp_finsentdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FM Initial Decision Comments'
+		dataType: string
+		lineageTag: 15da63b7-8d48-40a8-bca8-c6a1826228d3
+		summarizeBy: none
+		sourceColumn: pmbcp_fmcomments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FM Initial Decision Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f5e56297-f8f9-4e48-accb-97fa7dec7712
+		summarizeBy: none
+		sourceColumn: pmbcp_fmdecdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FM Decision Email'
+		dataType: string
+		lineageTag: 8067a26b-86a2-46d2-acb5-aa72f48e93d7
+		summarizeBy: none
+		sourceColumn: pmbcp_fmdecemail
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_fmdecision
+		dataType: int64
+		formatString: 0
+		lineageTag: fa228414-b67a-43ee-9b33-50b37d14a4cd
+		summarizeBy: sum
+		sourceColumn: pmbcp_fmdecision
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FM Initial Decision'
+		dataType: string
+		lineageTag: 979cd91f-9f09-4d68-837b-788468d0838e
+		summarizeBy: none
+		sourceColumn: pmbcp_fmdecisionname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_fmresp
+		dataType: string
+		lineageTag: 3e0fb56d-e838-4811-91b6-41e2c022e889
+		summarizeBy: none
+		sourceColumn: pmbcp_fmresp
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_fundclass
+		dataType: int64
+		formatString: 0
+		lineageTag: bacf6ea1-691b-4fcd-a641-5c6545bd1b54
+		summarizeBy: sum
+		sourceColumn: pmbcp_fundclass
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Funding Classification'
+		dataType: string
+		lineageTag: 24e41ff4-c83a-4507-8007-fc8c19982bed
+		summarizeBy: none
+		sourceColumn: pmbcp_fundclassname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Funding Source Comments'
+		dataType: string
+		lineageTag: 881e9487-671a-4951-b499-56ca327385cf
+		summarizeBy: none
+		sourceColumn: pmbcp_fundingsourcecomments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cashflow Future Year Amount'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 0d3d1005-d657-4570-9ec6-0d9d51620e4f
+		summarizeBy: sum
+		sourceColumn: pmbcp_fyamount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Cashflow Future Year Amount (Base)'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: cb3b980d-ec99-42c3-ba6f-d6bde422b28a
+		summarizeBy: sum
+		sourceColumn: pmbcp_fyamount_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column pmbcp_hazmat
+		dataType: int64
+		formatString: 0
+		lineageTag: 4688a203-a1b8-4e65-ad5e-7dc32059dbaf
+		summarizeBy: sum
+		sourceColumn: pmbcp_hazmat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hazmat
+		dataType: string
+		lineageTag: 2411dc5b-87e2-4ac6-a62b-c9b77f09ef94
+		summarizeBy: none
+		sourceColumn: pmbcp_hazmatname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hazmat Comments'
+		dataType: string
+		lineageTag: 58d29208-b195-4549-9696-0a0a312e2174
+		summarizeBy: none
+		sourceColumn: pmbcp_hazmatcomments
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_hazmatplan
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 829cd1a4-196f-424b-bf1b-8428c95ca2b3
+		summarizeBy: none
+		sourceColumn: pmbcp_hazmatplan
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hazmat Plan'
+		dataType: string
+		lineageTag: 9b958ef8-2130-4792-ae2d-9ef8b8ed2428
+		summarizeBy: none
+		sourceColumn: pmbcp_hazmatplanname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Highest Scoring REQ ID'
+		dataType: string
+		lineageTag: de1223db-3659-4321-87a9-70150836e91e
+		summarizeBy: none
+		sourceColumn: pmbcp_highscorereq
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initiator Email'
+		dataType: string
+		lineageTag: b8b5db6e-732d-4074-8470-a8e7c4732962
+		summarizeBy: none
+		sourceColumn: pmbcp_initiatoremail
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_occupantimpact
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ee40059-8d0e-41b5-a49c-42678abeb6a1
+		summarizeBy: sum
+		sourceColumn: pmbcp_occupantimpact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Occupant Impact'
+		dataType: string
+		lineageTag: 6211911b-c4d8-435f-b6d8-a86218c2f17e
+		summarizeBy: none
+		sourceColumn: pmbcp_occupantimpactname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PD PAR Received Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dba2d985-6875-4cb1-9af0-3f84a10ee36e
+		summarizeBy: none
+		sourceColumn: pmbcp_pardate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Approved PAR Link'
+		dataType: string
+		lineageTag: 0f13d8d7-f0ef-4c87-8ff4-9f21d76493d2
+		summarizeBy: none
+		sourceColumn: pmbcp_parlink
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PAR Requested TPC'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: af2f3aa5-e8c7-404e-aadc-e1c67024f399
+		summarizeBy: sum
+		sourceColumn: pmbcp_parreq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'PAR Requested TPC (Base)'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 61fefc1e-6d02-496e-a131-8436a2f2307a
+		summarizeBy: sum
+		sourceColumn: pmbcp_parreq_base
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Project Controls Notes'
+		dataType: string
+		lineageTag: ea9f49fd-8381-4038-ad05-bd67a237ce39
+		summarizeBy: none
+		sourceColumn: pmbcp_pcnotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PD Director Complete Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2513cfbe-a51a-40da-b46c-72372ad047bc
+		summarizeBy: none
+		sourceColumn: pmbcp_pddircompdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_pdparrecd
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a65771b8-4a8b-4ee9-bb03-154915636392
+		summarizeBy: none
+		sourceColumn: pmbcp_pdparrecd
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PD PAR Received'
+		dataType: string
+		lineageTag: 7e1877ea-b18a-4e1a-95a0-c9fbcea3a7ba
+		summarizeBy: none
+		sourceColumn: pmbcp_pdparrecdname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PAR Project Title'
+		dataType: string
+		lineageTag: edf701be-a4bc-455e-a5f9-1307610888d4
+		summarizeBy: none
+		sourceColumn: pmbcp_pdprojecttitle
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_pdrequired
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 16c7b147-b42c-48eb-b008-7b0301811374
+		summarizeBy: none
+		sourceColumn: pmbcp_pdrequired
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Delivery Required'
+		dataType: string
+		lineageTag: c5576ae7-c7d1-4189-aab8-881dbda0e15b
+		summarizeBy: none
+		sourceColumn: pmbcp_pdrequiredname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planned Status(recorded)'
+		dataType: string
+		lineageTag: 7c8d97a8-a62b-4119-b5fa-9389eb3ad4b9
+		summarizeBy: none
+		sourceColumn: pmbcp_plannedstatus
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_pm
+		dataType: string
+		lineageTag: 3a5b8f43-e642-4c27-8bac-30b14ffa654c
+		summarizeBy: none
+		sourceColumn: pmbcp_pm
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PMPI Director Complete Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c7a7188c-a4d5-475f-aad9-9e52cdbefcd9
+		summarizeBy: none
+		sourceColumn: pmbcp_pmpidircompdateer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Priority Score'
+		dataType: string
+		lineageTag: ff37476f-ef71-4840-80d7-23346bfeacd5
+		summarizeBy: none
+		sourceColumn: pmbcp_priorityscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_projectlead
+		dataType: int64
+		formatString: 0
+		lineageTag: ff7eec9e-ac9e-43b0-bb0b-8c91a140aef5
+		summarizeBy: sum
+		sourceColumn: pmbcp_projectlead
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_projectlookup
+		dataType: string
+		lineageTag: 43d79deb-76d9-432c-9ea4-40cd920fa7cd
+		summarizeBy: none
+		sourceColumn: pmbcp_projectlookup
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_projectworkhours
+		dataType: int64
+		formatString: 0
+		lineageTag: d2e77321-3cb4-4484-b964-8fdab2909a9c
+		summarizeBy: sum
+		sourceColumn: pmbcp_projectworkhours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Work Hours'
+		dataType: string
+		lineageTag: 54acc36b-644a-4364-9260-fc2cf1e636c6
+		summarizeBy: none
+		sourceColumn: pmbcp_projectworkhoursname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Server Setup Complete Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6fbde4df-8716-4771-800c-ec99d3685dc3
+		summarizeBy: none
+		sourceColumn: pmbcp_projservsetupdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP ID'
+		dataType: string
+		lineageTag: 8d6854a3-370c-4676-a731-627a531e144d
+		summarizeBy: none
+		sourceColumn: pmbcp_rapid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Link to Record'
+		dataType: string
+		lineageTag: a1445df0-aafe-4439-adc4-496df2499db2
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: pmbcp_recordlink
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Related Comments'
+		dataType: string
+		lineageTag: 231f1b9c-db46-452b-a5e4-6d470e0b7382
+		summarizeBy: none
+		sourceColumn: pmbcp_relatedcomments
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_relatedproject
+		dataType: string
+		lineageTag: d09679ae-e271-4896-b113-1b4f23e3d5d6
+		summarizeBy: none
+		sourceColumn: pmbcp_relatedproject
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'REQ ID(s)'
+		dataType: string
+		lineageTag: 5b6d600d-e01e-4ba7-b22f-f15465e1ca23
+		summarizeBy: none
+		sourceColumn: pmbcp_reqids
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'REQ Name(s)'
+		dataType: string
+		lineageTag: c0f0cf51-5779-4e91-8ac3-ca666444e468
+		summarizeBy: none
+		sourceColumn: pmbcp_reqnames
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Notes'
+		dataType: string
+		lineageTag: e477995f-6333-4516-8bd9-507e2e9009c6
+		summarizeBy: none
+		sourceColumn: pmbcp_reqnotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_reqtype
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e387611-cd4c-45c5-9a4d-80109257b310
+		summarizeBy: sum
+		sourceColumn: pmbcp_reqtype
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Type'
+		dataType: string
+		lineageTag: 7a0e8a7b-a27c-4e2d-a938-4867ad7b5b2e
+		summarizeBy: none
+		sourceColumn: pmbcp_reqtypename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resend Decision Reason'
+		dataType: string
+		lineageTag: 41e50eee-c2d0-40b7-96dc-da9a109ed943
+		summarizeBy: none
+		sourceColumn: pmbcp_resenddecisionreason
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_resenddecisiontask
+		dataType: int64
+		formatString: 0
+		lineageTag: 0fdcf851-666c-419a-8eb7-5bdcd87a639b
+		summarizeBy: sum
+		sourceColumn: pmbcp_resenddecisiontask
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resend Decision Task'
+		dataType: string
+		lineageTag: 8cf668ac-e420-4174-b4a7-e9a81601f311
+		summarizeBy: none
+		sourceColumn: pmbcp_resenddecisiontaskname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sent to Project Delivery'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0290866e-d31d-4bef-964d-c272da6e3485
+		summarizeBy: none
+		sourceColumn: pmbcp_sentpd
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SharePoint Folder ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: a5f5c756-4d85-42eb-9129-f69a83ae7b93
+		summarizeBy: count
+		sourceColumn: pmbcp_spofolderid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Starting Fiscal Year'
+		dataType: string
+		lineageTag: 41565c0b-061a-4877-9765-78b01abd46a3
+		summarizeBy: none
+		sourceColumn: pmbcp_startingfiscalyear
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_status
+		dataType: int64
+		formatString: 0
+		lineageTag: 45b39e20-6d5c-41bd-b00f-4c2af73707f4
+		summarizeBy: sum
+		sourceColumn: pmbcp_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Status'
+		dataType: string
+		lineageTag: 733cc5ca-38cb-4692-ad1b-bca2570961ac
+		summarizeBy: none
+		sourceColumn: pmbcp_statusname
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"pmbcp_cmrprojreqmain","TableItemName":"Request Status (groups)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'Supporting Documents Folder'
+		dataType: string
+		lineageTag: f80063ff-577e-46e6-967d-adbc778ed433
+		summarizeBy: none
+		sourceColumn: pmbcp_supdocfolder
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_techrevbdsmgr
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8cf61a43-fc43-41c3-947e-44fb91373937
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevbdsmgr
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review BDS Manager Complete'
+		dataType: string
+		lineageTag: 42f52bd0-3f57-4e8b-a305-9cb2496ad1fb
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevbdsmgrname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review BDS Manager Complete Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5a3e17c8-397b-47b4-bb47-702f0a93cedf
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevbdsmgrdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review Draft Complete'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 03d42cb5-baa4-4340-9827-ade6fb251d0e
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevdraft
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_techrevene
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 06a1b7fd-401e-4096-8306-edc2643b32eb
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevene
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Energy Assessment'
+		dataType: string
+		lineageTag: 2329d76a-6cc6-4a37-9226-d85ccf99d9ff
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevenename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review Report File ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 556e439e-723c-4407-92e1-dd1c7b0abe85
+		summarizeBy: count
+		sourceColumn: pmbcp_techrevfileid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review Report Link'
+		dataType: string
+		lineageTag: c8e36c16-b400-4a2b-be3c-80dd72a5eb3c
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevlink
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review Notes'
+		dataType: string
+		lineageTag: 29aa61e3-723c-4aa3-89d5-f6b2de75105f
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevnotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_techrevohs
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2170dbb8-b730-4fd5-bd7f-ce19507ef6d9
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevohs
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OHS Assessment'
+		dataType: string
+		lineageTag: 55713877-626e-41eb-b369-006c5ab27140
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevohsname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_techrevom
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b2f07416-cf5f-49db-bd79-2579a4bfa0c3
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevom
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'O&M Assessment'
+		dataType: string
+		lineageTag: 602bbd61-d4fb-4013-b6d6-b8d83a59eeac
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevomname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_techrevpmpidir
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7316c829-b402-459b-bf41-2ab1f30a0df9
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevpmpidir
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review PMPI Director Complete'
+		dataType: string
+		lineageTag: 610397cb-b387-489b-8acd-6a5a921abb97
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevpmpidirname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review PMPI Director Complete Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 43573a94-e47a-47f4-80f3-95a59c330adf
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevpmpidirdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Response to Tech Review Report'
+		dataType: string
+		lineageTag: 0cddba28-34b5-4e9c-aaf4-1b2988615b78
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevresp
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_techrevsec
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0b918a71-38b3-4d91-a919-5f81da05c330
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevsec
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Security Assessment'
+		dataType: string
+		lineageTag: 174591b2-9ad7-48da-9181-7fcf95f2d6f0
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevsecname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_techrevstatus
+		dataType: int64
+		formatString: 0
+		lineageTag: c9d78423-72ec-4a57-8210-ee83cfc38a55
+		summarizeBy: sum
+		sourceColumn: pmbcp_techrevstatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Technical Review Status'
+		dataType: string
+		lineageTag: 521121bf-11db-44cf-b466-6ae17db127aa
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevstatusname
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"pmbcp_cmrprojreqmain","TableItemName":"Technical Review Status (groups)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'Tech Review Waived Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 696d1f96-60bd-4fc2-ab2b-a0d71848d711
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevwaiveddate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review Waived Reason'
+		dataType: string
+		lineageTag: ce96a0bb-165c-4708-a44b-f2ee6620371c
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevwaivedreason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: f56516c7-53d3-4736-89f1-9171d39ce277
+		summarizeBy: none
+		sourceColumn: pmbcp_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_urgent
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9c17b59b-9ed7-4e61-9a45-bc97200d4f8f
+		summarizeBy: none
+		sourceColumn: pmbcp_urgent
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Urgent Request'
+		dataType: string
+		lineageTag: c52a4037-7828-4055-8ba4-96bc179a7a4d
+		summarizeBy: none
+		sourceColumn: pmbcp_urgentname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Urgent Justification'
+		dataType: string
+		lineageTag: c3040b73-f2a2-46e5-83a1-a3003f56e152
+		summarizeBy: none
+		sourceColumn: pmbcp_urgentjust
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_vfareports
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8374163b-adc7-415e-b063-779dd0f8da31
+		summarizeBy: none
+		sourceColumn: pmbcp_vfareports
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VFA Reports'
+		dataType: string
+		lineageTag: 32c65a3e-d33a-4273-835d-0913a19b70e5
+		summarizeBy: none
+		sourceColumn: pmbcp_vfareportsname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WBS Element'
+		dataType: string
+		lineageTag: 1a9a31fd-c1e6-4a8f-ad6d-6d809b2906ef
+		summarizeBy: none
+		sourceColumn: pmbcp_wbselement
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WBS Sent Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c7905e1e-de25-43f2-8114-d06c4fb0ccb3
+		summarizeBy: none
+		sourceColumn: pmbcp_wbssentdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_workstatus
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b7a476b-d906-49e3-b82f-93b0576152bb
+		summarizeBy: sum
+		sourceColumn: pmbcp_workstatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Work Status'
+		dataType: string
+		lineageTag: f0923166-00d6-4117-a3c1-5c0e32e08c50
+		summarizeBy: none
+		sourceColumn: pmbcp_workstatusname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Process Id'
+		dataType: string
+		lineageTag: e1b4415c-f93e-47e5-b548-607cc71828c4
+		summarizeBy: none
+		sourceColumn: processid
+
+		annotation SummarizationSetBy = Automatic
+
+	column '(Deprecated) Stage Id'
+		dataType: string
+		lineageTag: 83ae906f-6022-40a5-ac32-90877d3d9a88
+		summarizeBy: none
+		sourceColumn: stageid
+
+		annotation SummarizationSetBy = Automatic
+
+	column '(Deprecated) Traversed Path'
+		dataType: string
+		lineageTag: ef807391-d195-4a5f-b0c8-9e7f61606b45
+		summarizeBy: none
+		sourceColumn: traversedpath
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Responsible'
+		dataType: string
+		lineageTag: 50424f0d-bd07-475d-88a6-84ffaa0e579a
+		summarizeBy: none
+		sourceColumn: pmbcp_dirrespname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_dirrespyominame
+		dataType: string
+		lineageTag: 8a23c917-3d1e-4366-8c03-d1962ecd77b9
+		summarizeBy: none
+		sourceColumn: pmbcp_dirrespyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Facilities Manager Responsible'
+		dataType: string
+		lineageTag: d3fff1c4-e813-4d65-b884-147bcd02fb94
+		summarizeBy: none
+		sourceColumn: pmbcp_fmrespname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_fmrespyominame
+		dataType: string
+		lineageTag: 31946d6c-ec3b-4aa9-a1b9-e5e9f4d8eca6
+		summarizeBy: none
+		sourceColumn: pmbcp_fmrespyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Manager'
+		dataType: string
+		lineageTag: b3be42e9-a626-46c4-aef1-53010918b359
+		summarizeBy: none
+		sourceColumn: pmbcp_pmname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_pmyominame
+		dataType: string
+		lineageTag: b5093176-b3ab-49ea-b233-843f6b7e7892
+		summarizeBy: none
+		sourceColumn: pmbcp_pmyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Lookup'
+		dataType: string
+		lineageTag: a2be14b4-e3dc-4d0b-8930-2676c2581743
+		summarizeBy: none
+		sourceColumn: pmbcp_projectlookupname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Related Project Lookup'
+		dataType: string
+		lineageTag: 9e432c24-2425-40c4-97d8-8c549a157919
+		summarizeBy: none
+		sourceColumn: pmbcp_relatedprojectname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review Action Comments'
+		dataType: string
+		lineageTag: b0edb55d-8989-4e10-8a28-93881393cff8
+		summarizeBy: none
+		sourceColumn: pmbcp_techrevactioncom
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_cashflowpercent
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ab9ff1e-9743-460b-9812-d9ded3917621
+		summarizeBy: sum
+		sourceColumn: pmbcp_cashflowpercent
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cashflow Percent'
+		dataType: string
+		lineageTag: 6e331fb3-27f5-4c75-a714-93b1844f6504
+		summarizeBy: none
+		sourceColumn: pmbcp_cashflowpercentname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'systemuser(pmbcp_dirresp).fullname'
+		dataType: string
+		lineageTag: bcded27d-c7f7-42f6-8307-f01978cabe27
+		summarizeBy: none
+		sourceColumn: systemuser(pmbcp_dirresp).fullname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'systemuser(pmbcp_fmresp).fullname'
+		dataType: string
+		lineageTag: 7a22bfd8-177e-4dc7-ba55-d77b0a0ed3c0
+		summarizeBy: none
+		sourceColumn: systemuser(pmbcp_fmresp).fullname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'systemuser(pmbcp_pm).fullname'
+		dataType: string
+		lineageTag: e373b521-603f-4157-8b92-be346dc44c3a
+		summarizeBy: none
+		sourceColumn: systemuser(pmbcp_pm).fullname
+
+		annotation SummarizationSetBy = Automatic
+
+	column Match =
+			VAR ReqStatus = pmbcp_cmrprojreqmain[Request Status]
+			VAR Stage = RELATED(pmbcp_cmrrequestprocess[Active Stage])
+			RETURN
+			If(SEARCH(Stage,ReqStatus,1,0) > 0, TRUE, FALSE)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5f074b08-a1e5-4aeb-a41d-163838b5b1bd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysSinceCreated = DATEDIFF(pmbcp_cmrprojreqmain[Created On],TODAY(),DAY)
+		formatString: 0
+		lineageTag: 75dc9902-a7e5-45a9-a716-f64dd3caf062
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysSinceModified = DATEDIFF(pmbcp_cmrprojreqmain[Modified On],TODAY(),DAY)
+		formatString: 0
+		lineageTag: 46f66f8b-aa02-47f0-be80-3d5f4cdff4e3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initiated Year' = YEAR(pmbcp_cmrprojreqmain[Created On])
+		formatString: 0
+		lineageTag: d5e5a7a4-97a9-4ab4-89e0-5fc7d695010d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaystoApprove = ```
+			
+			VAR SentToPDDate = pmbcp_cmrprojreqmain[Sent to Project Delivery]
+			VAR CreatedOnDate = pmbcp_cmrprojreqmain[Created On]
+			VAR CompleteDate = pmbcp_cmrprojreqmain[Complete Date]
+			
+			VAR StartDate = 
+			    IF(
+			        NOT ISBLANK(SentToPDDate),
+			        MIN(CreatedOnDate, SentToPDDate),
+			        CreatedOnDate
+			    )
+			
+			VAR EndDate = 
+			    IF(
+			        ISBLANK(CompleteDate),
+			        TODAY(),
+			        CompleteDate
+			    )
+			
+			VAR BaseDuration = DATEDIFF(StartDate, EndDate, DAY)
+			
+			VAR TotalHoldDuration =
+			    SUMX(
+			        FILTER(
+			            pmbcp_cmrholdaction,
+			            pmbcp_cmrholdaction[CMR Project Request] = pmbcp_cmrprojreqmain[Request ID]
+			        ),
+			        DATEDIFF(
+			            pmbcp_cmrholdaction[Hold Start Date],
+			            IF(
+			                ISBLANK(pmbcp_cmrholdaction[Hold End Date]),
+			                TODAY(),
+			                pmbcp_cmrholdaction[Hold End Date]
+			            ),
+			            DAY
+			        )
+			    )
+			
+			RETURN
+			    BaseDuration - TotalHoldDuration
+			```
+		formatString: 0
+		lineageTag: cc5356ee-4497-46eb-9f10-80842c87bae7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaystoInitialDecision =
+			IF(ISBLANK(pmbcp_cmrprojreqmain[FM Initial Decision Date]),
+			    DATEDIFF(pmbcp_cmrprojreqmain[Created On],TODAY(),DAY),
+			    DATEDIFF(pmbcp_cmrprojreqmain[Created On],pmbcp_cmrprojreqmain[FM Initial Decision Date],DAY)
+			)
+		formatString: 0
+		lineageTag: 74d08cae-6163-4568-95d4-108552a7fff5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforTechRev =
+			If(
+			    pmbcp_cmrprojreqmain[Work Status] = "Waiting for Approval",
+			    If(ISBLANK(pmbcp_cmrprojreqmain[Tech Review PMPI Director Complete Date]),
+			    DATEDIFF(pmbcp_cmrprojreqmain[FM Initial Decision Date],TODAY(),DAY),
+			    DATEDIFF(pmbcp_cmrprojreqmain[FM Initial Decision Date],pmbcp_cmrprojreqmain[Tech Review PMPI Director Complete Date],DAY)
+			    ))
+		formatString: 0
+		lineageTag: 8d409a04-f4eb-49bd-a50e-ae32b5dac0d3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforFinalize =
+			If(
+			    pmbcp_cmrprojreqmain[Work Status] = "Waiting for Approval",
+			    IF(ISBLANK(pmbcp_cmrprojreqmain[Facilities Finalization Date]),
+			    DATEDIFF(pmbcp_cmrprojreqmain[Tech Review PMPI Director Complete Date],TODAY(),DAY),
+			    DATEDIFF(pmbcp_cmrprojreqmain[Tech Review PMPI Director Complete Date],pmbcp_cmrprojreqmain[Facilities Finalization Date],DAY)
+			))
+		formatString: 0
+		lineageTag: 35715440-a2d0-4a00-8e9f-fdceb0bacae1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforDirDecision = ```
+			If(pmbcp_cmrprojreqmain[Work Status]="Waiting for Approval", 
+			    IF(ISBLANK(pmbcp_cmrprojreqmain[Director Decision Date]),
+			        DATEDIFF(pmbcp_cmrprojreqmain[Facilities Finalization Date],TODAY(),DAY),
+			        DATEDIFF(pmbcp_cmrprojreqmain[Facilities Finalization Date],pmbcp_cmrprojreqmain[Director Decision Date],DAY)),
+			    IF(ISBLANK(pmbcp_cmrprojreqmain[Director Decision Date]),
+			        DATEDIFF(pmbcp_cmrprojreqmain[FM Initial Decision Date],TODAY(),DAY),
+			        DATEDIFF(pmbcp_cmrprojreqmain[FM Initial Decision Date],pmbcp_cmrprojreqmain[Director Decision Date],DAY))
+			)
+			```
+		formatString: 0
+		lineageTag: 4b239e42-61bc-43d1-8977-09aef02c88ca
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaystoFundclass =
+			IF(ISBLANK(pmbcp_cmrprojreqmain[Finance Response Date]),
+			    DATEDIFF(pmbcp_cmrprojreqmain[Sent to Finance Date],TODAY(),DAY),
+			    DATEDIFF(pmbcp_cmrprojreqmain[Sent to Finance Date],pmbcp_cmrprojreqmain[Finance Response Date],DAY))
+		formatString: 0
+		lineageTag: e1dc2c99-58c3-4599-bce4-c1f5ded89c9f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforPD =
+			
+			VAR BaseDuration =
+			    IF(
+			        pmbcp_cmrprojreqmain[Project Lead] = "Project Delivery Team",
+			        DATEDIFF(
+			            pmbcp_cmrprojreqmain[Sent to Project Delivery],
+			            IF(
+			                ISBLANK(pmbcp_cmrprojreqmain[PD PAR Received Date]),
+			                TODAY(),
+			                pmbcp_cmrprojreqmain[PD PAR Received Date]
+			            ),
+			            DAY
+			        )
+			    )
+			
+			VAR HoldDuration =
+			    SUMX(
+			        FILTER(
+			            pmbcp_cmrholdaction,
+			            pmbcp_cmrholdaction[CMR Project Request] = pmbcp_cmrprojreqmain[Request ID]
+			            && pmbcp_cmrholdaction[Previous Request Status] = 211700005
+			        ),
+			        DATEDIFF(
+			            pmbcp_cmrholdaction[Hold Start Date],
+			            IF(
+			                ISBLANK(pmbcp_cmrholdaction[Hold End Date]),
+			                TODAY(),
+			                pmbcp_cmrholdaction[Hold End Date]
+			            ),
+			            DAY
+			        )
+			    )
+			
+			RETURN
+			    BaseDuration - HoldDuration
+		formatString: 0
+		lineageTag: 86694e69-91b4-4b26-a841-e7d46f69872b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPMatch = if(pmbcp_cmrprojreqmain[RAP ID]=pmbcp_cmrprojreqmain[Project Lookup],True, False)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 21152a0d-7e11-4eaf-a7e8-b24167d48e2f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforPrepApproval =
+			VAR BaseDuration =
+			    IF(
+			        pmbcp_cmrprojreqmain[Project Lead] = "Facilities Team",
+			        DATEDIFF(
+			            pmbcp_cmrprojreqmain[Finance Response Date],
+			            IF(
+			                ISBLANK(pmbcp_cmrprojreqmain[Executive Review Start Date]),
+			                TODAY(),
+			                pmbcp_cmrprojreqmain[Executive Review Start Date]
+			            ),
+			            DAY
+			        ),
+			        DATEDIFF(
+			            pmbcp_cmrprojreqmain[PD PAR Received Date],
+			            IF(
+			                ISBLANK(pmbcp_cmrprojreqmain[Executive Review Start Date]),
+			                TODAY(),
+			                pmbcp_cmrprojreqmain[Executive Review Start Date]
+			            ),
+			            DAY
+			        )
+			    )
+			
+			VAR HoldDuration =
+			    SUMX(
+			        FILTER(
+			            pmbcp_cmrholdaction,
+			            pmbcp_cmrholdaction[CMR Project Request] = pmbcp_cmrprojreqmain[Request ID]
+			            && pmbcp_cmrholdaction[Previous Request Status] = 211700007
+			        ),
+			        DATEDIFF(
+			            pmbcp_cmrholdaction[Hold Start Date],
+			            IF(
+			                ISBLANK(pmbcp_cmrholdaction[Hold End Date]),
+			                TODAY(),
+			                pmbcp_cmrholdaction[Hold End Date]
+			            ),
+			            DAY
+			        )
+			    )
+			
+			RETURN
+			    BaseDuration - HoldDuration
+		formatString: 0
+		lineageTag: c36224d0-05be-44fe-998b-91dace2c2f1b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforExecReview = ```
+			
+			VAR BaseDuration = DATEDIFF(
+			    pmbcp_cmrprojreqmain[Executive Review Start Date],
+			    IF(ISBLANK(pmbcp_cmrprojreqmain[ED Decision Date]),
+			            TODAY(),
+			            pmbcp_cmrprojreqmain[ED Decision Date]
+			        ),
+			        DAY
+			    )
+			VAR HoldDuration = SUMX(
+			    FILTER(
+			        pmbcp_cmrholdaction,
+			        pmbcp_cmrholdaction[CMR Project Request]=pmbcp_cmrprojreqmain[Request ID]
+			        && pmbcp_cmrholdaction[Previous Request Status] = 211700008
+			    ),
+			    DATEDIFF(
+			        pmbcp_cmrholdaction[Hold Start Date],
+			        IF(
+			            ISBLANK(pmbcp_cmrholdaction[Hold End Date]),
+			            TODAY(),
+			            pmbcp_cmrholdaction[Hold End Date]),DAY)
+			    )
+			RETURN
+			BaseDuration - HoldDuration
+			
+			```
+		formatString: 0
+		lineageTag: c2700399-5315-4c9c-9e9e-f2db7ffa6ed1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforProjSetup =
+			VAR BaseDuration = DATEDIFF(
+			    pmbcp_cmrprojreqmain[ED Decision Date],
+			    IF(ISBLANK(pmbcp_cmrprojreqmain[Complete Date]),
+			            TODAY(),
+			            pmbcp_cmrprojreqmain[Complete Date]
+			        ),
+			        DAY
+			    )
+			VAR HoldDuration = SUMX(
+			    FILTER(
+			        pmbcp_cmrholdaction,
+			        pmbcp_cmrholdaction[CMR Project Request]=pmbcp_cmrprojreqmain[Request ID]
+			        && pmbcp_cmrholdaction[Previous Request Status] = 211700009
+			    ),
+			    DATEDIFF(
+			        pmbcp_cmrholdaction[Hold Start Date],
+			        IF(
+			            ISBLANK(pmbcp_cmrholdaction[Hold End Date]),
+			            TODAY(),
+			            pmbcp_cmrholdaction[Hold End Date]),DAY)
+			    )
+			RETURN
+			BaseDuration - HoldDuration
+		formatString: 0
+		lineageTag: f6ca2ebb-f44f-4fe3-986f-680e2103666c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column BID
+		dataType: string
+		lineageTag: 11cbbad6-cfa0-4bf7-914d-d7902686f0ea
+		summarizeBy: none
+		sourceColumn: BID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforTechRevDraftComp =
+			If(
+			    pmbcp_cmrprojreqmain[Work Status] = "Waiting for Approval" && pmbcp_cmrprojreqmain[Technical Review Status] <> "Waived",
+			    If(ISBLANK(pmbcp_cmrprojreqmain[Tech Review Draft Complete]),
+			        DATEDIFF(pmbcp_cmrprojreqmain[FM Initial Decision Date],TODAY(),DAY),
+			        DATEDIFF(pmbcp_cmrprojreqmain[FM Initial Decision Date],pmbcp_cmrprojreqmain[Tech Review Draft Complete],DAY)
+			    ))
+		formatString: 0
+		lineageTag: 3a62e394-6f0b-40b9-b86a-ec96d45bab5a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforTechRevBDSMgr = ```
+			
+			VAR BDSManagerStartDate = 
+			If(pmbcp_cmrprojreqmain[Work Status] = "Waiting for Approval" && pmbcp_cmrprojreqmain[Technical Review Status] = "Waived",
+			    pmbcp_cmrprojreqmain[Tech Review Waived Date],
+			    pmbcp_cmrprojreqmain[Tech Review Draft Complete])
+			RETURN
+			    If(ISBLANK(pmbcp_cmrprojreqmain[Tech Review BDS Manager Complete Date]),
+			    DATEDIFF(BDSManagerStartDate,TODAY(),DAY),
+			    DATEDIFF(BDSManagerStartDate,pmbcp_cmrprojreqmain[Tech Review BDS Manager Complete Date],DAY))
+			```
+		formatString: 0
+		lineageTag: 6ba738bc-694d-43fb-9c10-7b767214b380
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforTechRevPMPIDir =
+			If(
+			    pmbcp_cmrprojreqmain[Work Status] = "Waiting for Approval" && NOT ISBLANK(pmbcp_cmrprojreqmain[Tech Review BDS Manager Complete Date]),
+			    If(ISBLANK(pmbcp_cmrprojreqmain[Tech Review PMPI Director Complete Date]),
+			        DATEDIFF(pmbcp_cmrprojreqmain[Tech Review BDS Manager Complete Date],TODAY(),DAY),
+			        DATEDIFF(pmbcp_cmrprojreqmain[Tech Review BDS Manager Complete Date],pmbcp_cmrprojreqmain[Tech Review PMPI Director Complete Date],DAY)
+			    ))
+		formatString: 0
+		lineageTag: 3e06711e-466d-482c-b954-9d6f4756d49d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Status (groups)' =
+			SWITCH(
+				TRUE,
+				ISBLANK('pmbcp_cmrprojreqmain'[Request Status]),
+				"(Blank)",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Pending FM Decision"},
+				"1 - Pending FM Decision",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Technical Review"},
+				"2 - Technical Review",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Finalize Request"},
+				"3 - Finalize Request",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Pending Director Decision"},
+				"4 - Pending Director Decision",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Pending Funding Classification"},
+				"5 - Pending Funding Classification",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Project Delivery Initiation"},
+				"6 - Project Delivery Initiation",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Prepare for Approval"},
+				"7 - Prepare for Approval",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Executive Review"},
+				"8 - Executive Review",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Project Setup"},
+				"9 - Project Setup",
+				'pmbcp_cmrprojreqmain'[Request Status] IN {"Approved"},
+				"Approved",
+				'pmbcp_cmrprojreqmain'[Request Status]
+			)
+		lineageTag: f6454915-2982-4901-99ba-80811f068706
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "pmbcp_cmrprojreqmain"
+				          }
+				        },
+				        "Property": "Request Status"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"p","Entity":"pmbcp_cmrprojreqmain"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"GroupItems":[{"DisplayName":"(Blank)","BlankDefaultPlaceholder":true},{"DisplayName":"1 - Pending FM Decision","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Pending FM Decision'"}}]]}}},{"DisplayName":"2 - Technical Review","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Technical Review'"}}]]}}},{"DisplayName":"3 - Finalize Request","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Finalize Request'"}}]]}}},{"DisplayName":"4 - Pending Director Decision","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Pending Director Decision'"}}]]}}},{"DisplayName":"5 - Pending Funding Classification","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Pending Funding Classification'"}}]]}}},{"DisplayName":"6 - Project Delivery Initiation","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Project Delivery Initiation'"}}]]}}},{"DisplayName":"7 - Prepare for Approval","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Prepare for Approval'"}}]]}}},{"DisplayName":"8 - Executive Review","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Executive Review'"}}]]}}},{"DisplayName":"9 - Project Setup","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Project Setup'"}}]]}}},{"DisplayName":"Approved","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Request Status"}}],"Values":[[{"Literal":{"Value":"'Approved'"}}]]}}}]}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Technical Review Status (groups)' =
+			SWITCH(
+				TRUE,
+				ISBLANK('pmbcp_cmrprojreqmain'[Technical Review Status]),
+				"(Blank)",
+				'pmbcp_cmrprojreqmain'[Technical Review Status] IN {"Pending"},
+				"0-Pending",
+				'pmbcp_cmrprojreqmain'[Technical Review Status] IN {"Draft In Progress"},
+				"1-Draft In Progress",
+				'pmbcp_cmrprojreqmain'[Technical Review Status] IN {"Draft Complete"},
+				"2-Draft Complete",
+				'pmbcp_cmrprojreqmain'[Technical Review Status] IN {"Action for BDS"},
+				"2.1-Action for BDS",
+				'pmbcp_cmrprojreqmain'[Technical Review Status] IN {"Complete"},
+				"3-Complete",
+				'pmbcp_cmrprojreqmain'[Technical Review Status] IN {"Waived"},
+				"4-Waived",
+				'pmbcp_cmrprojreqmain'[Technical Review Status] IN {"Not Applicable"},
+				"5-Not Applicable",
+				"Other"
+			)
+		lineageTag: 47d370f5-bcab-4714-ac37-0aa537003fd7
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "pmbcp_cmrprojreqmain"
+				          }
+				        },
+				        "Property": "Technical Review Status"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"p","Entity":"pmbcp_cmrprojreqmain"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Technical Review Status"}}],"GroupItems":[{"DisplayName":"(Blank)","BlankDefaultPlaceholder":true},{"DisplayName":"0-Pending","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Technical Review Status"}}],"Values":[[{"Literal":{"Value":"'Pending'"}}]]}}},{"DisplayName":"1-Draft In Progress","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Technical Review Status"}}],"Values":[[{"Literal":{"Value":"'Draft In Progress'"}}]]}}},{"DisplayName":"2-Draft Complete","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Technical Review Status"}}],"Values":[[{"Literal":{"Value":"'Draft Complete'"}}]]}}},{"DisplayName":"2.1-Action for BDS","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Technical Review Status"}}],"Values":[[{"Literal":{"Value":"'Action for BDS'"}}]]}}},{"DisplayName":"3-Complete","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Technical Review Status"}}],"Values":[[{"Literal":{"Value":"'Complete'"}}]]}}},{"DisplayName":"4-Waived","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Technical Review Status"}}],"Values":[[{"Literal":{"Value":"'Waived'"}}]]}}},{"DisplayName":"5-Not Applicable","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Technical Review Status"}}],"Values":[[{"Literal":{"Value":"'Not Applicable'"}}]]}}},{"DisplayName":"Other"}]}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review Waived' = If(pmbcp_cmrprojreqmain[Technical Review Status] = "Waived", "Yes","No")
+		lineageTag: 274aa5c6-b099-4b67-8db9-51955988d334
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysforWaived =
+			If(
+			    pmbcp_cmrprojreqmain[Work Status] = "Waiting for Approval" && pmbcp_cmrprojreqmain[Technical Review Status] = "Waived",
+			    DATEDIFF(pmbcp_cmrprojreqmain[FM Initial Decision Date],pmbcp_cmrprojreqmain[Tech Review Waived Date],DAY)
+			    )
+		formatString: 0
+		lineageTag: fc96500f-4139-4d13-a5e5-f1fa2374514b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review In Progress' = If(ISBLANK(pmbcp_cmrprojreqmain[Tech Review PMPI Director Complete Date]) && pmbcp_cmrprojreqmain[Technical Review Status] <> "Not Applicable" && pmbcp_cmrprojreqmain[Technical Review Status] <> "Pending", "Yes", "No")
+		lineageTag: 397f1f17-004d-4e36-9953-41d1f597ad8a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requested Fiscal Year' = ```
+			
+			LOOKUPVALUE(
+			    DateTable[Fiscal Year],
+			    DateTable[Date],
+			    DATE(
+			        YEAR(pmbcp_cmrprojreqmain[Created On]),
+			        MONTH(pmbcp_cmrprojreqmain[Created On]),
+			        DAY(pmbcp_cmrprojreqmain[Created On])
+			    )
+			)
+			
+			
+			
+			```
+		lineageTag: b4081c4d-f98c-4d4b-8fbf-141583aaf312
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requested Quarter' =
+			
+			LOOKUPVALUE(
+			    DateTable[Fiscal Quarter],
+			    DateTable[Date],
+			    DATE(
+			        YEAR(pmbcp_cmrprojreqmain[Created On]),
+			        MONTH(pmbcp_cmrprojreqmain[Created On]),
+			        DAY(pmbcp_cmrprojreqmain[Created On])
+			    )
+			)
+		lineageTag: 3b995377-17c3-456c-86ee-6f13c2c080a8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Approved Fiscal Year' =
+			
+			LOOKUPVALUE(
+			    DateTable[Fiscal Year],
+			    DateTable[Date],
+			    DATE(
+			        YEAR(pmbcp_cmrprojreqmain[Complete Date]),
+			        MONTH(pmbcp_cmrprojreqmain[Complete Date]),
+			        DAY(pmbcp_cmrprojreqmain[Complete Date])
+			    )
+			)
+		lineageTag: 5ec46d02-fdc2-47ed-9b78-2e40fdfb9d32
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Approved Quarter' =
+			
+			LOOKUPVALUE(
+			    DateTable[Fiscal Quarter],
+			    DateTable[Date],
+			    DATE(
+			        YEAR(pmbcp_cmrprojreqmain[Complete Date]),
+			        MONTH(pmbcp_cmrprojreqmain[Complete Date]),
+			        DAY(pmbcp_cmrprojreqmain[Complete Date])
+			    )
+			)
+		lineageTag: 349c9559-0251-40f4-8ba6-c67581a26e6c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Review Component Count' = If(pmbcp_cmrprojreqmain[O&M Assessment]="Yes",1,0)+IF(pmbcp_cmrprojreqmain[OHS Assessment]="Yes",1,0)+If(pmbcp_cmrprojreqmain[Security Assessment]="Yes",1,0)+If(pmbcp_cmrprojreqmain[Energy Assessment]="Yes",1,0)
+		formatString: 0
+		lineageTag: fda48164-1984-461c-877b-86bdd83d2e54
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PD Initiation Status' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    NOT(ISBLANK(pmbcp_cmrprojreqmain[Sent to Project Delivery])) && NOT(ISBLANK(pmbcp_cmrprojreqmain[PD PAR Received Date])),"PAR Received",
+			    NOT(ISBLANK(pmbcp_cmrprojreqmain[Sent to Project Delivery])) && ISBLANK(pmbcp_cmrprojreqmain[PD PAR Received Date]),"PD Initiation In Progress",
+			    ISBLANK(pmbcp_cmrprojreqmain[Sent to Project Delivery]) && ISBLANK(pmbcp_cmrprojreqmain[PD PAR Received Date]),"Pending Send to PD",
+			    ISBLANK(pmbcp_cmrprojreqmain[Sent to Project Delivery]) && NOT(ISBLANK(pmbcp_cmrprojreqmain[PD PAR Received Date])),"Error"
+			)
+			
+			```
+		lineageTag: 8def2976-2f81-4719-8ac8-2dc96354295b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Migrated Request' = If(pmbcp_cmrprojreqmain[Created By]="INF-CP-PP S","Yes","No")
+		lineageTag: 8b67e6c3-a67b-48fb-9e23-fd8faa9e74ff
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PD Cost Difference' =
+			
+			VAR PARrequested = pmbcp_cmrprojreqmain[PAR Requested TPC]
+			VAR EstTPC = RELATED(pmbcp_projectsummarydata[Cost Factored TPC])
+			RETURN IF(
+			    NOT(ISBLANK(pmbcp_cmrprojreqmain[PAR Requested TPC]) || ISBLANK(RELATED(pmbcp_projectsummarydata[Cost Factored TPC]))),
+			    ABS(PARrequested - EstTPC),
+			    BLANK()
+			)
+		lineageTag: 78b4bd76-f949-4dd4-85ba-d2a80873bcf6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meet CutOff Score' =
+			
+			VAR Score = RELATED(pmbcp_projectsummarydata[Priority Score (number)])
+			RETURN
+			IF(
+			    NOT ISBLANK(Score),
+			    IF(Score < [CutOff Score], "No", "Yes"),
+			    "No Data"
+			)
+		lineageTag: b39afffc-987b-47ce-90a5-9517f4ff5a7f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PD Cost Difference Percent' =
+			
+			VAR PARrequested = pmbcp_cmrprojreqmain[PAR Requested TPC]
+			VAR EstTPC = RELATED(pmbcp_projectsummarydata[Cost Factored TPC])
+			RETURN IF(
+			    NOT(ISBLANK(pmbcp_cmrprojreqmain[PAR Requested TPC]) || ISBLANK(RELATED(pmbcp_projectsummarydata[Cost Factored TPC]))),
+			    (PARrequested - EstTPC)/EstTPC,
+			    BLANK()
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: f46566ef-7bfc-4c90-91b3-0a4aaa6d5ae9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Project Lead'
+		dataType: string
+		lineageTag: 25fc2a3a-d2aa-4981-8839-7fd1c37c6b3f
+		summarizeBy: none
+		sourceColumn: Project Lead
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_holdaction
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f78663b-6051-4645-ab1e-11b17a9fbebf
+		summarizeBy: sum
+		sourceColumn: pmbcp_holdaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Action'
+		dataType: string
+		lineageTag: 4b849cd7-54e2-4b12-963f-92a3a2df8530
+		summarizeBy: none
+		sourceColumn: pmbcp_holdactionname
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoldComments
+		dataType: string
+		lineageTag: 6efde1f0-dc4e-422e-b19d-6ef73c82b2e7
+		summarizeBy: none
+		sourceColumn: pmbcp_holdcomments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Initiator'
+		dataType: string
+		lineageTag: 87c73159-9314-4aea-a616-d5127651c253
+		summarizeBy: none
+		sourceColumn: pmbcp_holdinitiator
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_holdreason
+		dataType: int64
+		formatString: 0
+		lineageTag: 38d0e4a9-6e4a-4947-a9e9-dd552d9b2bf3
+		summarizeBy: sum
+		sourceColumn: pmbcp_holdreason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Reason'
+		dataType: string
+		lineageTag: 8ff1a788-b48e-4960-b9e7-f991a7923259
+		summarizeBy: none
+		sourceColumn: pmbcp_holdreasonname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_holdstatus
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2e28deaf-87e8-4762-8b7a-77f51bcf4474
+		summarizeBy: none
+		sourceColumn: pmbcp_holdstatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Status'
+		dataType: string
+		lineageTag: 732e121e-077b-4ff3-99f8-28ab4f66a2ef
+		summarizeBy: none
+		sourceColumn: pmbcp_holdstatusname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System Admin Notes'
+		dataType: string
+		lineageTag: 030c2a1e-5e1b-416a-b1e8-73884ad00524
+		summarizeBy: none
+		sourceColumn: pmbcp_systemadminnotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_wbsowner
+		dataType: string
+		lineageTag: d6691e2b-866c-454e-a8eb-c4d18ab41c43
+		summarizeBy: none
+		sourceColumn: pmbcp_wbsowner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WBS Owner'
+		dataType: string
+		lineageTag: 1c27420a-b699-4f3b-9a0f-91f9729a24b9
+		summarizeBy: none
+		sourceColumn: pmbcp_wbsownername
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_wbsowneryominame
+		dataType: string
+		lineageTag: 561076e6-b8b5-404b-879a-a95300d9c3fb
+		summarizeBy: none
+		sourceColumn: pmbcp_wbsowneryominame
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pmbcp_cmrprojreqmain = m
+		mode: import
+		source =
+				let
+				    Source = CommonDataService.Database("org509f7c88.crm3.dynamics.com"),
+				    dbo_pmbcp_cmrprojreqmain = Source{[Schema="dbo",Item="pmbcp_cmrprojreqmain"]}[Data],
+				    #"Expanded systemuser(pmbcp_pm)" = Table.ExpandRecordColumn(dbo_pmbcp_cmrprojreqmain, "systemuser(pmbcp_pm)", {"fullname"}, {"systemuser(pmbcp_pm).fullname"}),
+				    #"Expanded systemuser(pmbcp_fmresp)" = Table.ExpandRecordColumn(#"Expanded systemuser(pmbcp_pm)", "systemuser(pmbcp_fmresp)", {"fullname"}, {"systemuser(pmbcp_fmresp).fullname"}),
+				    #"Expanded systemuser(pmbcp_dirresp)" = Table.ExpandRecordColumn(#"Expanded systemuser(pmbcp_fmresp)", "systemuser(pmbcp_dirresp)", {"fullname"}, {"systemuser(pmbcp_dirresp).fullname"}),
+				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Expanded systemuser(pmbcp_dirresp)", "Text Before Delimiter", each Text.BeforeDelimiter([pmbcp_rapid], "-"), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text Before Delimiter",{{"Text Before Delimiter", "BID"}}),
+				    #"Replaced Value TechRevStatus null" = Table.ReplaceValue(#"Renamed Columns",null,"Pending",Replacer.ReplaceValue,{"pmbcp_techrevstatusname"}),
+				
+				    #"Replaced Value dirdecisionname null" = Table.ReplaceValue(#"Replaced Value TechRevStatus null",null,"Pending Director Decision",Replacer.ReplaceValue,{"pmbcp_dirdecisionname"}),
+				    #"Replaced Value fundclassname null" = Table.ReplaceValue(#"Replaced Value dirdecisionname null",null,"Pending",Replacer.ReplaceValue,{"pmbcp_fundclassname"}),
+				    #"Replaced Value facfinalname null" = Table.ReplaceValue(#"Replaced Value fundclassname null",null,"Pending Facilities Finalization",Replacer.ReplaceValue,{"pmbcp_facfinalname"}),
+				    #"Added Custom Project Lead" = Table.AddColumn(#"Replaced Value facfinalname null", "Project Lead-temp", each if [pmbcp_projectleadname] = null then
+				    if [pmbcp_workstatusname] = "Waiting for Approval" then
+				        "Pending"
+				    else if [pmbcp_workstatusname] = "Underway or Complete" then
+				        "Facilities Team"
+				    else
+				        "Error"
+				else
+				    [pmbcp_projectleadname]),
+				    #"Removed Columns orig Project Lead" = Table.RemoveColumns(#"Added Custom Project Lead",{"pmbcp_projectleadname"}),
+				    #"Renamed Columns Project Lead" = Table.RenameColumns(#"Removed Columns orig Project Lead",{{"Project Lead-temp", "Project Lead"}}),
+				    #"Replaced Value Hold Status" = Table.ReplaceValue(#"Renamed Columns Project Lead",null,"No",Replacer.ReplaceValue,{"pmbcp_holdstatusname"})
+				in
+				    #"Replaced Value Hold Status"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

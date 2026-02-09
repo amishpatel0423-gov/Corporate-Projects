@@ -1,0 +1,136 @@
+table RAP_SSRS
+	lineageTag: c971f675-9207-4ad6-a94d-744cec96fdd7
+	sourceLineageTag: [dbo].[RAP_SSRS]
+
+	column Property
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 023c89e6-e5ad-4a3f-bf03-fe318923d4eb
+		sourceLineageTag: Property
+		summarizeBy: none
+		sourceColumn: Property
+
+		annotation SummarizationSetBy = Automatic
+
+	column Number
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b139888f-c4d6-4ec3-a836-0d26508aac32
+		sourceLineageTag: Number
+		summarizeBy: none
+		sourceColumn: Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dbcf5d9f-ac74-4166-894c-0f7ac62e63a4
+		sourceLineageTag: Name
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 75b57892-390b-4b56-9ad5-7aa787a2fe29
+		sourceLineageTag: Title
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: be3a45fb-c221-4e5d-ac2a-f30f1c73b426
+		sourceLineageTag: Status
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 21a62df8-41de-4b72-9753-4d985191a6cf
+		sourceLineageTag: Description
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 19d9b03c-57b5-42ba-9be4-bf579ba601ed
+		sourceLineageTag: Reason
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Consequences
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5366e575-78c6-4e79-b98f-02e7fe0c5f05
+		sourceLineageTag: Consequences
+		summarizeBy: none
+		sourceColumn: Consequences
+
+		annotation SummarizationSetBy = Automatic
+
+	column Critical
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 78657a3f-56ed-4b9b-8406-707d3a172de5
+		sourceLineageTag: Critical
+		summarizeBy: none
+		sourceColumn: Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column Record_Created
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 91537756-b3ac-4543-ac50-1758bc6abbfb
+		sourceLineageTag: Record_Created
+		summarizeBy: none
+		sourceColumn: Record_Created
+
+		annotation SummarizationSetBy = Automatic
+
+	column Deleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 8caa0507-5506-4d77-b35c-df3fdacaf94e
+		sourceLineageTag: Deleted
+		summarizeBy: none
+		sourceColumn: Deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column Completed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 74f7d517-ec6a-4cb5-906f-b2af6d0883ca
+		sourceLineageTag: Completed
+		summarizeBy: none
+		sourceColumn: Completed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RAP_SSRS = entity
+		mode: directLake
+		source
+			entityName: RAP_SSRS
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

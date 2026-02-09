@@ -1,0 +1,20 @@
+relationship 6b3b604d-7faa-4ecb-bae5-ea71e98f5102
+	joinOnDateBehavior: datePartOnly
+	fromColumn: UniformatCode_with_examples_systemgroup.'Created Date'
+	toColumn: LocalDateTable_20fd1d93-64ff-4f34-a186-6d59e97fbba5.Date
+
+relationship 838168be-a3fa-4035-b01e-6ea42af8ff6c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: UniformatCode_with_examples_systemgroup.'Modified Date'
+	toColumn: LocalDateTable_887c752c-cb62-4d65-a680-12de7a118b49.Date
+
+relationship 02cea737-35b1-4bd8-b226-63272452a9f7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: UniformatCode_with_examples_systemgroup.Modified
+	toColumn: LocalDateTable_d9055280-8ff6-4862-87a0-b193113b5bc4.Date
+
+relationship c5de3978-b76f-4b1b-8cc3-7294114bb0fe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: UniformatCode_with_examples_systemgroup.Created
+	toColumn: LocalDateTable_bd7aedd4-ac00-4831-b456-25d31daf789f.Date
+

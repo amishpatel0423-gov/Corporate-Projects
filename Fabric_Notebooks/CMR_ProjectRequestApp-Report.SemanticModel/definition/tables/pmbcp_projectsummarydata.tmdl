@@ -1,0 +1,747 @@
+table pmbcp_projectsummarydata
+	lineageTag: 416864eb-d537-49a5-9d8e-3a2babf58291
+
+	measure 'Total Projects' = COUNTROWS(pmbcp_projectsummarydata)
+		formatString: 0
+		lineageTag: 3439c10d-6cfb-483f-bbd4-4dbe792518b7
+
+	column 'Project Summary Data'
+		dataType: string
+		lineageTag: 1beb5fdf-f8df-4fd6-b6ad-7bb0801b4651
+		summarizeBy: none
+		sourceColumn: pmbcp_projectsummarydataid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3682a438-8752-425e-8b2f-528828383adb
+		summarizeBy: none
+		sourceColumn: createdon
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdby
+		dataType: string
+		lineageTag: d9627e37-d74e-4ff4-9148-4d265f14af52
+		summarizeBy: none
+		sourceColumn: createdby
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 53760ad7-53b6-4633-923e-a031753cebcd
+		summarizeBy: none
+		sourceColumn: modifiedon
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedby
+		dataType: string
+		lineageTag: d81b9234-aec1-4eac-945c-2afacb705888
+		summarizeBy: none
+		sourceColumn: modifiedby
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdonbehalfby
+		dataType: string
+		lineageTag: 73e16bf1-dd2c-43c0-ad70-78a93fc3c081
+		summarizeBy: none
+		sourceColumn: createdonbehalfby
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedonbehalfby
+		dataType: string
+		lineageTag: 367e9e43-d59b-4418-a3d2-b4438394bf21
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfby
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By'
+		dataType: string
+		lineageTag: 6c78b569-7a7b-4407-94f6-9433afbd1e52
+		summarizeBy: none
+		sourceColumn: createdbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdbyyominame
+		dataType: string
+		lineageTag: 4ff27f95-f1f8-4786-8db2-cacb4a6d1412
+		summarizeBy: none
+		sourceColumn: createdbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By (Delegate)'
+		dataType: string
+		lineageTag: a904d424-df6b-47c5-80d2-824144f100bf
+		summarizeBy: none
+		sourceColumn: createdonbehalfbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdonbehalfbyyominame
+		dataType: string
+		lineageTag: ad5a67e2-7cf3-43a1-a3be-a97495f0533c
+		summarizeBy: none
+		sourceColumn: createdonbehalfbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified By'
+		dataType: string
+		lineageTag: 7d275815-919a-4611-a087-f45d11c8cd43
+		summarizeBy: none
+		sourceColumn: modifiedbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedbyyominame
+		dataType: string
+		lineageTag: bed13b6a-ca1d-4604-9b70-e4b05588abcf
+		summarizeBy: none
+		sourceColumn: modifiedbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified By (Delegate)'
+		dataType: string
+		lineageTag: d9b65d06-93f9-4d3e-88f7-97c64ddb4ab2
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfbyname
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedonbehalfbyyominame
+		dataType: string
+		lineageTag: 83d83a87-3bf5-4fda-9d71-7a6e3882cb63
+		summarizeBy: none
+		sourceColumn: modifiedonbehalfbyyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column ownerid
+		dataType: string
+		lineageTag: 90bad5d4-f2fc-4dd3-8a5d-f88f4a6fa368
+		summarizeBy: none
+		sourceColumn: ownerid
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner
+		dataType: string
+		lineageTag: 518f2a2f-33c1-4039-8023-3f3d1ee491e1
+		summarizeBy: none
+		sourceColumn: owneridname
+
+		annotation SummarizationSetBy = Automatic
+
+	column owneridyominame
+		dataType: string
+		lineageTag: 40ecd578-b078-474f-b694-d3a295037ca5
+		summarizeBy: none
+		sourceColumn: owneridyominame
+
+		annotation SummarizationSetBy = Automatic
+
+	column owningbusinessunit
+		dataType: string
+		lineageTag: 0abfe96c-36a7-472a-a16f-6ad12fcf64af
+		summarizeBy: none
+		sourceColumn: owningbusinessunit
+
+		annotation SummarizationSetBy = Automatic
+
+	column owninguser
+		dataType: string
+		lineageTag: f5c220da-8609-4220-af46-8d45fa53b7a8
+		summarizeBy: none
+		sourceColumn: owninguser
+
+		annotation SummarizationSetBy = Automatic
+
+	column owningteam
+		dataType: string
+		lineageTag: 7784d527-13d0-4afa-8956-947bd5fe5f95
+		summarizeBy: none
+		sourceColumn: owningteam
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Owning Business Unit'
+		dataType: string
+		lineageTag: 9cc7409d-5782-45bb-aba2-0a3f02dc2306
+		summarizeBy: none
+		sourceColumn: owningbusinessunitname
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: int64
+		formatString: 0
+		lineageTag: b6b9fe54-3c75-419d-9928-a9ac169f5ed1
+		summarizeBy: none
+		sourceColumn: statecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column statecodename
+		dataType: string
+		lineageTag: 6e20f7ec-2e54-4327-859a-7cd4e54d7a4f
+		summarizeBy: none
+		sourceColumn: statecodename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Reason'
+		dataType: int64
+		formatString: 0
+		lineageTag: f24c6b50-bb0c-4a61-b988-c7a05e0aa2b6
+		summarizeBy: none
+		sourceColumn: statuscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column statuscodename
+		dataType: string
+		lineageTag: 61cf5e87-da20-4c8d-b592-bfd91000767f
+		summarizeBy: none
+		sourceColumn: statuscodename
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Import Sequence Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: d589e421-abbf-427b-953e-24cb2c36c564
+		summarizeBy: none
+		sourceColumn: importsequencenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Record Created On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0b09125a-4868-445c-bbe5-264c64db21dd
+		summarizeBy: none
+		sourceColumn: overriddencreatedon
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Zone Rule Version Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: c416ffb6-64f4-4791-835a-1113eeb2c80d
+		summarizeBy: none
+		sourceColumn: timezoneruleversionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UTC Conversion Time Zone Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: d4dda24f-624a-499f-b46d-bbb2522a4c97
+		summarizeBy: none
+		sourceColumn: utcconversiontimezonecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP ID'
+		dataType: string
+		lineageTag: f37a7767-85e3-4b2f-a9a4-2881de6eca85
+		summarizeBy: none
+		sourceColumn: pmbcp_rapid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Importance Of Asset Functionality'
+		dataType: string
+		lineageTag: e9da592f-e349-480f-ada6-a19a69c4f2f3
+		summarizeBy: none
+		sourceColumn: pmbcp_assetfunctionalityimportance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Importance of Asset Functionality Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 78eba535-72d1-4005-b816-0f98b7f26063
+		summarizeBy: none
+		sourceColumn: pmbcp_assetfunctionalityscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset Name(s)'
+		dataType: string
+		lineageTag: 69a76b08-4fe6-4922-a13e-2b0ce3bc0989
+		summarizeBy: none
+		sourceColumn: pmbcp_assetnames
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset Number(s)'
+		dataType: string
+		lineageTag: ebf61a3b-a7fc-407f-a195-7e84cdb79148
+		summarizeBy: none
+		sourceColumn: pmbcp_assetnumbers
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset Out for Audit'
+		dataType: string
+		lineageTag: c290b17b-ff08-4db7-9c58-9761a96e451e
+		summarizeBy: none
+		sourceColumn: pmbcp_assetoutforaudit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Plan For Asset'
+		dataType: string
+		lineageTag: 981237cb-7354-4dac-80a7-ca45c8546faf
+		summarizeBy: none
+		sourceColumn: pmbcp_assetplan
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Plan For Asset Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: aa135e5e-1e71-4753-af90-b0295c46eb7a
+		summarizeBy: none
+		sourceColumn: pmbcp_assetplanscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset Use'
+		dataType: string
+		lineageTag: e3a7ec53-4bfd-455e-9bd3-0ebe8e166a91
+		summarizeBy: none
+		sourceColumn: pmbcp_assetuse
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset Use(s)'
+		dataType: string
+		lineageTag: 16ec6bd8-496a-49ed-b29b-8ac3712c390a
+		summarizeBy: none
+		sourceColumn: pmbcp_assetuses
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Building Priority'
+		dataType: string
+		lineageTag: 936de535-574e-4dbd-8ce1-772d9b7c6e07
+		summarizeBy: none
+		sourceColumn: pmbcp_buildingpriority
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 4677c428-8ab0-44a0-97df-eba04a8d43e1
+		summarizeBy: none
+		sourceColumn: pmbcp_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Consequence Validation'
+		dataType: string
+		lineageTag: 92c1cad9-e622-4943-be4f-607049cb85d7
+		summarizeBy: none
+		sourceColumn: pmbcp_consequencevalidation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Factored TPC'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b21788b-8e3e-430d-a213-2e65a204355a
+		summarizeBy: none
+		sourceColumn: pmbcp_costtpc
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Description Validation'
+		dataType: string
+		lineageTag: 632b0deb-c100-447e-89bb-3e2134f9d79a
+		summarizeBy: none
+		sourceColumn: pmbcp_descriptionvalidation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estimated Cost Sum'
+		dataType: int64
+		formatString: 0
+		lineageTag: cb53aeb7-e61f-4423-bb5a-a1ac7c7cc305
+		summarizeBy: none
+		sourceColumn: pmbcp_estimatedcost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Impact of Failure'
+		dataType: string
+		lineageTag: d222670e-b0a0-42a6-a789-84dd741b2807
+		summarizeBy: none
+		sourceColumn: pmbcp_failureimpact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Impact of Failure Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: b0084362-f6ba-4265-9df1-e9c50f572855
+		summarizeBy: none
+		sourceColumn: pmbcp_failureimpactscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Highest Scoring Requirement ID'
+		dataType: string
+		lineageTag: 148ea290-675e-4a82-ad80-578a2e7f5409
+		summarizeBy: none
+		sourceColumn: pmbcp_highestrequirementid
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impact
+		dataType: string
+		lineageTag: 0cb8c0d5-ffbb-41e1-b4a1-d3a45f5840e1
+		summarizeBy: none
+		sourceColumn: pmbcp_impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement Linked System'
+		dataType: string
+		lineageTag: 1c256da0-b8dd-40dd-b0e9-bbd45470b9c2
+		summarizeBy: none
+		sourceColumn: pmbcp_linkedsystemrequirement
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Linked System(s)'
+		dataType: string
+		lineageTag: d8dec115-7aaa-44c6-bb17-3c0386142e6b
+		summarizeBy: none
+		sourceColumn: pmbcp_linkedsystems
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location(s)
+		dataType: string
+		lineageTag: 18467e8f-b42b-4148-9b78-f86236eedda7
+		summarizeBy: none
+		sourceColumn: pmbcp_locations
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Portfolio Name(s)'
+		dataType: string
+		lineageTag: b63e2cc3-78b4-4306-898f-c20df5dce231
+		summarizeBy: none
+		sourceColumn: pmbcp_portfolionames
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: string
+		lineageTag: 6f611900-c076-452e-a3e8-34bca9903ce3
+		summarizeBy: none
+		sourceColumn: pmbcp_priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Project Comments'
+		dataType: string
+		lineageTag: a34af380-b161-4324-a30f-b83a2ea77e32
+		summarizeBy: none
+		sourceColumn: pmbcp_projectcomments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Project Consequence'
+		dataType: string
+		lineageTag: 06a27d17-bb4f-4e59-8f8e-3f0356bfb4fc
+		summarizeBy: none
+		sourceColumn: pmbcp_projectconsequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Project Description'
+		dataType: string
+		lineageTag: 7b4e3f7b-c5b2-4c31-935d-16c57b497fd9
+		summarizeBy: none
+		sourceColumn: pmbcp_projectdescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Priority Score'
+		dataType: string
+		lineageTag: 2eb3babf-33ef-4f99-b595-3fd2f943365d
+		summarizeBy: none
+		sourceColumn: pmbcp_projectpriorityscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Project Reason'
+		dataType: string
+		lineageTag: f382a8f6-d010-499d-9157-709a4b5e1ea1
+		summarizeBy: none
+		sourceColumn: pmbcp_projectreason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Summary'
+		dataType: string
+		lineageTag: 5d078563-4f74-455c-ab78-2dd7b0729e8b
+		summarizeBy: none
+		sourceColumn: pmbcp_projectsummary
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Data Validation'
+		dataType: string
+		lineageTag: 56b02978-b518-48e1-aec0-9bf2c26c672a
+		summarizeBy: none
+		sourceColumn: pmbcp_rapdatavalidation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Status'
+		dataType: string
+		lineageTag: 24b092fb-a644-441f-8fda-c52a7696b480
+		summarizeBy: none
+		sourceColumn: pmbcp_rapstatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Reason Validation'
+		dataType: string
+		lineageTag: 329110af-8093-4289-ad69-a4cc1b04a3d2
+		summarizeBy: none
+		sourceColumn: pmbcp_reasonvalidation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Includes Renewal Requirements'
+		dataType: string
+		lineageTag: 15c4f6ff-2aa9-4e61-936b-d26d25dd2c28
+		summarizeBy: none
+		sourceColumn: pmbcp_renewalrequirements
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_requested
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cb002fb2-d107-4894-b091-0bbc34daf1e5
+		summarizeBy: none
+		sourceColumn: pmbcp_requested
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requested
+		dataType: string
+		lineageTag: c2e08069-c62f-4adb-a6d0-952a4ac93262
+		summarizeBy: none
+		sourceColumn: pmbcp_requestedname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement ID(s)'
+		dataType: string
+		lineageTag: ba036440-cddd-40bf-a561-f25cd55f2ba9
+		summarizeBy: none
+		sourceColumn: pmbcp_requirementids
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Condition Of System'
+		dataType: string
+		lineageTag: 22970ee8-3d73-482f-b927-6324930cbca2
+		summarizeBy: none
+		sourceColumn: pmbcp_systemcondition
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Condition of System Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bff67d9-e805-4b95-9f16-aac06795d801
+		summarizeBy: none
+		sourceColumn: pmbcp_systemconditionscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Importance Of System Functionality'
+		dataType: string
+		lineageTag: 86ca1382-46a0-4cc3-b7a4-9ce3e5e5c0c9
+		summarizeBy: none
+		sourceColumn: pmbcp_systemfunctionalityimportance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Importance Of System Functionality Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6589e983-5d1a-42d4-a328-8da05eaff51b
+		summarizeBy: none
+		sourceColumn: pmbcp_systemfunctionalityscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System Group(s)'
+		dataType: string
+		lineageTag: 63300649-090b-4e19-9d4a-ea68b44a7c90
+		summarizeBy: none
+		sourceColumn: pmbcp_systemgroups
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System Name(s)'
+		dataType: string
+		lineageTag: 69a67779-6fc6-4cc9-9c4d-62cd92db6be6
+		summarizeBy: none
+		sourceColumn: pmbcp_systemnames
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Title'
+		dataType: string
+		lineageTag: cc75e14e-b0ab-4daa-adfd-243a3e238ec1
+		summarizeBy: none
+		sourceColumn: pmbcp_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Title Length'
+		dataType: string
+		lineageTag: 123d7d50-b1d7-41eb-8e7a-b0d1b9c5a498
+		summarizeBy: none
+		sourceColumn: pmbcp_titlelengthvalidation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VFA Costing Errors'
+		dataType: string
+		lineageTag: 17c941e5-5987-43d7-96e6-42e97a51564e
+		summarizeBy: none
+		sourceColumn: pmbcp_vfacostingerrors
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VFA Costing Warning'
+		dataType: string
+		lineageTag: 7c51038f-2997-4b24-b13e-cdfc71e271a0
+		summarizeBy: none
+		sourceColumn: pmbcp_vfacostingwarning
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VFA Data Validation'
+		dataType: string
+		lineageTag: 7a134474-a9bb-4463-bc48-f9ff98b2dfb2
+		summarizeBy: none
+		sourceColumn: pmbcp_vfadatavalidation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VFA Maintenance Planning Errors'
+		dataType: string
+		lineageTag: 3815ae5f-8182-4f7e-acb1-3cb750dbd5e5
+		summarizeBy: none
+		sourceColumn: pmbcp_vfamaintplanerrors
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VFA Project Description'
+		dataType: string
+		lineageTag: 18becf88-2701-444a-aa76-3d0d276b2105
+		summarizeBy: none
+		sourceColumn: pmbcp_vfaprojectdescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VFA Scoping Errors'
+		dataType: string
+		lineageTag: cc70ee49-179b-4d77-9311-2aa5f8e54ef2
+		summarizeBy: none
+		sourceColumn: pmbcp_vfascopingerrors
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VFA Scoring Errors'
+		dataType: string
+		lineageTag: fc039d02-ccf1-4e27-9552-bdaf51224b30
+		summarizeBy: none
+		sourceColumn: pmbcp_vfascoringerrors
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason for Work'
+		dataType: string
+		lineageTag: cc2d4a67-2b33-43b5-9f67-1b71cda3e798
+		summarizeBy: none
+		sourceColumn: pmbcp_workreason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason for Work Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 14c428e1-6933-4e8b-8b09-69fc3d45e125
+		summarizeBy: none
+		sourceColumn: pmbcp_workreasonscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RAP Error' = if(VALUE(pmbcp_projectsummarydata[RAP Data Validation])>0,True,False)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 09750f3e-b1dd-4246-b23a-b4338198ebc1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planned Status'
+		dataType: string
+		lineageTag: 4801fe8a-bfea-4145-bcab-13dd965b9ad5
+		summarizeBy: none
+		sourceColumn: Planned Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Priority Score (number)'
+		dataType: int64
+		formatString: 0
+		lineageTag: af085782-5c4f-4369-8fe0-3a9ff33e4a9d
+		summarizeBy: none
+		sourceColumn: Priority Score (number)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pmbcp_projectsummarydata = m
+		mode: import
+		source =
+				let
+				    Source = CommonDataService.Database("org509f7c88.crm3.dynamics.com"),
+				    dbo_pmbcp_projectsummarydata = Source{[Schema="dbo",Item="pmbcp_projectsummarydata"]}[Data],
+				    #"Filtered Rows for Requested" = Table.SelectRows(dbo_pmbcp_projectsummarydata, each ([pmbcp_requested] = true)),
+				    #"Added Conditional Planned Status" = Table.AddColumn(#"Filtered Rows for Requested", "Custom", each if [pmbcp_rapid] = "B7777A-091" then "Planned" else [pmbcp_plannedstatus]),
+				    #"Removed Original Planned Status" = Table.RemoveColumns(#"Added Conditional Planned Status",{"pmbcp_plannedstatus"}),
+				    #"Renamed Custom Planned Status" = Table.RenameColumns(#"Removed Original Planned Status",{{"Custom", "Planned Status"}}),
+				    #"Added Conditional for Score" = Table.AddColumn(#"Renamed Custom Planned Status", "Priority Score (number)", each if Text.Contains([pmbcp_projectpriorityscore], "Waiting") then 0 else [pmbcp_projectpriorityscore]),
+				    #"Changed Type Score to Whole Number" = Table.TransformColumnTypes(#"Added Conditional for Score",{{"Priority Score (number)", Int64.Type}})
+				in
+				    #"Changed Type Score to Whole Number"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

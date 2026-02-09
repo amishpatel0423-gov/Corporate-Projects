@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_PROD_CP_Configuration_Settings",
+    "description": "Connection to the configuration settings for error messaging variables used in the vfa data validation used in the notebook. Run Only if the source data changes, otherwise this is a one-time import and doesn't need to be refreshed. The dataflow that brings configurations from a SPO file. See query definition for where the source SPO file is.   "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bd040204-f9e7-8bf5-4245-c33649e04fb8"
+  }
+}

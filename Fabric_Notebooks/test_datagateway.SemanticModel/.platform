@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "test_datagateway"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2a95d94a-63e4-9735-4d8a-1529b607772e"
+  }
+}

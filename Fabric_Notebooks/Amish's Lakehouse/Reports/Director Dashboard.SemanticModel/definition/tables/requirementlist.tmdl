@@ -1,0 +1,252 @@
+table requirementlist
+	lineageTag: 399f2fb1-e79b-4ece-a6b6-98649b1faf0a
+
+	column Portfolio_Name
+		dataType: string
+		lineageTag: 9ec8205d-6b27-42ba-a565-75cfe3399a03
+		summarizeBy: none
+		sourceColumn: Portfolio_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Property_Name
+		dataType: string
+		lineageTag: 30979ced-e477-4d5c-9760-a35a3e0c71d0
+		summarizeBy: none
+		sourceColumn: Property_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_ID
+		dataType: string
+		lineageTag: a3e09248-3279-4ccb-9754-ce66e7441e3f
+		summarizeBy: none
+		sourceColumn: Building_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Use
+		dataType: string
+		lineageTag: abda21d6-68b5-4f37-b202-0845ec52d135
+		summarizeBy: none
+		sourceColumn: Use
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Group
+		dataType: string
+		lineageTag: f7428e1c-5e9e-48c6-bf05-53dc4f9d086e
+		summarizeBy: none
+		sourceColumn: System_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Linked_System
+		dataType: string
+		lineageTag: ea3591b0-4518-4edf-bfec-2a2e3a1609b7
+		summarizeBy: none
+		sourceColumn: Linked_System
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uniformat
+		dataType: string
+		lineageTag: c03ca05f-da8b-448b-8d08-79acaf2d8949
+		summarizeBy: none
+		sourceColumn: Uniformat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Score
+		dataType: int64
+		formatString: 0
+		lineageTag: 9926c16f-89d2-4eb6-8874-af68762e30fd
+		summarizeBy: sum
+		sourceColumn: Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_EID
+		dataType: string
+		lineageTag: fb3829d2-bac7-4844-a827-3c72ad3e5bff
+		summarizeBy: none
+		sourceColumn: Requirement_EID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_Name
+		dataType: string
+		lineageTag: ba9d040c-3970-4e86-bcac-2337d7a54bf6
+		summarizeBy: none
+		sourceColumn: Requirement_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 83f10f69-7fbe-43af-a1e4-6c3a576fa87d
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsRenewal
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 294f016d-360b-4e01-b5fe-59723422d946
+		summarizeBy: none
+		sourceColumn: IsRenewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectID
+		dataType: string
+		lineageTag: 70d36b17-25d9-4f6d-947d-3d9ae03b164e
+		summarizeBy: none
+		sourceColumn: RAPProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectStatus
+		dataType: string
+		lineageTag: fb59b8f5-003b-4c1e-b4e3-8951ee78842f
+		summarizeBy: none
+		sourceColumn: RAPProjectStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppStatus
+		dataType: string
+		lineageTag: 88918bbe-d078-4134-b275-a4199b096013
+		summarizeBy: none
+		sourceColumn: AppStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column planned
+		dataType: string
+		lineageTag: 2f7e4d0a-a484-4c0f-9408-d28370eb9c34
+		summarizeBy: none
+		sourceColumn: planned
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedCost
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ea447d2-2224-4d7b-a79b-639fa5abba6f
+		summarizeBy: sum
+		sourceColumn: EstimatedCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostFactoredTPC
+		dataType: int64
+		formatString: 0
+		lineageTag: 186ed4b1-f07c-4fb2-8795-f1c4f5a6ceb4
+		summarizeBy: sum
+		sourceColumn: CostFactoredTPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 8f057c0f-c146-47c8-97ce-1f3db1f68d29
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: 6d5933eb-5d52-4e7b-aee1-0bdcd40bd9a8
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column FM
+		dataType: string
+		lineageTag: 8bd0a2e4-2fb1-4cb3-a54f-eb0f9e11a815
+		summarizeBy: none
+		sourceColumn: FM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FC
+		dataType: string
+		lineageTag: 000d30d4-4477-4f9a-8803-aedf1564ef64
+		summarizeBy: none
+		sourceColumn: FC
+
+		annotation SummarizationSetBy = Automatic
+
+	column TPM
+		dataType: string
+		lineageTag: a6d355a7-9bc6-474c-8fa6-678f9579904a
+		summarizeBy: none
+		sourceColumn: TPM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuttoffscore
+		dataType: string
+		lineageTag: 1c933bde-f729-474f-bc2c-5c8a5f833ab3
+		summarizeBy: none
+		sourceColumn: Cuttoffscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column Includes_CI
+		dataType: string
+		lineageTag: 56785b2b-31b2-47a9-861d-2007bcffdfca
+		summarizeBy: none
+		sourceColumn: Includes_CI
+
+		annotation SummarizationSetBy = Automatic
+
+	column CI_Only
+		dataType: string
+		lineageTag: faac6b1e-b788-49ef-a110-4ab5af125f55
+		summarizeBy: none
+		sourceColumn: CI_Only
+
+		annotation SummarizationSetBy = Automatic
+
+	column Includes_Renewal
+		dataType: string
+		lineageTag: 31e771c8-c48f-4947-b926-f73476b7ec6e
+		summarizeBy: none
+		sourceColumn: Includes_Renewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Action_FY
+		dataType: int64
+		formatString: 0
+		lineageTag: b9691f8e-2304-49dc-beab-7336661ce8f7
+		summarizeBy: sum
+		sourceColumn: Action_FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_Priority_Detail
+		dataType: string
+		lineageTag: cab48bdf-4a7f-4c41-820a-b0ab9c05c31b
+		summarizeBy: none
+		sourceColumn: Building_Priority_Detail
+
+		annotation SummarizationSetBy = Automatic
+
+	partition requirementlist = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("ayolkk43v7cufc7vhq5xweefbm-jbr53vt4fwpuviijf24dh26fny.datawarehouse.fabric.microsoft.com"),
+				    PMB_Data_Dev = Source{[Name="PMB_Data_Dev"]}[Data],
+				    dbo_requirementlist = PMB_Data_Dev{[Schema="dbo",Item="requirementlist"]}[Data]
+				in
+				    dbo_requirementlist
+
+	annotation PBI_ResultType = Table
+

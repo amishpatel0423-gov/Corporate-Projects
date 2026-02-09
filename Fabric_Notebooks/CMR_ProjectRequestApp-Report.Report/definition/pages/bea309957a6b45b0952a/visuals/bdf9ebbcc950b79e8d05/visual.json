@@ -1,0 +1,205 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "bdf9ebbcc950b79e8d05",
+  "position": {
+    "x": 0,
+    "y": 128,
+    "z": 18500,
+    "height": 64,
+    "width": 1280,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "DaysforTechRevDraftComp"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(pmbcp_cmrprojreqmain.DaysforTechRevDraftComp)",
+              "nativeQueryRef": "Avg for Draft Complete",
+              "displayName": "Avg for Draft Complete"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "DaysforTechRevBDSMgr"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(pmbcp_cmrprojreqmain.DaysforTechRevBDSMgr)",
+              "nativeQueryRef": "Avg for BDS Manager",
+              "displayName": "Avg for BDS Manager"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "DaysforTechRevPMPIDir"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(pmbcp_cmrprojreqmain.DaysforTechRevPMPIDir)",
+              "nativeQueryRef": "Avg for PMPI Director",
+              "displayName": "Avg for PMPI Director"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "DaysforWaived"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforWaived)",
+              "nativeQueryRef": "Avg for Waived",
+              "displayName": "Avg for Waived"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "DaysforTechRev"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(pmbcp_cmrprojreqmain.DaysforTechRev)",
+              "nativeQueryRef": "Avg for Tech Review Stage",
+              "displayName": "Avg for Tech Review Stage"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Requests Above Tech Review Average"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Requests Above Tech Review Average",
+              "nativeQueryRef": "# Requests Above Average",
+              "displayName": "# Requests Above Average"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "pmbcp_cmrprojreqmain"
+                      }
+                    },
+                    "Property": "DaysforTechRevDraftComp"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "card": [
+        {
+          "properties": {
+            "barShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

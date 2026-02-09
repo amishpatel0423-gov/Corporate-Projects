@@ -1,0 +1,32 @@
+model Model
+	culture: en-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 12/18/2025 11:28:59 AM.
+queryGroup 'Query Errors - 12/18/2025 11:28:59 AM'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["pmbcp_cmrprojreqmain","pmbcp_cmrrequestprocess","pmbcp_projectsummarydata","pmbcp_vfadatavalidation","LastRefresh","BuildingList","pmbcp_pmbportfoliocode","Capital Plan 2025-26","Capital Plan 2025-26 (Total)","pmbcp_cmrholdaction","Errors in Capital Plan 2025-26"]
+
+ref table pmbcp_cmrprojreqmain
+ref table pmbcp_cmrrequestprocess
+ref table pmbcp_projectsummarydata
+ref table pmbcp_vfadatavalidation
+ref table LastRefresh
+ref table BPFStageAxis
+ref table BuildingList
+ref table DateTable
+ref table pmbcp_pmbportfoliocode
+ref table 'Capital Plan 2025-26'
+ref table 'Capital Plan 2025-26 (Total)'
+ref table pmbcp_cmrholdaction
+
+ref cultureInfo en-CA
+

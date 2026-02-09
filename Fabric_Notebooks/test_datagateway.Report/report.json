@@ -1,0 +1,63 @@
+{
+  "config": "{\"version\":\"5.51\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU02\",\"version\":\"5.53\",\"type\":2}},\"activeSectionIndex\":1,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU02",
+            "path": "BaseThemes/CY24SU02.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"cef9a4b37287974919fe\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.666666666666666,\"y\":0,\"z\":0,\"width\":1240.3809523809523,\"height\":696.3809523809524,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"VFAData.Building_ID\"},{\"queryRef\":\"VFAData.Asset_Name\"},{\"queryRef\":\"VFAData.Building_Priority_Detail\"},{\"queryRef\":\"VFAData.IsRenewal\"},{\"queryRef\":\"VFAData.Linked_System\"},{\"queryRef\":\"VFAData.RAPProjectID\"},{\"queryRef\":\"VFAData.RAPProjectStatus\"},{\"queryRef\":\"VFAData.Uniformat\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"v\",\"Entity\":\"VFAData\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Building_ID\"},\"Name\":\"VFAData.Building_ID\",\"NativeReferenceName\":\"Building_ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Asset_Name\"},\"Name\":\"VFAData.Asset_Name\",\"NativeReferenceName\":\"Asset_Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Building_Priority_Detail\"},\"Name\":\"VFAData.Building_Priority_Detail\",\"NativeReferenceName\":\"Building_Priority_Detail\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"IsRenewal\"},\"Name\":\"VFAData.IsRenewal\",\"NativeReferenceName\":\"IsRenewal\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Linked_System\"},\"Name\":\"VFAData.Linked_System\",\"NativeReferenceName\":\"Linked_System\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"RAPProjectID\"},\"Name\":\"VFAData.RAPProjectID\",\"NativeReferenceName\":\"RAPProjectID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"RAPProjectStatus\"},\"Name\":\"VFAData.RAPProjectStatus\",\"NativeReferenceName\":\"RAPProjectStatus\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Uniformat\"},\"Name\":\"VFAData.Uniformat\",\"NativeReferenceName\":\"Uniformat\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 696.38,
+          "width": 1240.38,
+          "x": 10.67,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 2",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection0ea9a84ba6a7f5cb07af",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"3b51269dd95f9ba43189\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.666666666666666,\"y\":0,\"z\":0,\"width\":1269.3333333333333,\"height\":720.7619047619048,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"RAPData.Property\"},{\"queryRef\":\"Sum(RAPData.Number)\"},{\"queryRef\":\"RAPData.Name\"},{\"queryRef\":\"RAPData.Record_Created.Variation.Date Hierarchy.Year\"},{\"queryRef\":\"RAPData.Record_Created.Variation.Date Hierarchy.Quarter\"},{\"queryRef\":\"RAPData.Record_Created.Variation.Date Hierarchy.Month\"},{\"queryRef\":\"RAPData.Record_Created.Variation.Date Hierarchy.Day\"},{\"queryRef\":\"RAPData.Status\"},{\"queryRef\":\"RAPData.Description\"},{\"queryRef\":\"RAPData.Consequences\"},{\"queryRef\":\"RAPData.Reason\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"RAPData\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Name\"},\"Name\":\"RAPData.Name\",\"NativeReferenceName\":\"Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Number\"},\"Name\":\"Sum(RAPData.Number)\",\"NativeReferenceName\":\"Number\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Property\"},\"Name\":\"RAPData.Property\",\"NativeReferenceName\":\"Property\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Name\":\"Variation\",\"Property\":\"Record_Created\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"RAPData.Record_Created.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"Record_Created Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Name\":\"Variation\",\"Property\":\"Record_Created\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Quarter\"},\"Name\":\"RAPData.Record_Created.Variation.Date Hierarchy.Quarter\",\"NativeReferenceName\":\"Record_Created Quarter\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Name\":\"Variation\",\"Property\":\"Record_Created\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"RAPData.Record_Created.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"Record_Created Month\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Name\":\"Variation\",\"Property\":\"Record_Created\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Day\"},\"Name\":\"RAPData.Record_Created.Variation.Date Hierarchy.Day\",\"NativeReferenceName\":\"Record_Created Day\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Status\"},\"Name\":\"RAPData.Status\",\"NativeReferenceName\":\"Status\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Description\"},\"Name\":\"RAPData.Description\",\"NativeReferenceName\":\"Description\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Consequences\"},\"Name\":\"RAPData.Consequences\",\"NativeReferenceName\":\"Consequences\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Reason\"},\"Name\":\"RAPData.Reason\",\"NativeReferenceName\":\"Reason\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 720.76,
+          "width": 1269.33,
+          "x": 10.67,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

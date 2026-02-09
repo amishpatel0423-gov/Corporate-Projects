@@ -1,0 +1,229 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "c8189666-7afb-858f-4267-cf83c39f46cf",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "PROD_VFA_SSRS",
+        "dependsOn": [
+          {
+            "activity": "PROD_RAP_SSRS",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "cf0fe86c-e503-beac-489b-62785aafd027",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "PROD_RAP_SSRS",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "1f2e6755-5613-bb79-45c8-88c353b80bde",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "PROD_CMRExternalData",
+        "dependsOn": [
+          {
+            "activity": "PROD_VFA_SSRS",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "a463f76a-7b96-a0f3-4fdc-c13e98354f0e",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "PROD_DV_BuildingList",
+        "dependsOn": []
+      },
+      {
+        "type": "Office365Email",
+        "typeProperties": {
+          "body": "<p>The CMR External Data Notebook Falied to run.&nbsp;This email indicates an issue with the PyScript code, please check the pipeline.&nbsp;</p>",
+          "to": "infras.pmpi-corp-proj@gov.ab.ca",
+          "subject": "CMR Project Request App - Refresh Failed"
+        },
+        "externalReferences": {
+          "connection": "67715ff6-b53c-4b84-aba6-62a8423d6f0a"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "RefreshFailed_Email",
+        "dependsOn": [
+          {
+            "activity": "PROD_CMRExternalData",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>The CMR Data Notebook failed to run.</p>",
+          "chatId": "19:44929d7f7cea49fa976ce9b4211084d6@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "cb1568c9-40b0-4dde-a069-2ca062c7fcaf"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Teams MSG Fail",
+        "dependsOn": [
+          {
+            "activity": "PROD_CMRExternalData",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>The CMR Project Request App Dataflow Failed to Run.&nbsp;</p>\n<p>@{pipeline()?.TriggerEvent?.Source}</p>",
+          "chatId": "19:44929d7f7cea49fa976ce9b4211084d6@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "cb1568c9-40b0-4dde-a069-2ca062c7fcaf"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Teams MSG Fail_SSRS",
+        "dependsOn": [
+          {
+            "activity": "PROD_RAP_SSRS",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "PROD_VFA_SSRS",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          },
+          {
+            "activity": "PROD_DV_BuildingList",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "<p>The CMR Project Request App Dataflow SSRS succeeded</p>\n<p>@{pipeline()?.TriggerEvent?.Source}</p>",
+          "chatId": "19:44929d7f7cea49fa976ce9b4211084d6@thread.v2",
+          "operationType": "SendMessageInGroupChat"
+        },
+        "externalReferences": {
+          "connection": "cb1568c9-40b0-4dde-a069-2ca062c7fcaf"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Teams MSG Success_SSRS",
+        "description": "Sends a msg to the Corporate Projects Team chat when all the components complete successfully. Requires an account with access to the Chat (currently connected as crystal.maceachern)",
+        "dependsOn": [
+          {
+            "activity": "PROD_VFA_SSRS",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "PROD_RAP_SSRS",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "PROD_DV_BuildingList",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "PROD_CMRExternalData",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

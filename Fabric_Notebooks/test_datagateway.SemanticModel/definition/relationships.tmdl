@@ -1,0 +1,5 @@
+relationship 0380d385-3749-4506-b2d5-fff64341645a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RAPData.Record_Created
+	toColumn: LocalDateTable_83f2a2db-c151-41b9-99e2-8a0708611d6a.Date
+

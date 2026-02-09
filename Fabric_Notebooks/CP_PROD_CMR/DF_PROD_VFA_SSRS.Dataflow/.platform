@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_PROD_VFA_SSRS",
+    "description": "VFA SSRS dataflow into PROD lakehouse table. Uses the RAP_SSRS connection reference, the connection to the report is handled within the query. Also has connection to the dataverse building list to retrieve the location. "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c8189666-7afb-858f-4267-cf83c39f46cf"
+  }
+}

@@ -1,0 +1,26 @@
+model Model
+	culture: en-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-CA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 2025-08-05 1:25:59 PM.
+queryGroup 'Query Errors - 2025-08-05 1:25:59 PM'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation PBI_QueryOrder = ["VFAData","RAPData","Errors in Format=CSV (2)"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.128.952.0 (24.04)
+
+ref table VFAData
+ref table DateTableTemplate_b52d3cb4-dcd0-4975-87e6-011468b18358
+ref table RAPData
+ref table LocalDateTable_83f2a2db-c151-41b9-99e2-8a0708611d6a
+
+ref cultureInfo en-CA
+

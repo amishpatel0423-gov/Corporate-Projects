@@ -1,0 +1,47 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "AnnualPlanner_B2026",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "CMR Requirements 2026": {
+      "queryId": "9e70a4ab-68d3-4784-9c88-f5296e56d645",
+      "queryName": "CMR Requirements 2026",
+      "loadEnabled": false
+    },
+    "CMR Requirements 2026_DataDestination": {
+      "queryId": "e1e3bbdb-0cd3-403d-86dc-aebdf3eff6e3",
+      "queryName": "CMR Requirements 2026_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://abgov-my.sharepoint.com/personal/crystal_maceachern_gov_ab_ca/",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"1b7b97dc-57cd-40ea-9a62-944dbc36a515\"}"
+    },
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/CMR%20Source%20Code%20Repo/Releases/Fabric/B2026%20CMR%20Annual%20Project%20Planner_postSubmission.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"3a344637-d6d9-4d14-8741-d6215b93e131\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"46b261aa-40e5-48ad-a690-b3cb7aac0674\"}"
+    },
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/CMR%20Lakehouse/Release/Fabric/CP_PROD_CMR_PL/CP_PROD_CMR_PL/DataFlow_Source/B2026%20CMR%20Annual%20Project%20Planner_postSubmission.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"b4f0bec8-fc06-4d33-a90e-5a87ec34399a\"}"
+    },
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/CMR%20Lakehouse/Release/DataFlow_Source/B2026%20CMR%20Annual%20Project%20Planner_postSubmission.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"53700e1b-1eda-4888-9b2c-bf7af866be30\"}"
+    }
+  ]
+}

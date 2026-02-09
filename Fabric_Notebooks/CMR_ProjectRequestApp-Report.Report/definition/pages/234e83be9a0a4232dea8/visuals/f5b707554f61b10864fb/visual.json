@@ -1,0 +1,325 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "f5b707554f61b10864fb",
+  "position": {
+    "x": 0,
+    "y": 88,
+    "z": 0,
+    "height": 632,
+    "width": 1280,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "REQ ID"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.REQ ID",
+              "nativeQueryRef": "REQ ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "System ID"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.System ID",
+              "nativeQueryRef": "System ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "RAP ID"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.RAP ID",
+              "nativeQueryRef": "RAP ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "Related Project Request ID"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.Related Project Request ID",
+              "nativeQueryRef": "Related Project Request ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request Status"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request Status",
+              "nativeQueryRef": "Request Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "EstCostCheck.Value"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.EstCostCheck.Value",
+              "nativeQueryRef": "EstCostCheck.Value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "UniformatCheck.Value"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.UniformatCheck.Value",
+              "nativeQueryRef": "UniformatCheck.Value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "ReqImpactCheck.Value"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.ReqImpactCheck.Value",
+              "nativeQueryRef": "ReqImpactCheck.Value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "ReqPriorityCheck.Value"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.ReqPriorityCheck.Value",
+              "nativeQueryRef": "ReqPriorityCheck.Value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "ReqCategoryCheck.Value"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.ReqCategoryCheck.Value",
+              "nativeQueryRef": "ReqCategoryCheck.Value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "SystemGroupCheck.Value"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.SystemGroupCheck.Value",
+              "nativeQueryRef": "SystemGroupCheck.Value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "ReqNameCheck.Value"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.ReqNameCheck.Value",
+              "nativeQueryRef": "ReqNameCheck.Value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_vfadatavalidation"
+                    }
+                  },
+                  "Property": "ReqDescCheck.Value"
+                }
+              },
+              "queryRef": "pmbcp_vfadatavalidation.ReqDescCheck.Value",
+              "nativeQueryRef": "ReqDescCheck.Value"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "pmbcp_vfadatavalidation"
+                  }
+                },
+                "Property": "EstCostCheck.Value"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "182.26666666666665D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_vfadatavalidation.EstCostCheck.Value"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "229.91532233623417D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_vfadatavalidation.ReqPriorityCheck.Value"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "194.46666666666667D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_vfadatavalidation.ReqImpactCheck.Value"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "170.86666666666667D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_vfadatavalidation.ReqCategoryCheck.Value"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "203.13333333333333D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_vfadatavalidation.UniformatCheck.Value"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "190.04324284065098D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_vfadatavalidation.ReqDescCheck.Value"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "302.06666666666666D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_vfadatavalidation.SystemGroupCheck.Value"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

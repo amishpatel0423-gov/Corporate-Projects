@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Reflex",
+    "displayName": "Director Dashboard Trigger",
+    "description": "Reflex Project created from Trigger Pane"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "66c3fddb-015b-9a0b-4be4-cf64ad88351f"
+  }
+}

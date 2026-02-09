@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "AutomatedProjectPlanner"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "87c7b3a8-a84d-b176-4d96-0a58b00dc226"
+  }
+}

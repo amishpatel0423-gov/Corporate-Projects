@@ -1,0 +1,24 @@
+expression 'Errors in System' =
+		let
+		Source = System,
+		  #"Detected Type Mismatches" = let
+		    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Source, Table.ColumnsOfType(Source, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),
+		    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),
+		    fieldNames = Record.FieldNames(recordTypeFields),
+		    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),
+		    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = "The type of the value does not match the type of the column.", Detail = v], fieldTypes{i}})
+		in
+		    Table.TransformColumns(Source, pairs),
+		  #"Added Index" = Table.AddIndexColumn(#"Detected Type Mismatches", "Row Number" ,1),
+		  #"Kept Errors" = Table.SelectRowsWithErrors(#"Added Index", {"System - Portfolio Name", "System - Property Name", "System - Asset Name", "System - Asset Number", "System - ID", "System - System Name", "System - Lifetime", "System - System Condition Rating", "System - Year Installed", "System - Description", "System - Replacement Cost", "System - System Group", "System - Uniformat Code"}),
+		  #"Reordered Columns" = Table.ReorderColumns(#"Kept Errors", {"Row Number", "System - Portfolio Name", "System - Property Name", "System - Asset Name", "System - Asset Number", "System - ID", "System - System Name", "System - Lifetime", "System - System Condition Rating", "System - Year Installed", "System - Description", "System - Replacement Cost", "System - System Group", "System - Uniformat Code"}),
+		    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Reordered Columns", {"System - Description"})
+		in
+		    #"Removed Errors"
+	lineageTag: 479c5afd-8c3d-43a2-bb74-7d80a7c048db
+	queryGroup: 'Query Errors - 2026-02-06 8:59:42 AM'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

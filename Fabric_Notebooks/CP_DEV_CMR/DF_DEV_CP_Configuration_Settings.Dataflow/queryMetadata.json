@@ -1,0 +1,37 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "VFA_SSRS",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "ConfigurationTable": {
+      "queryId": "9d1e1fe8-7aad-4cee-b258-cbc9aa4d2b0c",
+      "queryName": "ConfigurationTable",
+      "loadEnabled": false
+    },
+    "ConfigurationTable_DataDestination": {
+      "queryId": "4a4c8cea-417f-451f-a6bb-8e7d2a87c972",
+      "queryName": "ConfigurationTable_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/Python/CMRExternalDataSource_MCode/Configurations.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"ed4be446-4ac3-47eb-865a-87d83fa707db\"}"
+    },
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/CMR%20Lakehouse/Release/DataFlow_Source/ConfigurationSettings.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"183d837e-a716-4b08-a797-c852f9a96f25\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"abf70c63-3cd9-4fec-9f1f-8badb7c1f647\"}"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+relationship dcdea5e0-9217-320f-9b02-c01c639881ef
+	fromColumn: 'requirement with system id'.'Requirement - System-ID'
+	toColumn: System.'System - ID'
+
+relationship 8ee80872-8caf-351b-7251-a1dcb771d126
+	fromColumn: requirementlist.Requirement_EID
+	toColumn: 'requirement with system id'.'Requirement - ID'
+

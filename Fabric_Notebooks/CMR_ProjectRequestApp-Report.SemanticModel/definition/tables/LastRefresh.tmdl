@@ -1,0 +1,27 @@
+table LastRefresh
+	lineageTag: 166d889a-66a6-487b-aa5e-2b9c8b1cf765
+
+	measure RefreshCard = "Refreshed: " & FORMAT(VALUES('LastRefresh'[Date Last Refreshed])-TIME(7,0,0),"mmm dd/yy h:mm AM/PM")
+		lineageTag: d38e9454-5b1f-4adf-a6a7-d434a1514d02
+
+	column 'Date Last Refreshed'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 83163236-137f-4680-b8df-a86037fda01f
+		summarizeBy: none
+		sourceColumn: Date Last Refreshed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition LastRefresh = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table[Date Last Refreshed=datetime], {{DateTime.LocalNow()}})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

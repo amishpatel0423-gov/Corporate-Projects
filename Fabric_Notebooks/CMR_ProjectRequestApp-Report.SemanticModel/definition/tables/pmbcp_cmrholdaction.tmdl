@@ -1,0 +1,165 @@
+table pmbcp_cmrholdaction
+	lineageTag: 1c25dc3b-0a9b-4bee-929f-2c0ed0081054
+
+	column 'CMR Hold Action'
+		dataType: string
+		lineageTag: 6cec42f4-379c-4d03-857e-fa1852485dd4
+		summarizeBy: none
+		sourceColumn: pmbcp_cmrholdactionid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ab5feddc-64b4-4916-b9dd-13b68cff568f
+		summarizeBy: none
+		sourceColumn: createdon
+
+		annotation SummarizationSetBy = Automatic
+
+	column statecodename
+		dataType: string
+		lineageTag: 87f1f70a-6070-45ca-ac24-5f4f30fa8205
+		summarizeBy: none
+		sourceColumn: statecodename
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: a3db3258-f912-4dd2-93b2-dcd0a4c7fc95
+		summarizeBy: none
+		sourceColumn: pmbcp_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CMR Project Request ID'
+		dataType: string
+		lineageTag: 7b1eb3e0-2202-45f6-835b-74fe19604908
+		summarizeBy: none
+		sourceColumn: pmbcp_cmrprojectrequestid
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_cmrprojreqmain
+		dataType: string
+		lineageTag: 2ce3bca3-14a0-42c1-94b3-45d9e580b3bb
+		summarizeBy: none
+		sourceColumn: pmbcp_cmrprojreqmain
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Comments'
+		dataType: string
+		lineageTag: 03356d1f-c495-475c-b5c0-60191cba0705
+		summarizeBy: none
+		sourceColumn: pmbcp_holdcomments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold End Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3dcdd0ce-6c19-4739-93fc-04180139fa18
+		summarizeBy: none
+		sourceColumn: pmbcp_holdenddate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold End Initiator Email'
+		dataType: string
+		lineageTag: beaa388c-d840-4916-b643-dda23c030ebc
+		summarizeBy: none
+		sourceColumn: pmbcp_holdendinitiatoremail
+
+		annotation SummarizationSetBy = Automatic
+
+	column pmbcp_holdreason
+		dataType: int64
+		formatString: 0
+		lineageTag: d74261d2-c9d4-40a7-9158-48bc4a7551c8
+		summarizeBy: sum
+		sourceColumn: pmbcp_holdreason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Reason'
+		dataType: string
+		lineageTag: cf70c9a8-dadc-49f7-9104-d8b424806fb1
+		summarizeBy: none
+		sourceColumn: pmbcp_holdreasonname
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Start Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 149ce6d1-ac89-450d-98e3-3ac9cf2b03c3
+		summarizeBy: none
+		sourceColumn: pmbcp_holdstartdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Start Initiator Email'
+		dataType: string
+		lineageTag: f871c349-4d52-4594-aeb0-92bca3d0ed48
+		summarizeBy: none
+		sourceColumn: pmbcp_holdstartinitiatoremail
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Previous Request Status'
+		dataType: int64
+		formatString: 0
+		lineageTag: ac5266ea-59d0-4f6e-abdc-d94929ee5cc9
+		summarizeBy: sum
+		sourceColumn: pmbcp_prevrequeststatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hold Duration'
+		dataType: int64
+		formatString: 0
+		lineageTag: 74492aef-04eb-4f93-b84a-4b96cb6e5982
+		summarizeBy: sum
+		sourceColumn: pmbcp_holdduration
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CMR Project Request'
+		dataType: string
+		lineageTag: 38577449-f4b3-4624-a72e-3ce1dbaa2bc7
+		summarizeBy: none
+		sourceColumn: pmbcp_cmrprojreqmainname
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: string
+		lineageTag: 33778d96-83de-4749-b08a-83467d25cc17
+		summarizeBy: none
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pmbcp_cmrholdaction = m
+		mode: import
+		source =
+				let
+				    Source = CommonDataService.Database("org509f7c88.crm3.dynamics.com"),
+				    dbo_pmbcp_cmrholdaction = Source{[Schema="dbo",Item="pmbcp_cmrholdaction"]}[Data],
+				    #"Choose Columns" = Table.SelectColumns(dbo_pmbcp_cmrholdaction,{"pmbcp_cmrholdactionid", "createdon", "statecodename", "pmbcp_name", "pmbcp_cmrprojectrequestid", "pmbcp_cmrprojreqmain", "pmbcp_holdcomments", "pmbcp_holdenddate", "pmbcp_holdendinitiatoremail", "pmbcp_holdreason", "pmbcp_holdreasonname", "pmbcp_holdstartdate", "pmbcp_holdstartinitiatoremail", "pmbcp_prevrequeststatus", "pmbcp_holdduration", "pmbcp_cmrprojreqmainname"}),
+				    #"Added Custom Duration with Today" = Table.AddColumn(#"Choose Columns", "Duration", each let
+				    StartDate = [pmbcp_holdstartdate],
+				    EndDate = if [pmbcp_holdenddate] = null then DateTime.LocalNow() else [pmbcp_holdenddate],
+				    DurationDays = Duration.Days(EndDate - StartDate)
+				in
+				    DurationDays)
+				in
+				    #"Added Custom Duration with Today"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

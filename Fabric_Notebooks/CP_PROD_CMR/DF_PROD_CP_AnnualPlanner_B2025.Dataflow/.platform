@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_PROD_CP_AnnualPlanner_B2025",
+    "description": "Run Only if the source data changes, otherwise this is a one-time import and doesn't need to be refreshed. The dataflow that brings in the B2025 annual planner requirements from a SPO file. See query definition for where the source SPO file is.   "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "acf87685-054a-8b7d-4f65-283ce0740bc7"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "TransAlta"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2124f903-00aa-a1f2-40f2-eb72eb847b7b"
+  }
+}

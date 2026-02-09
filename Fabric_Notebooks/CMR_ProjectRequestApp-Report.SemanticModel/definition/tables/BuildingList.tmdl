@@ -1,0 +1,99 @@
+table BuildingList
+	lineageTag: f1c18a34-a220-4f49-a763-0f3fc296f9bf
+
+	column BLDGID
+		dataType: string
+		lineageTag: 70cea6fe-3be2-4947-8b68-c7480abfa6c5
+		summarizeBy: none
+		sourceColumn: BuildingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDRESS
+		dataType: string
+		lineageTag: 72fd5fe6-fef4-4dae-82eb-51cf32f524a4
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATION
+		dataType: string
+		lineageTag: 60e70512-99a4-42a1-bf53-9e3750a7a483
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column BLDGNAME
+		dataType: string
+		lineageTag: 012e7aa6-9d00-4867-b025-6d928933a072
+		summarizeBy: none
+		sourceColumn: BuildingName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Level'
+		dataType: string
+		lineageTag: 496795db-97eb-4c52-add6-4cd885281bb3
+		summarizeBy: none
+		sourceColumn: DirectorPortfolio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Director Level Contact Name'
+		dataType: string
+		lineageTag: 1fc68bea-34b0-4f0e-8d79-87b1066e14a5
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Facility Manager'
+		dataType: string
+		lineageTag: ef38c856-3235-47db-8eb9-229824c8d86b
+		summarizeBy: none
+		sourceColumn: FMPortfolio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Facility Manager Contact Name'
+		dataType: string
+		lineageTag: 539ce0af-dbd3-466e-9194-b688aef2d541
+		summarizeBy: none
+		sourceColumn: FacilityManager
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Center'
+		dataType: string
+		lineageTag: be599241-f23c-4c1c-9775-db86050e327e
+		summarizeBy: none
+		sourceColumn: CostCenter
+
+		annotation SummarizationSetBy = Automatic
+
+	column PMB_Building_List
+		dataType: string
+		lineageTag: 82dc6999-4e88-4fb9-8dd4-256f5e34d05b
+		summarizeBy: none
+		sourceColumn: cr914_building_listid
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BuildingList = m
+		mode: import
+		source =
+				let
+				    Source = CommonDataService.Database("org509f7c88.crm3.dynamics.com"),
+				    dbo_cr914_building_list = Source{[Schema="dbo",Item="cr914_building_list"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_cr914_building_list,{"cr914_building_listid", "cr914_bldgid", "cr914_address", "cr914_bldgname", "cr914_costcenter", "cr914_directorlevel", "cr914_directorlevelcontactname", "cr914_facilitymanager", "cr914_facilitymanagercontactname", "cr914_location"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"cr914_bldgid", "BuildingID"}, {"cr914_address", "Address"}, {"cr914_bldgname", "BuildingName"}, {"cr914_costcenter", "CostCenter"}, {"cr914_directorlevel", "DirectorPortfolio"}, {"cr914_directorlevelcontactname", "Director"}, {"cr914_facilitymanager", "FMPortfolio"}, {"cr914_facilitymanagercontactname", "FacilityManager"}, {"cr914_location", "Location"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"BuildingID", "Address", "Location", "BuildingName", "DirectorPortfolio", "Director", "FMPortfolio", "FacilityManager", "CostCenter"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "b12bc2fce9d878f6f115",
+  "position": {
+    "x": 939.918500407498,
+    "y": 648.86715566422163,
+    "z": 7000,
+    "height": 62.591687041564789,
+    "width": 298.35370823145882,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Capital Investment and Operating targets are based on B2025 (not quarterly submissions) ",
+                    "textStyle": {
+                      "fontFamily": "DIN",
+                      "fontStyle": "italic",
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

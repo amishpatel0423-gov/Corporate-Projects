@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_DEV_CM_AnnualPlanner_B2025",
+    "description": "uploaded copy of annual planner - in personal one drive\n"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c04cb068-da3a-9ac0-44b6-01247dec49cd"
+  }
+}

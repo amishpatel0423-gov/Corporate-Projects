@@ -1,0 +1,48 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "RAP_SSRS",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "gatewayObjectId": "4f6dd8c5-47b3-49cc-9943-835282b8662b",
+  "queriesMetadata": {
+    "ConfigurationTable": {
+      "queryId": "2bdfefe3-5254-44c6-9e94-c64eb5dde9df",
+      "queryName": "ConfigurationTable"
+    },
+    "RAP_SSRS": {
+      "queryId": "992b3036-5f0a-4b0f-8c00-1f12a0974535",
+      "queryName": "RAP_SSRS",
+      "loadEnabled": false
+    },
+    "fnGetParameters": {
+      "queryId": "3386123f-d3de-4a89-bf32-aba2fd6df99c",
+      "queryName": "fnGetParameters",
+      "loadEnabled": false
+    },
+    "RAP_SSRS_DataDestination": {
+      "queryId": "41e57315-ebb9-406f-83af-327806fe4d3a",
+      "queryName": "RAP_SSRS_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://rpt.infrastructure.alberta.ca/ReportServer?%2FRAP-PM%2FVFA-LinkedRequirments&rs%3ACommand=Render&rs%3AFormat=ATOM&rc%3AItemPath=Tablix1",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"4f6dd8c5-47b3-49cc-9943-835282b8662b\",\"DatasourceId\":\"585e566c-edb6-455e-8ef8-f3890b6b51f6\"}"
+    },
+    {
+      "path": "https://rpt.infrastructure.alberta.ca/ReportServer?%2FRAP-PM%2FVFA-LinkedRequirments&rs%3ACommand=Render&rs%3AFormat=csv&rc%3AItemPath=Tablix1",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"4f6dd8c5-47b3-49cc-9943-835282b8662b\",\"DatasourceId\":\"aa399ee1-2a67-425d-ac6f-fa3c5eb9d1ec\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"4f6dd8c5-47b3-49cc-9943-835282b8662b\",\"DatasourceId\":\"8db7cac1-04bd-4eb0-a9fe-9aea009f91d8\"}"
+    }
+  ],
+  "fastCombine": true
+}

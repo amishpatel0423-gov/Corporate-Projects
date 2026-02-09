@@ -1,0 +1,77 @@
+table datavalidation
+	lineageTag: 50393a73-cd45-4360-a2de-b18faa0ca834
+
+	column Requirement_EID
+		dataType: string
+		lineageTag: 3c2b1ad5-0a02-4f67-91de-f2b381dc99dd
+		summarizeBy: none
+		sourceColumn: Requirement_EID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_ID
+		dataType: string
+		lineageTag: 7b768dad-c875-4b0f-afa6-77809efe7171
+		summarizeBy: none
+		sourceColumn: Building_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estimated_cost_missing
+		dataType: string
+		lineageTag: 65d68be3-66f5-49ff-9127-36b62b195941
+		summarizeBy: none
+		sourceColumn: Estimated_cost_missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column Impact_missing
+		dataType: string
+		lineageTag: 65a5dc5d-7056-4c9f-8882-b72a1b3cdbe6
+		summarizeBy: none
+		sourceColumn: Impact_missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinkedSystem_missing
+		dataType: string
+		lineageTag: 325a0aba-3e88-4600-81ed-a2d94f521051
+		summarizeBy: none
+		sourceColumn: LinkedSystem_missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column SystemGroup_missing
+		dataType: string
+		lineageTag: f73e0574-4534-44b5-aa49-ada73cef6cc1
+		summarizeBy: none
+		sourceColumn: SystemGroup_missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mismatch_SystemGroup
+		dataType: string
+		lineageTag: 2a5acdff-6a5f-4f42-af89-888af1686f86
+		summarizeBy: none
+		sourceColumn: Mismatch_SystemGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uniformat_Error
+		dataType: string
+		lineageTag: ab1187c0-c5f8-455c-bd71-e35b04bf33d0
+		summarizeBy: none
+		sourceColumn: Uniformat_Error
+
+		annotation SummarizationSetBy = Automatic
+
+	partition datavalidation = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("ayolkk43v7cufc7vhq5xweefbm-jbr53vt4fwpuviijf24dh26fny.datawarehouse.fabric.microsoft.com"),
+				    PMB_Data_Dev = Source{[Name="PMB_Data_Dev"]}[Data],
+				    dbo_datavalidation = PMB_Data_Dev{[Schema="dbo",Item="datavalidation"]}[Data]
+				in
+				    dbo_datavalidation
+

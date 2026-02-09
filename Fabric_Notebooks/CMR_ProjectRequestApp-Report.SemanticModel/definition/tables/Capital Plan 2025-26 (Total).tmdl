@@ -1,0 +1,48 @@
+table 'Capital Plan 2025-26 (Total)'
+	lineageTag: 52f9fd03-b61c-40fb-b1b7-7d2264f4470d
+
+	column 'Funding Classification'
+		dataType: string
+		lineageTag: 4a078183-2b18-4253-84eb-2f345f452ccb
+		summarizeBy: none
+		sourceColumn: Funding Classification
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Target'
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: d930aa04-3094-44ee-9a67-70ad0045df52
+		summarizeBy: sum
+		sourceColumn: Total Target
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column 'Total Target+20'
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 22f997c7-41b9-48ba-8f68-635b1bb46bb1
+		summarizeBy: sum
+		sourceColumn: Total Target+20
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	partition 'Capital Plan 2025-26 (Total)' = m
+		mode: import
+		source =
+				let
+				    Source = #"Capital Plan 2025-26",
+				    #"Grouped Rows" = Table.Group(Source, {"Funding Classification"}, {{"Total Target", each List.Sum([Target]), type nullable number}}),
+				    #"Added Custom" = Table.AddColumn(#"Grouped Rows", "Total Target+20", each [Total Target]*1.2),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Total Target+20", Currency.Type}, {"Total Target", Currency.Type}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,63 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.64\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "publicCustomVisuals": [
+    "textSearchSlicerF85E2E78BE4A4D7D9F99ED75B5D71C85"
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"outspace\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]}}",
+      "displayName": "Page 1",
+      "displayOption": 3,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "f0c77db47964dbdde953",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"8b378049bd5bc7112c0c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":91,\"z\":0,\"width\":1280,\"height\":629,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"UniformatCode_with_examples_systemgroup.System Group\"},{\"queryRef\":\"UniformatCode_with_examples_systemgroup.Name\"},{\"queryRef\":\"UniformatCode_with_examples_systemgroup.Uniformat\"},{\"queryRef\":\"UniformatCode_with_examples_systemgroup.Examples\"},{\"queryRef\":\"Sum(UniformatCode_with_examples_systemgroup.Unit Cost)\"},{\"queryRef\":\"UniformatCode_with_examples_systemgroup.Currency\"},{\"queryRef\":\"UniformatCode_with_examples_systemgroup.Unit Of Measure\"},{\"queryRef\":\"Sum(UniformatCode_with_examples_systemgroup.Lifetime)\"},{\"queryRef\":\"Sum(UniformatCode_with_examples_systemgroup.% Renew)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"u1\",\"Entity\":\"UniformatCode_with_examples_systemgroup\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"% Renew\"},\"Name\":\"Sum(UniformatCode_with_examples_systemgroup.% Renew)\",\"NativeReferenceName\":\"% Renew1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"Name\"},\"Name\":\"UniformatCode_with_examples_systemgroup.Name\",\"NativeReferenceName\":\"Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"System Group\"},\"Name\":\"UniformatCode_with_examples_systemgroup.System Group\",\"NativeReferenceName\":\"System Group\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"Uniformat\"},\"Name\":\"UniformatCode_with_examples_systemgroup.Uniformat\",\"NativeReferenceName\":\"Uniformat\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"Examples\"},\"Name\":\"UniformatCode_with_examples_systemgroup.Examples\",\"NativeReferenceName\":\"Examples\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"Unit Cost\"},\"Name\":\"Sum(UniformatCode_with_examples_systemgroup.Unit Cost)\",\"NativeReferenceName\":\"Unit Cost\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"Currency\"},\"Name\":\"UniformatCode_with_examples_systemgroup.Currency\",\"NativeReferenceName\":\"Currency\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"Unit Of Measure\"},\"Name\":\"UniformatCode_with_examples_systemgroup.Unit Of Measure\",\"NativeReferenceName\":\"Unit Of Measure\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u1\"}},\"Property\":\"Lifetime\"},\"Name\":\"Sum(UniformatCode_with_examples_systemgroup.Lifetime)\",\"NativeReferenceName\":\"Lifetime\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"grid\":[{\"properties\":{\"outlineColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0}}}}},\"outlineStyle\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}},\"gridVertical\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"gridHorizontal\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"gridHorizontalColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0}}}}}}}],\"columnHeaders\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"13D\"}}},\"autoSizeColumnWidth\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0.2}}}}}}}],\"values\":[{\"properties\":{\"backColorSecondary\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.2}}}}}}}]},\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'BoldHeaderFlashyRows'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 629.00,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 91.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"ae5be97bcea261f5bc60\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":1001}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 100.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1001.00
+        },
+        {
+          "config": "{\"name\":\"b82e417510903c8938ad\",\"layouts\":[{\"id\":0,\"position\":{\"x\":179.93920972644378,\"y\":0.9726443768996961,\"z\":1000,\"width\":935.6838905775077,\"height\":90.45592705167174,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"textSearchSlicerF85E2E78BE4A4D7D9F99ED75B5D71C85\",\"projections\":{\"fields\":[{\"queryRef\":\"UniformatCode_with_examples_systemgroup.Uniformat\"},{\"queryRef\":\"UniformatCode_with_examples_systemgroup.System Group\"},{\"queryRef\":\"UniformatCode_with_examples_systemgroup.Examples\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"u\",\"Entity\":\"UniformatCode_with_examples_systemgroup\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u\"}},\"Property\":\"Examples\"},\"Name\":\"UniformatCode_with_examples_systemgroup.Examples\",\"NativeReferenceName\":\"Examples\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u\"}},\"Property\":\"System Group\"},\"Name\":\"UniformatCode_with_examples_systemgroup.System Group\",\"NativeReferenceName\":\"System Group\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u\"}},\"Property\":\"Uniformat\"},\"Name\":\"UniformatCode_with_examples_systemgroup.Uniformat\",\"NativeReferenceName\":\"Uniformat\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{}}],\"generalFormatting\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}}}}],\"inputFormatting\":[{\"properties\":{\"placeholderString\":{\"expr\":{\"Literal\":{\"Value\":\"'Enter a system'\"}}},\"backgroundColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"inputActionFormatting\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0}}}}},\"hoverFontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.4}}}}},\"activeFontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":-0.25}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 90.46,
+          "width": 935.68,
+          "x": 179.94,
+          "y": 0.97,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

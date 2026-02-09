@@ -1,0 +1,290 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "d9fd9652406bde05c0c7",
+  "position": {
+    "x": 0,
+    "y": 208,
+    "z": 0,
+    "height": 512,
+    "width": 1280,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request ID"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request ID",
+              "nativeQueryRef": "Request ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "RAP ID"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.RAP ID",
+              "nativeQueryRef": "RAP ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Title"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Title",
+              "nativeQueryRef": "Title"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request Status"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request Status",
+              "nativeQueryRef": "Request Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Urgent Request"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Urgent Request",
+              "nativeQueryRef": "Urgent Request"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforTechRevDraftComp"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforTechRevDraftComp)",
+              "nativeQueryRef": "Draft Complete",
+              "displayName": "Draft Complete"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforTechRevBDSMgr"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforTechRevBDSMgr)",
+              "nativeQueryRef": "BDS Manager",
+              "displayName": "BDS Manager"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforTechRevPMPIDir"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforTechRevPMPIDir)",
+              "nativeQueryRef": "PMPI Director",
+              "displayName": "PMPI Director"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "DaysforTechRev"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforTechRev)",
+              "nativeQueryRef": "Total Days",
+              "displayName": "Total Days"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "O&M Assessment"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.O&M Assessment",
+              "nativeQueryRef": "O&M",
+              "displayName": "O&M"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "OHS Assessment"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.OHS Assessment",
+              "nativeQueryRef": "OHS",
+              "displayName": "OHS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Security Assessment"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Security Assessment",
+              "nativeQueryRef": "Security",
+              "displayName": "Security"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Energy Assessment"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Energy Assessment",
+              "nativeQueryRef": "Energy",
+              "displayName": "Energy"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Link to Record"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Link to Record",
+              "nativeQueryRef": "Link to Record"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "pmbcp_cmrprojreqmain"
+                  }
+                },
+                "Property": "Request ID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "317.91152683645885D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_cmrprojreqmain.Title"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.64516129032259D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_cmrprojreqmain.Request Status"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "urlIcon": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

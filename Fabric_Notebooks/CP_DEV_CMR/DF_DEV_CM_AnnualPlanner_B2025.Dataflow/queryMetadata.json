@@ -1,0 +1,32 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "AnnualPlanner_B2025",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "PlannedStatusModel_dev1": {
+      "queryId": "ff630b0c-4093-46e8-b6d6-b4527fe94e0c",
+      "queryName": "PlannedStatusModel_dev1",
+      "loadEnabled": false
+    },
+    "PlannedStatusModel_dev1_DataDestination": {
+      "queryId": "7bcbf481-3807-4a1a-a7b8-f29b0c1bee72",
+      "queryName": "PlannedStatusModel_dev1_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://abgov-my.sharepoint.com/personal/crystal_maceachern_gov_ab_ca/",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"4e2fbe16-5a80-4796-afb4-79b84f8edcd9\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"46b261aa-40e5-48ad-a690-b3cb7aac0674\"}"
+    }
+  ]
+}

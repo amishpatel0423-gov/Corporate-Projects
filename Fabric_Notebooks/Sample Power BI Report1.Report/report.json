@@ -1,0 +1,166 @@
+{
+  "config": "{\"version\":\"5.51\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU02\",\"version\":\"5.53\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"filterPaneHiddenInEditMode\":false},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "ReportSection",
+      "config": "{}",
+      "name": "Pod"
+    }
+  ],
+  "publicCustomVisuals": [
+    "advancedGauge97290A2225EA4EB5BC5C8D85F9ACA7DA"
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU02",
+            "path": "BaseThemes/CY24SU02.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"412L\"}}}}}]}}",
+      "displayName": "Sample Report",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"Filter6e42fb91ee0aee42a09b\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"Request Status\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Request Status\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Approved'\"}}],[{\"Literal\":{\"Value\":\"'Executive Review'\"}}],[{\"Literal\":{\"Value\":\"'Finalize Request'\"}}],[{\"Literal\":{\"Value\":\"'Pending Director Decision'\"}}],[{\"Literal\":{\"Value\":\"'Pending FM Decision'\"}}],[{\"Literal\":{\"Value\":\"'Pending Funding Classification'\"}}],[{\"Literal\":{\"Value\":\"'Prepare for Approval'\"}}],[{\"Literal\":{\"Value\":\"'Project Delivery Initiation'\"}}],[{\"Literal\":{\"Value\":\"'Technical Review'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+      "height": 720.00,
+      "name": "ReportSection",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"24aeb3a3a2c05e32a301\",\"layouts\":[{\"id\":0,\"position\":{\"x\":284.9718381976447,\"y\":9.142857142857142,\"z\":3000,\"width\":300,\"height\":173.71428571428572,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Total Requested - Pending\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Total Requested - Pending\"},\"Name\":\"pmbcp_cmrprojreqmain.Total Requested - Pending\",\"NativeReferenceName\":\"Pending Funding Classification\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Total Requested - Pending\"}}}]},\"autoSelectVisualType\":false,\"columnProperties\":{\"pmbcp_cmrprojreqmain.Total Requested - Pending\":{\"displayName\":\"Pending Funding Classification\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 173.71,
+          "width": 300.00,
+          "x": 284.97,
+          "y": 9.14,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"4845dfcbd82513a763a7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":604.10496671787,\"y\":9.142857142857142,\"z\":6000,\"width\":300.1904761904762,\"height\":173.71428571428572,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Pipeline Projects\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Pipeline Projects\"},\"Name\":\"pmbcp_cmrprojreqmain.Pipeline Projects\",\"NativeReferenceName\":\"Projects in Pipeline\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Pipeline Projects\"}}}]},\"columnProperties\":{\"pmbcp_cmrprojreqmain.Pipeline Projects\":{\"displayName\":\"Projects in Pipeline\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 173.71,
+          "width": 300.19,
+          "x": 604.10,
+          "y": 9.14,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"569db93226a1b08de869\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.838709677419354,\"y\":9.29032258064516,\"z\":5000,\"width\":255,\"height\":173.41935483870967,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Pipeline Est TPC\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Pipeline Est TPC\"},\"Name\":\"pmbcp_cmrprojreqmain.Pipeline Est TPC\",\"NativeReferenceName\":\"Pipeline Est TPC\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Pipeline Est TPC\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 173.42,
+          "width": 255.00,
+          "x": 10.84,
+          "y": 9.29,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"6118e649a46cda323500\",\"layouts\":[{\"id\":0,\"position\":{\"x\":905.1428571428571,\"y\":546.2857142857143,\"z\":2000,\"width\":336,\"height\":173.71428571428572,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"Y\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Total Requested - Operating\"}],\"TargetValue\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Latest Operating Budget Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Total Requested - Operating\"},\"Name\":\"pmbcp_cmrprojreqmain.Total Requested - Operating\",\"NativeReferenceName\":\"Total Requested - Operating\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Latest Operating Budget Value\"},\"Name\":\"pmbcp_cmrprojreqmain.Latest Operating Budget Value\",\"NativeReferenceName\":\"Latest Operating Budget Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Total Requested - Operating\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Operating Projects vs Budget Available'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 173.71,
+          "width": 336.00,
+          "x": 905.14,
+          "y": 546.29,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"737eea8772221c238faf\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":667.4285714285714,\"z\":4000,\"width\":339.8095238095238,\"height\":53.333333333333336,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Last Refreshed\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Last Refreshed\"},\"Name\":\"pmbcp_cmrprojreqmain.Last Refreshed\",\"NativeReferenceName\":\"Data Current as of\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Last Refreshed\"}}}]},\"columnProperties\":{\"pmbcp_cmrprojreqmain.Last Refreshed\":{\"displayName\":\"Data Current as of\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Data current as of:'\"}}},\"italic\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 53.33,
+          "width": 339.81,
+          "x": 0.00,
+          "y": 667.43,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"c774b43477add02e40f8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":923.4285714285716,\"y\":9.142857142857142,\"z\":7000,\"width\":300.1904761904762,\"height\":173.71428571428572,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Approved Projects\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Approved Projects\"},\"Name\":\"pmbcp_cmrprojreqmain.Approved Projects\",\"NativeReferenceName\":\"Approved Projects\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Approved Projects\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 173.71,
+          "width": 300.19,
+          "x": 923.43,
+          "y": 9.14,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"de7f70ae0a4d85269f5d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":197.71428571428572,\"z\":0,\"width\":1269.7142857142858,\"height\":348.57142857142856,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Columns\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Funding Classification\",\"active\":true}],\"Values\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Total Project Value\"},{\"queryRef\":\"pmbcp_cmrprojreqmain.Approved Projects\"},{\"queryRef\":\"PROD_cmrprojreqmain.BPF Status\"},{\"queryRef\":\"PROD_cmrprojreqmain.BPF Status\"}],\"Rows\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Actual Request Status\",\"active\":true},{\"queryRef\":\"pmbcp_cmrprojreqmain.Request Status\",\"active\":true},{\"queryRef\":\"pmbcp_cmrrequestprocess.Pmbcp_Cmrprojreqmain\"},{\"queryRef\":\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Year\"},{\"queryRef\":\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Quarter\"},{\"queryRef\":\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Month\"},{\"queryRef\":\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Day\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0},{\"Name\":\"p1\",\"Entity\":\"PROD_cmrrequestprocess\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Funding Classification\"},\"Name\":\"pmbcp_cmrprojreqmain.Funding Classification\",\"NativeReferenceName\":\"Funding Classification\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Total Project Value\"},\"Name\":\"pmbcp_cmrprojreqmain.Total Project Value\",\"NativeReferenceName\":\"Total Project Value\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p1\"}},\"Property\":\"Pmbcp_Cmrprojreqmain\"},\"Name\":\"pmbcp_cmrrequestprocess.Pmbcp_Cmrprojreqmain\",\"NativeReferenceName\":\"Pmbcp_Cmrprojreqmain\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Actual Request Status\"},\"Name\":\"pmbcp_cmrprojreqmain.Actual Request Status\",\"NativeReferenceName\":\"Actual Request Status\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Approved Projects\"},\"Name\":\"pmbcp_cmrprojreqmain.Approved Projects\",\"NativeReferenceName\":\"Approved Projects\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Request Status\"},\"Name\":\"pmbcp_cmrprojreqmain.Request Status\",\"NativeReferenceName\":\"Request Status\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"BPF Status\"},\"Name\":\"PROD_cmrprojreqmain.BPF Status\",\"NativeReferenceName\":\"BPF Status\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Name\":\"Variation\",\"Property\":\"FM Initial Decision Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"FM Initial Decision Date Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Name\":\"Variation\",\"Property\":\"FM Initial Decision Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Quarter\"},\"Name\":\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Quarter\",\"NativeReferenceName\":\"FM Initial Decision Date Quarter\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Name\":\"Variation\",\"Property\":\"FM Initial Decision Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"FM Initial Decision Date Month\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Name\":\"Variation\",\"Property\":\"FM Initial Decision Date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Day\"},\"Name\":\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Day\",\"NativeReferenceName\":\"FM Initial Decision Date Day\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Request Status\"}}},{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Actual Request Status\"}}}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"pmbcp_cmrprojreqmain.Actual Request Status\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"Actual Request Status\"}}],\"isPinned\":true},{\"queryRefs\":[\"pmbcp_cmrprojreqmain.Request Status\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"Request Status\"}}],\"isPinned\":true},{\"queryRefs\":[\"pmbcp_cmrrequestprocess.Pmbcp_Cmrprojreqmain\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrrequestprocess\"}},\"Property\":\"Pmbcp_Cmrprojreqmain\"}}],\"isPinned\":true},{\"queryRefs\":[\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Year\"],\"isCollapsed\":true},{\"queryRefs\":[\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Quarter\"],\"isCollapsed\":true},{\"queryRefs\":[\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Month\"],\"isCollapsed\":true},{\"queryRefs\":[\"PROD_cmrprojreqmain.FM Initial Decision Date.Variation.Date Hierarchy.Day\"],\"isCollapsed\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'Technical Review'\"}}],\"isToggled\":true}]}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"columnHeaders\":[{\"properties\":{\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Center'\"}}},\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}],\"columnTotal\":[{\"properties\":{}}],\"rowTotal\":[{\"properties\":{}}],\"subTotals\":[{\"properties\":{\"columnSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"rowSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Condensed'\"}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Bi-Weekly Project Request Summary'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"20D\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filtera525db5a0c0956a77b1d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"Request Status\"}},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{\"general\":[{\"properties\":{}}]},\"isHiddenInViewMode\":false,\"isLockedInViewMode\":true},{\"name\":\"Filtere28202caed2fa13e119b\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"Funding Classification\"}},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false,\"isLockedInViewMode\":true},{\"name\":\"Filter72e5c5e44c78a6a302a8\",\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"PAR Requested TPC\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false,\"isLockedInViewMode\":true},{\"name\":\"Filterc04182d563515fb95e95\",\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"Estimated TPC (Cost Factored)\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false,\"isLockedInViewMode\":true},{\"name\":\"Filterf9680c3e182bf43cbb2a\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"Request ID\"}},\"type\":\"Categorical\",\"howCreated\":1,\"isHiddenInViewMode\":false,\"isLockedInViewMode\":true},{\"name\":\"Filterd276ff3a9e0ca89f4c79\",\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"PROD_cmrprojreqmain\"}},\"Property\":\"Request ID\"}},\"Function\":2}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false,\"isLockedInViewMode\":true}]",
+          "height": 348.57,
+          "width": 1269.71,
+          "x": 0.00,
+          "y": 197.71,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"e0beb698ea6e6fc2f3dd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":560,\"y\":546.2857142857143,\"z\":1000,\"width\":334.85714285714283,\"height\":173.71428571428572,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"Y\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Total Requested - Capital\"}],\"TargetValue\":[{\"queryRef\":\"pmbcp_cmrprojreqmain.Latest Capital Budget Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"PROD_cmrprojreqmain\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Total Requested - Capital\"},\"Name\":\"pmbcp_cmrprojreqmain.Total Requested - Capital\",\"NativeReferenceName\":\"Total Requested - Capital\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Latest Capital Budget Value\"},\"Name\":\"pmbcp_cmrprojreqmain.Latest Capital Budget Value\",\"NativeReferenceName\":\"Latest Capital Budget Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Total Requested - Capital\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Capital Projects vs Budget Available'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0}}}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 173.71,
+          "width": 334.86,
+          "x": 560.00,
+          "y": 546.29,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "PaginatedReport",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection2887197f30adb57a7a55",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"43c5bddf26cddc354087\",\"layouts\":[{\"id\":0,\"position\":{\"x\":21.194805194805195,\"y\":0,\"z\":0,\"width\":1259.2207792207791,\"height\":709.4025974025974,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"rdlVisual\",\"drillFilterOtherVisuals\":true,\"objects\":{\"reportInfo\":[{\"properties\":{\"reportId\":{\"expr\":{\"Literal\":{\"Value\":\"'a985572a-dedd-4edc-b840-6dac37ffcec8'\"}}},\"workspaceId\":{\"expr\":{\"Literal\":{\"Value\":\"'d6dd6348-2d7c-4a9f-a109-2eb833ebc56e'\"}}}}}],\"parameterMapping\":[{\"properties\":{\"mappings\":{\"expr\":{\"Literal\":{\"Value\":\"'[]'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 709.40,
+          "width": 1259.22,
+          "x": 21.19,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "bpf_alignment",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection873244f437866f21469d",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"00b66b25031207b48455\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":291,\"width\":1236,\"height\":281,\"z\":1000,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"DEV_cmrrequestprocess.Active Stage\",\"active\":true},{\"queryRef\":\"DEV_cmrrequestprocess.Active Stage Started On.Variation.Date Hierarchy.Year\",\"active\":true}],\"Values\":[{\"queryRef\":\"Min(DEV_cmrrequestprocess.bpf_pmbcp_cmrprojreqmainid)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DEV_cmrrequestprocess\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Active Stage\"},\"Name\":\"DEV_cmrrequestprocess.Active Stage\",\"NativeReferenceName\":\"Active Stage\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"Active Stage Started On\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"DEV_cmrrequestprocess.Active Stage Started On.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"Active Stage Started On Year\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"bpf_pmbcp_cmrprojreqmainid\"}},\"Function\":5},\"Name\":\"Min(DEV_cmrrequestprocess.bpf_pmbcp_cmrprojreqmainid)\",\"NativeReferenceName\":\"Count of bpf_pmbcp_cmrprojreqmainid\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"DEV_cmrrequestprocess.Active Stage\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DEV_cmrrequestprocess\"}},\"Property\":\"Active Stage\"}}],\"isPinned\":true},{\"queryRefs\":[\"DEV_cmrrequestprocess.Active Stage Started On.Variation.Date Hierarchy.Year\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"LocalDateTable_6d10fa38-9900-4b0f-9cad-30742297571c\"}},\"Property\":\"Year\"}}],\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'Executive Review'\"}}],\"isToggled\":true,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"2025L\"}}],\"isToggled\":true}]}]}}],\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 281.00,
+          "width": 1236.00,
+          "x": 10.00,
+          "y": 291.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"748e43550ffa767d2006\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.974025974025974,\"y\":0,\"z\":0,\"width\":1235.5324675324675,\"height\":280.5194805194805,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"DEV_cmrprojreqmain.Request Status\",\"active\":true}],\"Values\":[{\"queryRef\":\"Min(DEV_cmrprojreqmain.Request ID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DEV_cmrprojreqmain\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Request Status\"},\"Name\":\"DEV_cmrprojreqmain.Request Status\",\"NativeReferenceName\":\"Request Status\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Request ID\"}},\"Function\":5},\"Name\":\"Min(DEV_cmrprojreqmain.Request ID)\",\"NativeReferenceName\":\"Count of Request ID\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280.52,
+          "width": 1235.53,
+          "x": 9.97,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

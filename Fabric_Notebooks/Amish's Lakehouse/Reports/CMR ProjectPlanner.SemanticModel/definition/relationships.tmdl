@@ -1,0 +1,18 @@
+relationship 55a112e2-55b3-69cd-f7ee-1139a6eb23db
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: datavalidation.Building_ID
+	toColumn: requirementlist.Building_ID
+
+relationship 951581f4-a84a-2f61-345e-921e897f89ea
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: projectsummary.Building_ID
+	toColumn: requirementlist.Building_ID
+
+relationship d2388688-5a44-80f3-8b20-8448a7349b69
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: projectreview.Building_ID
+	toColumn: projectsummary.Building_ID
+

@@ -1,0 +1,218 @@
+table 'Capital Plan 2025-26'
+	lineageTag: 2317e024-2d7b-4729-9a4f-b96179c4e163
+
+	measure ForecastAcum = ```
+			
+			CALCULATE(
+			    SUM('Capital Plan 2025-26'[Forecast]),
+			    FILTER(
+			        ALLSELECTED('Capital Plan 2025-26'),'Capital Plan 2025-26'[Accum]<= MAX('Capital Plan 2025-26'[Accum])
+			    
+			    ))
+			```
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: ea5107c6-e8e6-4aa4-aaf8-ed970f4ffccf
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure 'Target Increment' = ```
+			
+			VAR CurrentAccum = MAX('Capital Plan 2025-26'[Accum])
+			VAR CurrentTarget = 
+			    CALCULATE(
+			        MAX('Capital Plan 2025-26'[Target]),
+			        FILTER(
+			            ALL('Capital Plan 2025-26'),
+			            'Capital Plan 2025-26'[Accum] = CurrentAccum
+			        )
+			    )
+			VAR PrevTarget = 
+			    CALCULATE(
+			        MAX('Capital Plan 2025-26'[Target]),
+			        FILTER(
+			            ALL('Capital Plan 2025-26'),
+			            'Capital Plan 2025-26'[Accum] = CurrentAccum - 1
+			        )
+			    )
+			RETURN
+			    CurrentTarget - PrevTarget
+			```
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 81875beb-b4f8-46b5-9ae9-5089174a5110
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure TargetAccum = ```
+			
+			CALCULATE(
+			    SUM('Capital Plan 2025-26'[Target]),
+			    FILTER(
+			        ALLSELECTED('Capital Plan 2025-26'),'Capital Plan 2025-26'[Accum]< MAX('Capital Plan 2025-26'[Accum])
+			    
+			    ))
+			```
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: f7490878-3a15-436b-989c-6b2965080823
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure '3-Year Budget Available' = [Target Increment]+[TargetAccum]-[ForecastAcum]
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: d21a3bbd-a32f-468c-bd54-fdc718839a85
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure Target+20 = ([TargetAccum]+[Target Increment])*0.2
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 72540818-f897-4d32-97cd-982bdec36aa7
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure '3-Year Budget Available + 20%' = [Target Increment]+[TargetAccum]+[Target+20]-[ForecastAcum]
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 8fba370e-834d-40be-813a-b955a4014239
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column 'Capital Project/Program by Name'
+		dataType: string
+		lineageTag: 7082edf6-f360-4cc1-b842-29837900e964
+		summarizeBy: none
+		sourceColumn: Capital Project/Program by Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Funding Classification'
+		dataType: string
+		lineageTag: 35e0c06e-036f-4640-ba4c-faa876219f7f
+		summarizeBy: none
+		sourceColumn: Funding Classification
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: string
+		lineageTag: 49fb870b-03ed-411f-85a8-3f8512f4f77b
+		summarizeBy: none
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Forecast
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: bab65dcc-b9f5-41e7-bf98-aeffc0b7b8d8
+		summarizeBy: sum
+		sourceColumn: Forecast
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column Target
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: e806e2d7-0cf2-4a42-a183-31816c91bd34
+		summarizeBy: sum
+		sourceColumn: Target
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column Accum
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eb25057d-6fcf-47f8-ba04-b4ef2e188e30
+		summarizeBy: none
+		sourceColumn: Accum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Target+20 - Operating' = 'Capital Plan 2025-26'[Target]*0.2
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: c9e03af6-40ea-4dcd-9d32-7c69d1e566c5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column 'Target+20 Total' = 'Capital Plan 2025-26'[Target]*1.2
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: e7fc5f69-39c3-4be2-ae04-8b25849e5515
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column 'Unallocated Budget - OP' = 'Capital Plan 2025-26'[Target]-'Capital Plan 2025-26'[Forecast]
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 7cdc4481-a2cc-4898-8dc9-470b4841adeb
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column 'Unallocated Budget +20 OP' = 'Capital Plan 2025-26'[Target+20 - Operating]+'Capital Plan 2025-26'[Target]-'Capital Plan 2025-26'[Forecast]
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 58df4d87-548d-4ed7-bba4-eed3d6531ea1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	partition 'Capital Plan 2025-26' = m
+		mode: import
+		source = ```
+				let
+				    Source = Excel.Workbook(Web.Contents("https://abgov.sharepoint.com/sites/PWAD13-PMBPS/PMPI/Biweekly%20Report%202024-2025%20(Project%20Server)-%20In%20Progress%20(New%20Year).xlsx"), null, true),
+				    #"Capital Plan 2025-26_Sheet" = Source{[Item="Capital Plan 2025-26",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Capital Plan 2025-26_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Column1", type text}, {"Column2", type text}, {"All $ values in $1,000s", type text}, {"Column4", type any}, {"Column5", type text}, {"Column6", type text}, {"Column7", type any}, {"Column8", type any}, {"Column9", type any}, {"Column10", type any}, {"Column11", type any}, {"Column12", type any}, {"Column13", type any}, {"Column14", type any}, {"Column15", type any}, {"Column16", type any}, {"Column17", type any}, {"Column18", type any}, {"Column19", type any}, {"Column21", type any}, {"Column22", type any}, {"Column23", type any}, {"Column24", type any}, {"Column25", type any}, {"Column26", type any}, {"Column27", type any}, {"Column28", type any}, {"Column29", type any}, {"Column30", type any}, {"Column31", type any}, {"Column32", type any}, {"Column33", type any}, {"Column34", type any}, {"Column35", type any}, {"Column36", type any}, {"Column37", type any}, {"Column38", type any}, {"Column39", type any}, {"Column40", type any}, {"Column41", type any}, {"Column42", type any}, {"Column43", type any}, {"Column44", type any}, {"Column45", type any}, {"Column46", type any}, {"Column47", type any}, {"Column48", type any}, {"Column49", type any}, {"Column50", type any}, {"Column51", type any}, {"Column52", type any}, {"Column53", type any}, {"Column54", type any}, {"Column55", type any}, {"Column56", type any}, {"Column57", type any}, {"Column58", type any}, {"Column59", type any}, {"Column60", type any}, {"Column61", type any}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Promoted Headers1",{"Capital Project/Program by Name", "Forecast 2025-26", "Forecast 2026-27", "Forecast 2027-28", "2025-26#(lf)Target", "2026-27#(lf)Target", "2027-28#(lf)Target", "2029-30#(lf)Target_5"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Other Columns",{{"Forecast 2025-26", Currency.Type}, {"Forecast 2026-27", Currency.Type}, {"Forecast 2027-28", Currency.Type}, {"2025-26#(lf)Target", Currency.Type}, {"2026-27#(lf)Target", Currency.Type}, {"2027-28#(lf)Target", Currency.Type}, {"2029-30#(lf)Target_5", Currency.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type1", each ([#"Capital Project/Program by Name"] = "3.3 Government Owned Facilities Preservation")),
+				    #"Added Index" = Table.AddIndexColumn(#"Filtered Rows", "Index", 0, 1, Int64.Type),
+				    #"Added Conditional Column" = Table.AddColumn(#"Added Index", "Funding Classification", each if [Index] = 0 then "Capital Investment" else if [Index] = 1 then "Operating" else null),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Added Conditional Column",{"Index"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"2025-26#(lf)Target", "2025-26 Target"}, {"2026-27#(lf)Target", "2026-27 Target"}, {"2027-28#(lf)Target", "2027-28 Target"}, {"Forecast 2027-28", "2027-28 Forecast"}, {"Forecast 2026-27", "2026-27 Forecast"}, {"Forecast 2025-26", "2025-26 Forecast"}, {"2029-30#(lf)Target_5", "2029-30 Target"}}),
+				    #"Multiplied Column5" = Table.TransformColumns(#"Renamed Columns", {{"2025-26 Forecast", each _ * 1000, Currency.Type}}),
+				    #"Multiplied Column6" = Table.TransformColumns(#"Multiplied Column5", {{"2026-27 Forecast", each _ * 1000, Currency.Type}}),
+				    #"Multiplied Column7" = Table.TransformColumns(#"Multiplied Column6", {{"2027-28 Forecast", each _ * 1000, Currency.Type}}),
+				    #"Multiplied Column8" = Table.TransformColumns(#"Multiplied Column7", {{"2025-26 Target", each _ * 1000, type number}}),
+				    #"Multiplied Column9" = Table.TransformColumns(#"Multiplied Column8", {{"2026-27 Target", each _ * 1000, Currency.Type}}),
+				    #"Multiplied Column10" = Table.TransformColumns(#"Multiplied Column9", {{"2027-28 Target", each _ * 1000, Currency.Type}}),
+				    // New line creation with all table lines
+				
+				    NewLine = Record.FromList(
+				        {"Pending"} & List.Repeat({null}, Table.ColumnCount(#"Multiplied Column10") - 1),
+				        Table.ColumnNames(#"Multiplied Column10")
+				    ),
+				
+				   
+				    // Insert new line on the first row
+				    #"InsertRow" = Table.InsertRows(#"Multiplied Column10", 0, {NewLine}),
+				    #"Unpivoted Columns" = Table.UnpivotOtherColumns(InsertRow, {"Capital Project/Program by Name", "Funding Classification"}, "Attribute", "Value"),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Unpivoted Columns", "Attribute", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"Attribute.1", "Attribute.2"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Attribute.1", type text}, {"Attribute.2", type text}, {"Value", Currency.Type}}),
+				    #"Pivoted Column" = Table.Pivot(#"Changed Type2", List.Distinct(#"Changed Type2"[Attribute.2]), "Attribute.2", "Value", List.Sum),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Pivoted Column",{{"Attribute.1", "Fiscal Year"}}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Renamed Columns1",{{"Forecast", Currency.Type}, {"Target", Currency.Type}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type3", "Accum", each if [Fiscal Year] = "2025-26" then #date(2025, 1, 1) else if [Fiscal Year] = "2026-27" then #date(2026, 1, 1) else if [Fiscal Year] = "2027-28" then #date(2027, 1, 1) else if [Fiscal Year] = "Extra-20%" then #date(2028, 1, 1) else ""),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Added Custom",{{"Accum", type date}})
+				in
+				    #"Changed Type4"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

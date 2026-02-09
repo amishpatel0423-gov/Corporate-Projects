@@ -1,0 +1,318 @@
+table UniformatCode_with_examples_systemgroup
+	lineageTag: e1ebfee3-f650-4cc5-a7a4-e6ec858eb3d2
+
+	column Name
+		dataType: string
+		lineageTag: df78de9e-80b1-4ae0-b1d2-e9d198f9e89d
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System Group'
+		dataType: string
+		lineageTag: 3e854e9f-9f8c-45e8-b14e-49240c25e1bb
+		summarizeBy: none
+		sourceColumn: System Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uniformat
+		dataType: string
+		lineageTag: 19ad8037-e52c-47f0-8c46-684c2f859c64
+		summarizeBy: none
+		sourceColumn: Uniformat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Examples
+		dataType: string
+		lineageTag: 7bfc96cf-3f64-4e4f-8703-a275f4022eeb
+		summarizeBy: none
+		sourceColumn: Examples
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Cost'
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 02c930e4-82e4-41c3-8509-8d8e6db33fac
+		summarizeBy: sum
+		sourceColumn: Unit Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column Currency
+		dataType: string
+		lineageTag: ea668a2c-ca02-4bc5-a732-506c4a4a4de5
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Of Measure'
+		dataType: string
+		lineageTag: f50dc360-db4e-4af9-b74e-1d6506b960e9
+		summarizeBy: none
+		sourceColumn: Unit Of Measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lifetime
+		dataType: double
+		lineageTag: ffeef6fa-3a9b-4dee-88de-1407c9c41e4e
+		summarizeBy: sum
+		sourceColumn: Lifetime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '% Renew'
+		dataType: double
+		lineageTag: f153f18d-ea4f-4fc8-be61-f18db441285c
+		summarizeBy: sum
+		sourceColumn: % Renew
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Default Quantity'
+		dataType: double
+		lineageTag: b45aa04d-96a3-4b5b-a3b2-8472bb9a7d0e
+		summarizeBy: sum
+		sourceColumn: Default Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Created Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e373d704-eb37-4c4f-b1cf-6850f12c23dc
+		summarizeBy: none
+		sourceColumn: Created Date
+
+		variation Variation
+			isDefault
+			relationship: 6b3b604d-7faa-4ecb-bae5-ea71e98f5102
+			defaultHierarchy: LocalDateTable_20fd1d93-64ff-4f34-a186-6d59e97fbba5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9e9a71fc-179f-4183-b3c2-d8cd55795f8d
+		summarizeBy: none
+		sourceColumn: Modified Date
+
+		variation Variation
+			isDefault
+			relationship: 838168be-a3fa-4035-b01e-6ea42af8ff6c
+			defaultHierarchy: LocalDateTable_887c752c-cb62-4d65-a680-12de7a118b49.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: string
+		lineageTag: 68f86822-de02-46a5-9230-32992f7ce658
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Color Tag'
+		dataType: string
+		lineageTag: 8441c5f1-506b-40e5-86aa-2ee9657bb3c2
+		summarizeBy: none
+		sourceColumn: Color Tag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Compliance Asset Id'
+		dataType: string
+		lineageTag: b8f579bc-4857-4a3d-b673-ef1b805ac88b
+		summarizeBy: none
+		sourceColumn: Compliance Asset Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: a843441d-4588-4c01-b1f3-f2b69a6b7e02
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Content Type'
+		dataType: string
+		lineageTag: dfe6773f-1ede-4e52-ab18-d64bb5f7049b
+		summarizeBy: none
+		sourceColumn: Content Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a96b05fc-4a51-4459-acd7-6e1a72df2433
+		summarizeBy: none
+		sourceColumn: Modified
+
+		variation Variation
+			isDefault
+			relationship: 02cea737-35b1-4bd8-b226-63272452a9f7
+			defaultHierarchy: LocalDateTable_d9055280-8ff6-4862-87a0-b193113b5bc4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ff3ff00f-d3a2-4150-9dc7-736724370ef8
+		summarizeBy: none
+		sourceColumn: Created
+
+		variation Variation
+			isDefault
+			relationship: c5de3978-b76f-4b1b-8cc3-7294114bb0fe
+			defaultHierarchy: LocalDateTable_bd7aedd4-ac00-4831-b456-25d31daf789f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By'
+		dataType: string
+		lineageTag: 3dce1195-9030-4ae0-9bc8-bfc194193a06
+		summarizeBy: none
+		sourceColumn: Created By
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified By'
+		dataType: string
+		lineageTag: 1b1b000a-475b-4850-a276-d9cc4f7e26e8
+		summarizeBy: none
+		sourceColumn: Modified By
+
+		annotation SummarizationSetBy = Automatic
+
+	column Version
+		dataType: string
+		lineageTag: e57f1f31-4d16-429f-b1f1-3e9c7109b772
+		summarizeBy: none
+		sourceColumn: Version
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attachments
+		dataType: string
+		lineageTag: caa448e3-1f56-423b-b36d-4bae1af8b8f4
+		summarizeBy: none
+		sourceColumn: Attachments
+
+		annotation SummarizationSetBy = Automatic
+
+	column Edit
+		dataType: string
+		lineageTag: 3ad3bffe-eff7-48b5-9b2d-b95cbc84fad8
+		summarizeBy: none
+		sourceColumn: Edit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 2f468ee4-7e40-4514-9482-5b17d5571139
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Child Count'
+		dataType: string
+		lineageTag: 22e76cb3-f491-453e-bee7-910b6d2c164c
+		summarizeBy: none
+		sourceColumn: Item Child Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Folder Child Count'
+		dataType: string
+		lineageTag: 34354415-d056-466f-b45f-be202c4f99f6
+		summarizeBy: none
+		sourceColumn: Folder Child Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Label setting'
+		dataType: string
+		lineageTag: c731e54e-820d-45b7-9cb6-0d06d6af014f
+		summarizeBy: none
+		sourceColumn: Label setting
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Retention label'
+		dataType: string
+		lineageTag: 509b9fc7-5e7f-46ac-ae85-da55d7883d77
+		summarizeBy: none
+		sourceColumn: Retention label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Retention label Applied'
+		dataType: string
+		lineageTag: cc32b760-813b-4297-a03e-9ea97b1a59f8
+		summarizeBy: none
+		sourceColumn: Retention label Applied
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Label applied by'
+		dataType: string
+		lineageTag: 3805830e-58c9-4751-b644-41d92b2a3429
+		summarizeBy: none
+		sourceColumn: Label applied by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item is a Record'
+		dataType: string
+		lineageTag: 869ec6d5-5f03-4240-a78e-a7d02da101c6
+		summarizeBy: none
+		sourceColumn: Item is a Record
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'App Created By'
+		dataType: string
+		lineageTag: d667df19-d7a1-4d93-a576-be7099251f7a
+		summarizeBy: none
+		sourceColumn: App Created By
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'App Modified By'
+		dataType: string
+		lineageTag: 4bdfaf9d-d180-4f9c-9316-c5e1a9f780ea
+		summarizeBy: none
+		sourceColumn: App Modified By
+
+		annotation SummarizationSetBy = Automatic
+
+	partition UniformatCode_with_examples_systemgroup = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Tables("https://abgov.sharepoint.com/sites/S500D13-PMBBA", [Implementation="2.0", ViewMode="All"]),
+				    #"528a4c2d-68c5-44e8-a6f8-22e6fc409c73" = Source{[Id="528a4c2d-68c5-44e8-a6f8-22e6fc409c73"]}[Items]
+				in
+				    #"528a4c2d-68c5-44e8-a6f8-22e6fc409c73"
+

@@ -1,0 +1,33 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "DF_PROD_DV_Building_List",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "gatewayObjectId": "4f6dd8c5-47b3-49cc-9943-835282b8662b",
+  "queriesMetadata": {
+    "PROD_DV_Building_List": {
+      "queryId": "152a46b5-31e9-4b1b-a370-989ace6f24ec",
+      "queryName": "PROD_DV_Building_List",
+      "loadEnabled": false
+    },
+    "PROD_DV_Building_List_DataDestination": {
+      "queryId": "d9953d91-52f1-4f57-9cf9-767af782140a",
+      "queryName": "PROD_DV_Building_List_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "org509f7c88.crm3.dynamics.com",
+      "kind": "CommonDataService",
+      "connectionId": "{\"ClusterId\":\"4f6dd8c5-47b3-49cc-9943-835282b8662b\",\"DatasourceId\":\"828c3aa0-40c8-4671-8b60-370ac9fe630c\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"4f6dd8c5-47b3-49cc-9943-835282b8662b\",\"DatasourceId\":\"8db7cac1-04bd-4eb0-a9fe-9aea009f91d8\"}"
+    }
+  ]
+}

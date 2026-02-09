@@ -1,0 +1,250 @@
+table requirementlist
+	lineageTag: cdb65f11-6c06-44e4-8c70-e8eb4db1e7bb
+
+	column Portfolio_Name
+		dataType: string
+		lineageTag: 63624539-4bfe-4e72-a124-815a12283de8
+		summarizeBy: none
+		sourceColumn: Portfolio_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Property_Name
+		dataType: string
+		lineageTag: f0eb30ca-88c4-4b37-bfd4-2e63fee95052
+		summarizeBy: none
+		sourceColumn: Property_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_ID
+		dataType: string
+		lineageTag: 38a2bdb4-8e6f-48b4-8a83-a51054cf0092
+		summarizeBy: none
+		sourceColumn: Building_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Use
+		dataType: string
+		lineageTag: a7e3f9ce-b54a-4ca7-8754-c8a73584f978
+		summarizeBy: none
+		sourceColumn: Use
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Group
+		dataType: string
+		lineageTag: ba1bd4f2-d6af-4ae7-924b-686695735bb4
+		summarizeBy: none
+		sourceColumn: System_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Linked_System
+		dataType: string
+		lineageTag: 56d758c6-94f1-41c9-b1d4-3256a39c4d0f
+		summarizeBy: none
+		sourceColumn: Linked_System
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uniformat
+		dataType: string
+		lineageTag: 8f145d28-7b66-4287-91b2-ba48e71c346d
+		summarizeBy: none
+		sourceColumn: Uniformat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Score
+		dataType: int64
+		formatString: 0
+		lineageTag: ed9eec78-c11b-42f4-be07-9c4fa5c059e4
+		summarizeBy: sum
+		sourceColumn: Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_EID
+		dataType: string
+		lineageTag: 5c3df6cf-837a-461a-a0fc-27ba4192b998
+		summarizeBy: none
+		sourceColumn: Requirement_EID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_Name
+		dataType: string
+		lineageTag: fded7364-c834-4890-8d92-fea54b8feba6
+		summarizeBy: none
+		sourceColumn: Requirement_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 04fcea3f-c82a-4446-bf12-6e574ea8d85a
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsRenewal
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 089d45b7-27be-4032-97e8-fad272fdd0f8
+		summarizeBy: none
+		sourceColumn: IsRenewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectID
+		dataType: string
+		lineageTag: 8a744113-bc90-44d1-81a1-f2f641c92d5a
+		summarizeBy: none
+		sourceColumn: RAPProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectStatus
+		dataType: string
+		lineageTag: 3114ae76-4601-4496-9407-dd09bcc7e821
+		summarizeBy: none
+		sourceColumn: RAPProjectStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppStatus
+		dataType: string
+		lineageTag: 21a5093d-eb7b-455d-a78b-65e96b9ec9b7
+		summarizeBy: none
+		sourceColumn: AppStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column planned
+		dataType: string
+		lineageTag: 326713b5-4954-4809-a227-766a29ef34b7
+		summarizeBy: none
+		sourceColumn: planned
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedCost
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fad78fc-cf1d-418b-88f3-76e314ee3d9e
+		summarizeBy: sum
+		sourceColumn: EstimatedCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostFactoredTPC
+		dataType: int64
+		formatString: 0
+		lineageTag: 4fd63e52-39dd-4cc2-a765-4cd1e5086190
+		summarizeBy: sum
+		sourceColumn: CostFactoredTPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 0704633d-1893-4e3b-9cf9-2ec652672355
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: 26ad4143-532c-47cc-876c-bd0aa4d6ceac
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column FM
+		dataType: string
+		lineageTag: 29e281b7-feef-487f-88d6-696276c227da
+		summarizeBy: none
+		sourceColumn: FM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FC
+		dataType: string
+		lineageTag: 741a3aee-a3e4-4990-acf4-4c68e223554e
+		summarizeBy: none
+		sourceColumn: FC
+
+		annotation SummarizationSetBy = Automatic
+
+	column TPM
+		dataType: string
+		lineageTag: 8881797b-4b46-4773-9332-307de03825c4
+		summarizeBy: none
+		sourceColumn: TPM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuttoffscore
+		dataType: string
+		lineageTag: ae95a6f8-605e-48f7-910d-c70aa1fe13b1
+		summarizeBy: none
+		sourceColumn: Cuttoffscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column Includes_CI
+		dataType: string
+		lineageTag: 11fe82a5-cbc5-4272-8d84-d53cb58cedb6
+		summarizeBy: none
+		sourceColumn: Includes_CI
+
+		annotation SummarizationSetBy = Automatic
+
+	column CI_Only
+		dataType: string
+		lineageTag: bc70a968-3028-4ef3-bd24-8fa2432cb365
+		summarizeBy: none
+		sourceColumn: CI_Only
+
+		annotation SummarizationSetBy = Automatic
+
+	column Includes_Renewal
+		dataType: string
+		lineageTag: 7128b5e1-4c4e-4509-8898-4ce2f7a0b5eb
+		summarizeBy: none
+		sourceColumn: Includes_Renewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Action_FY
+		dataType: int64
+		formatString: 0
+		lineageTag: cdadab1c-8d7c-4ac5-9799-be60cd6c3fd7
+		summarizeBy: sum
+		sourceColumn: Action_FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_Priority_Detail
+		dataType: string
+		lineageTag: 3e8aef44-d60a-4a93-9aa3-826ff19a4585
+		summarizeBy: none
+		sourceColumn: Building_Priority_Detail
+
+		annotation SummarizationSetBy = Automatic
+
+	partition requirementlist = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("ayolkk43v7cufc7vhq5xweefbm-jbr53vt4fwpuviijf24dh26fny.datawarehouse.fabric.microsoft.com"),
+				    PMB_Data_Dev = Source{[Name="PMB_Data_Dev"]}[Data],
+				    dbo_requirementlist = PMB_Data_Dev{[Schema="dbo",Item="requirementlist"]}[Data]
+				in
+				    dbo_requirementlist
+

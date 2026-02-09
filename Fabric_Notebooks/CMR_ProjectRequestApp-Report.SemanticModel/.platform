@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CMR_ProjectRequestApp-Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a337e336-0276-8ea0-48af-df181ddb78e0"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "da22fa98-1786-4c8e-ab41-fe4087a5bfda",
+          "workspaceId": "d6dd6348-2d7c-4a9f-a109-2eb833ebc56e",
+          "notifyOption": "NoNotification",
+          "dataflowType": "Dataflow-Gen2"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "RAP_SSRS",
+        "dependsOn": []
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "c4e9629b-a009-496d-8241-ada7134535f1",
+          "workspaceId": "d6dd6348-2d7c-4a9f-a109-2eb833ebc56e",
+          "notifyOption": "NoNotification",
+          "dataflowType": "Dataflow-Gen2"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "VFA_SSRS",
+        "dependsOn": [
+          {
+            "activity": "RAP_SSRS",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "fd267932-58ae-4518-8e76-147e1396f6f2",
+          "workspaceId": "d6dd6348-2d7c-4a9f-a109-2eb833ebc56e",
+          "notifyOption": "NoNotification",
+          "dataflowType": "Dataflow-Gen2"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Building_List",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "d8e53608-09fe-8dfd-4331-9845cb3329cb",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "CMRExternalDataSource",
+        "dependsOn": [
+          {
+            "activity": "VFA_SSRS",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

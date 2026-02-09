@@ -1,0 +1,29 @@
+table Last_Refreshed
+	lineageTag: c136d936-280b-4777-9214-a1bfdecb056f
+
+	column Last_Refreshed
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a3589c66-7eb6-4455-9537-ebdfa9d61532
+		summarizeBy: none
+		sourceColumn: Last_Refreshed
+
+		variation Variation
+			isDefault
+			relationship: 64ac1651-64c3-4f6c-a79a-c1cf559c227f
+			defaultHierarchy: LocalDateTable_89bc7808-f7f5-4501-81ce-92ede602df47.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Last_Refreshed = m
+		mode: import
+		queryGroup: Reporting_Tables
+		source =
+				let
+				    RefreshDateTimeUTC = DateTimeZone.UtcNow(),
+				    CalgaryTime = DateTimeZone.SwitchZone(RefreshDateTimeUTC, -6)
+				in
+				    CalgaryTime
+
+	annotation PBI_ResultType = DateTimeZone
+

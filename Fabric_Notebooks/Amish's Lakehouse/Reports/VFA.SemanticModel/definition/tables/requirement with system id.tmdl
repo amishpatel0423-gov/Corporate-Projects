@@ -1,0 +1,203 @@
+table 'requirement with system id'
+	lineageTag: 55eaddd2-60bc-4cdb-b2ab-dd2b4fabc4aa
+
+	measure 'Total Requirements' = COALESCE( COUNTROWS( 'requirement with system id' ), 0 )
+		formatString: 0
+		lineageTag: 544524b2-954d-48be-9f53-93c42b5fc83c
+
+	column 'Asset - Portfolio Name'
+		dataType: string
+		lineageTag: 16ceeed5-5aee-42da-8a1c-044b4af3d282
+		summarizeBy: none
+		sourceColumn: Asset - Portfolio Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset - Asset Name'
+		dataType: string
+		lineageTag: 5bc90842-d66c-415a-a589-0d60b8ebeee3
+		summarizeBy: none
+		sourceColumn: Asset - Asset Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset - Number'
+		dataType: string
+		lineageTag: a6b610c8-e7d8-4820-b6f4-02d6270f13f1
+		summarizeBy: none
+		sourceColumn: Asset - Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset - Building Priority Detail'
+		dataType: string
+		lineageTag: 2240cd75-b72b-40e7-a975-2f3a12a346fe
+		summarizeBy: none
+		sourceColumn: Asset - Building Priority Detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset - Use'
+		dataType: string
+		lineageTag: ee12e53f-1839-414f-9f48-40c20b27f9af
+		summarizeBy: none
+		sourceColumn: Asset - Use
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset - Trailer/Portable Use'
+		dataType: string
+		lineageTag: 70f1fdd9-e27c-497e-a00d-56d4ec35fc3d
+		summarizeBy: none
+		sourceColumn: Asset - Trailer/Portable Use
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset - FCI'
+		dataType: double
+		lineageTag: 969f3030-39ea-44fc-9941-c362f88c1023
+		summarizeBy: sum
+		sourceColumn: Asset - FCI
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Requirement - Linked System'
+		dataType: string
+		lineageTag: 31560a17-99ef-45dc-8e9e-ccf97fbf3d87
+		summarizeBy: none
+		sourceColumn: Requirement - Linked System
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - Category'
+		dataType: string
+		lineageTag: bfb6aea6-71f8-4bb8-afc4-c2d6e6449998
+		summarizeBy: none
+		sourceColumn: Requirement - Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - Requirement Name'
+		dataType: string
+		lineageTag: c5363905-191f-4ea6-be2c-2ab277cf49a3
+		summarizeBy: none
+		sourceColumn: Requirement - Requirement Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - Estimated Cost'
+		dataType: int64
+		formatString: 0
+		lineageTag: 746a5fe2-cdd6-4615-a023-59a3593b23f9
+		summarizeBy: sum
+		sourceColumn: Requirement - Estimated Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - Priority'
+		dataType: string
+		lineageTag: f8b24117-76ac-4fca-85ad-5a7e7109fa0d
+		summarizeBy: none
+		sourceColumn: Requirement - Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - Impact'
+		dataType: string
+		lineageTag: d97e9349-a10e-48d3-887f-5bfc4e807e5f
+		summarizeBy: none
+		sourceColumn: Requirement - Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - RAP Project ID'
+		dataType: string
+		lineageTag: dfd288c2-5077-437e-9cd0-e99f9cf4289e
+		summarizeBy: none
+		sourceColumn: Requirement - RAP Project ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - ID'
+		dataType: string
+		lineageTag: 4291cbf4-e7bc-4554-87e4-c01e12b3773c
+		summarizeBy: none
+		sourceColumn: Requirement - ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Asset - City'
+		dataType: string
+		lineageTag: b1f49619-c96c-4139-9d9d-eebcfe3ce88f
+		summarizeBy: none
+		sourceColumn: Asset - City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - System Group'
+		dataType: string
+		lineageTag: b61270e6-335d-4233-ac02-9b5e26aa89b9
+		summarizeBy: none
+		sourceColumn: Requirement - System Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - RAP Project Status'
+		dataType: string
+		lineageTag: f561df95-dfa6-4568-85cf-d7851963c224
+		summarizeBy: none
+		sourceColumn: Requirement - RAP Project Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - Ranking #2'
+		dataType: string
+		lineageTag: 5c3a445c-a9fb-4d67-b611-bd97cc8f2e5b
+		summarizeBy: none
+		sourceColumn: Requirement - Ranking #2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - Renewal'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5a6d5840-daf8-45c0-ac8e-aa3a08915577
+		summarizeBy: none
+		sourceColumn: Requirement - Renewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - Action FY'
+		dataType: int64
+		formatString: 0
+		lineageTag: 35cafbd6-e68e-407a-afaf-982dd28dc05e
+		summarizeBy: sum
+		sourceColumn: Requirement - Action FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requirement - System-ID'
+		dataType: string
+		lineageTag: e475e3f3-f5ca-4528-9799-2a87bc5e90b6
+		summarizeBy: none
+		sourceColumn: Requirement - System-ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'requirement with system id' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\amish.patel\Downloads\VFAwithSystemID.xlsx"), null, true),
+				    #"result (63)_Sheet" = Source{[Item="result (63)",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"result (63)_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Asset - Portfolio Name", type text}, {"Asset - Asset Name", type text}, {"Asset - Number", type text}, {"Asset - Building Priority Detail", type text}, {"Asset - Use", type text}, {"Asset - Trailer/Portable Use", type any}, {"Asset - FCI", type number}, {"Requirement - Linked System", type text}, {"Requirement - Category", type text}, {"Requirement - Requirement Name", type text}, {"Requirement - Estimated Cost", Int64.Type}, {"Requirement - Priority", type text}, {"Requirement - Impact", type text}, {"Requirement - RAP Project ID", type text}, {"Requirement - ID", type text}, {"Asset - City", type text}, {"Requirement - System Group", type text}, {"Requirement - RAP Project Status", type text}, {"Requirement - Ranking #2", type text}, {"Requirement - Renewal", type logical}, {"Requirement - Action FY", Int64.Type}, {"Requirement - System-ID", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

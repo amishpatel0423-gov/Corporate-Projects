@@ -1,0 +1,83 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Director Dashboard",
+        "type": "PBISemanticModelRefresh",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "method": "post",
+          "waitOnCompletion": true,
+          "commitMode": "Transactional",
+          "operationType": "SemanticModelRefresh",
+          "groupId": "d6dd6348-2d7c-4a9f-a109-2eb833ebc56e",
+          "datasetId": "f9d692c4-0347-43cf-bb03-567a4abce6f0"
+        },
+        "externalReferences": {
+          "connection": "c9de6028-6097-4378-bd22-ac703ae2e71c"
+        }
+      },
+      {
+        "name": "Success",
+        "type": "Office365Email",
+        "dependsOn": [
+          {
+            "activity": "Director Dashboard",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "to": "amish.patel@gov.ab.ca",
+          "subject": "Director Dashboard - Success",
+          "body": "<p>Director Dashboard was refreshed successfully</p>"
+        },
+        "externalReferences": {
+          "connection": "66fc72b1-5ccb-47c4-8e4c-9ffae03532e3"
+        }
+      },
+      {
+        "name": "Failed",
+        "type": "Office365Email",
+        "dependsOn": [
+          {
+            "activity": "Director Dashboard",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "to": "amish.patel@gov.ab.ca",
+          "subject": "Director Dashboard - Failed",
+          "body": "<p>Director Dashboard was refresh failed.</p>"
+        },
+        "externalReferences": {
+          "connection": "66fc72b1-5ccb-47c4-8e4c-9ffae03532e3"
+        }
+      }
+    ]
+  }
+}

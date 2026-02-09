@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_PROD_DV_Building_List",
+    "description": "Connects to the INFRA-PR-PM-SHARED-PROD dataverse table for the building list data. Authentication connection in the query definition only works with a domain account not the service account. The building list is filtered by owner Infrastructure and only contains the Asset ID and Location and Owner columns. See query definition for settings and authentication. "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a463f76a-7b96-a0f3-4fdc-c13e98354f0e"
+  }
+}

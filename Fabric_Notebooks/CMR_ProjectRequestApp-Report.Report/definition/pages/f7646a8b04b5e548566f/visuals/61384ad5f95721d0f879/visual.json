@@ -1,0 +1,257 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "61384ad5f95721d0f879",
+  "position": {
+    "x": 0,
+    "y": 96,
+    "z": 0,
+    "height": 624,
+    "width": 1280,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request ID"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request ID",
+              "nativeQueryRef": "Request ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_projectsummarydata"
+                    }
+                  },
+                  "Property": "RAP ID"
+                }
+              },
+              "queryRef": "pmbcp_projectsummarydata.RAP ID",
+              "nativeQueryRef": "RAP ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Title"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Title",
+              "nativeQueryRef": "Title"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Request Status"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Request Status",
+              "nativeQueryRef": "Request Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_projectsummarydata"
+                    }
+                  },
+                  "Property": "Priority Score (number)"
+                }
+              },
+              "queryRef": "Sum(pmbcp_projectsummarydata.Priority Score (number))",
+              "nativeQueryRef": "Priority Score",
+              "displayName": "Priority Score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Urgent Request"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Urgent Request",
+              "nativeQueryRef": "Urgent Request"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrrequestprocess"
+                    }
+                  },
+                  "Property": "Days in Current Stage"
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrrequestprocess.Days in Current Stage)",
+              "nativeQueryRef": "Days in Current Stage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Facilities Manager Responsible"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Facilities Manager Responsible",
+              "nativeQueryRef": "Facilities Manager",
+              "displayName": "Facilities Manager"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Director Responsible"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Director Responsible",
+              "nativeQueryRef": "Director",
+              "displayName": "Director"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Initiator Email"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Initiator Email",
+              "nativeQueryRef": "Initiator Email"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Link to Record"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Link to Record",
+              "nativeQueryRef": "Link to Record"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "pmbcp_cmrprojreqmain"
+                  }
+                },
+                "Property": "Request ID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "206.2367967092083D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_cmrprojreqmain.Title"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "173.82562625112192D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "pmbcp_cmrprojreqmain.Request Status"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "141.69230769230768D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(pmbcp_cmrrequestprocess.Days in Current Stage)"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "urlIcon": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,93 @@
+table DateTable
+	lineageTag: a2f9edbb-de7e-43aa-bdde-27bed6831f02
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 5180981a-deca-48c9-981d-f0a92d6bffe9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: c13026e8-cca6-4c51-a887-b56c18b2ccc4
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		formatString: 0
+		lineageTag: cc848e6a-5060-41bf-8f9d-a862f0c22ce2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		lineageTag: d201703a-1596-4bec-aad8-73f4d00081b7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Month
+		lineageTag: 83ed2a2a-8963-4280-97e2-1d2e24bbbd5e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year-Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		lineageTag: a78c6d27-8cb5-4b68-92bc-4609f37bb75a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fiscal Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		lineageTag: a4a0500e-f862-4ef2-8ec4-160ccc8c37fa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fiscal Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable = calculated
+		mode: import
+		source = ```
+				
+				    ADDCOLUMNS (
+				        CALENDAR (DATE(2020, 1, 1), DATE(2040, 12, 31)),
+				        "Year", YEAR([Date]),
+				        "Month Number", MONTH([Date]),
+				        "Month Name", FORMAT([Date], "MMMM"),
+				        "Year-Month", FORMAT([Date], "YYYY-MM"),
+				        "Fiscal Year", 
+				            IF(MONTH([Date]) >= 4, 
+				                YEAR([Date]) & "-" & RIGHT(YEAR([Date]) + 1, 2), 
+				                YEAR([Date]) - 1 & "-" & RIGHT(YEAR([Date]), 2)),
+				        "Fiscal Quarter", 
+				            SWITCH(
+				                TRUE(),
+				                MONTH([Date]) >= 4 && MONTH([Date]) <= 6, "Q1",
+				                MONTH([Date]) >= 7 && MONTH([Date]) <= 9, "Q2",
+				                MONTH([Date]) >= 10 && MONTH([Date]) <= 12, "Q3",
+				                MONTH([Date]) >= 1 && MONTH([Date]) <= 3, "Q4"
+				            )
+				    )
+				
+				
+				```
+
+	annotation PBI_Id = d7389483095f43fda58ee00ce50ee191
+

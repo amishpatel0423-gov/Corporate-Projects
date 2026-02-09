@@ -1,0 +1,42 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "VFA_SSRS",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "gatewayObjectId": "4f6dd8c5-47b3-49cc-9943-835282b8662b",
+  "queriesMetadata": {
+    "VFA_SSRS": {
+      "queryId": "32d23426-42ab-4366-8e34-857bfeeb57b0",
+      "queryName": "VFA_SSRS",
+      "loadEnabled": false
+    },
+    "Building_List": {
+      "queryId": "7bbe55f0-0bee-4e2d-8e7a-89df471ef4dc",
+      "queryName": "Building_List"
+    },
+    "VFA_SSRS_DataDestination": {
+      "queryId": "b678f1a2-c253-41b2-b21b-76be6b3583fc",
+      "queryName": "VFA_SSRS_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://rpt.infrastructure.alberta.ca/ReportServer?%2FRAP-PM%2FVFA-LinkedRequirments&rs%3ACommand=Render&rs%3AFormat=csv&rc%3AItemPath=Tablix1",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"4f6dd8c5-47b3-49cc-9943-835282b8662b\",\"DatasourceId\":\"7bd2dc57-3114-4158-b262-20ec613ff501\"}"
+    },
+    {
+      "path": "https://rpt.infrastructure.alberta.ca/ReportServer?%2FRAP-PM%2FVFA-LinkedRequirments&rs%3ACommand=Render&rs%3AFormat=ATOM&rc%3AItemPath=Tablix1",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"4f6dd8c5-47b3-49cc-9943-835282b8662b\",\"DatasourceId\":\"4723e2f8-7539-4639-b0da-97c5cc764b43\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"4f6dd8c5-47b3-49cc-9943-835282b8662b\",\"DatasourceId\":\"8db7cac1-04bd-4eb0-a9fe-9aea009f91d8\"}"
+    }
+  ]
+}

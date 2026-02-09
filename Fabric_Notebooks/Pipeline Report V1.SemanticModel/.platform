@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Pipeline Report V1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2e508cb4-116d-beb3-46a6-0d20b29fd7b2"
+  }
+}

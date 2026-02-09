@@ -1,0 +1,95 @@
+cultureInfo en-CA
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "pmbcp_cmrprojreqmain.request_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "PROD_cmrprojreqmain",
+			          "ConceptualProperty": "Request ID"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Project Count": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "pmbcp_cmrprojreqmain.total_requested__pending": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "PROD_cmrprojreqmain",
+			          "ConceptualProperty": "Total Requested - Pending"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Pending Funding Classification": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "pmbcp_cmrprojreqmain.last_refreshed": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "PROD_cmrprojreqmain",
+			          "ConceptualProperty": "Last Refreshed"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Data Current as of": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "pmbcp_cmrprojreqmain.pipeline_projects": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "PROD_cmrprojreqmain",
+			          "ConceptualProperty": "Pipeline Projects"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Projects in Pipeline": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

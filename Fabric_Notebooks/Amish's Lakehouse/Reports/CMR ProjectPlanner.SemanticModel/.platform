@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CMR ProjectPlanner"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7a74ebff-6b3a-b3df-4f52-dc845ab08e1e"
+  }
+}

@@ -1,0 +1,312 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.64\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Repeat Requirements",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "13020a3debf0cff99a29",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0802b58308b1cb0b32a0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":462.97872340425533,\"y\":5.835866261398176,\"z\":4001,\"width\":238.29787234042556,\"height\":105.04559270516718,\"tabOrder\":4001}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"requirementlist.Action_FY\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"requirementlist\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Action_FY\"},\"Name\":\"requirementlist.Action_FY\",\"NativeReferenceName\":\"Action_FY\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"numericStart\":{\"expr\":{\"Literal\":{\"Value\":\"2020D\"}}},\"numericEnd\":{\"expr\":{\"Literal\":{\"Value\":\"2030D\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"requirementlist\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Action_FY\"}},\"Right\":{\"Literal\":{\"Value\":\"2020D\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":4,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Action_FY\"}},\"Right\":{\"Literal\":{\"Value\":\"2030D\"}}}}}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 105.05,
+          "width": 238.30,
+          "x": 462.98,
+          "y": 5.84,
+          "z": 4001.00
+        },
+        {
+          "config": "{\"name\":\"169c6a5aaf0700921df2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":861.7629179331308,\"y\":0,\"z\":3000,\"width\":127.4164133738602,\"height\":118.66261398176292,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"requirementlist.IsRenewal\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"requirementlist\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"IsRenewal\"},\"Name\":\"requirementlist.IsRenewal\",\"NativeReferenceName\":\"IsRenewal\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 118.66,
+          "width": 127.42,
+          "x": 861.76,
+          "y": 0.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"7a4d92ce384b54911aac\",\"layouts\":[{\"id\":0,\"position\":{\"x\":701.4519906323185,\"y\":0,\"z\":2000,\"width\":160.87431693989072,\"height\":110.91334894613584,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"repeatrequirements.appearance\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"repeatrequirements\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"appearance\"},\"Name\":\"repeatrequirements.appearance\",\"NativeReferenceName\":\"appearance\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 110.91,
+          "width": 160.87,
+          "x": 701.45,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"a7724bc05b6d12264c63\",\"layouts\":[{\"id\":0,\"position\":{\"x\":988.2279469164715,\"y\":0,\"z\":4000,\"width\":291.77205308352853,\"height\":104.91803278688525,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"requirementlist.Score\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"requirementlist\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Score\"},\"Name\":\"requirementlist.Score\",\"NativeReferenceName\":\"Score\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"numericStart\":{\"expr\":{\"Literal\":{\"Value\":\"85D\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"requirementlist\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Score\"}},\"Right\":{\"Literal\":{\"Value\":\"85D\"}}}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 104.92,
+          "width": 291.77,
+          "x": 988.23,
+          "y": 0.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"b4a0e193db79887d1429\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.992193598750976,\"y\":118.90710382513662,\"z\":0,\"width\":1270.0078064012491,\"height\":600.5308352849337,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"repeatrequirements.FY\",\"active\":true},{\"queryRef\":\"requirementlist.FM\"},{\"queryRef\":\"requirementlist.FC\"}],\"Y\":[{\"queryRef\":\"CountNonNull(repeatrequirements.Requirement_EID)\"}],\"Series\":[{\"queryRef\":\"repeatrequirements.OriginalFYYear\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"repeatrequirements\",\"Type\":0},{\"Name\":\"r1\",\"Entity\":\"requirementlist\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"FY\"},\"Name\":\"repeatrequirements.FY\",\"NativeReferenceName\":\"FY\"},{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Requirement_EID\"}},\"Function\":5}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Requirement_EID\"}},\"Function\":5}},\"Scope\":[]}},\"Operator\":3},\"Name\":\"CountNonNull(repeatrequirements.Requirement_EID)\",\"NativeReferenceName\":\"%GT Count of Requirement_EID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"OriginalFYYear\"},\"Name\":\"repeatrequirements.OriginalFYYear\",\"NativeReferenceName\":\"OriginalFYYear\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r1\"}},\"Property\":\"FM\"},\"Name\":\"requirementlist.FM\",\"NativeReferenceName\":\"FM\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r1\"}},\"Property\":\"FC\"},\"Name\":\"requirementlist.FC\",\"NativeReferenceName\":\"FC\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"FY\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"totals\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"repeatrequirements\"}},\"Property\":\"Requirement_EID\"}},\"Function\":5}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 600.53,
+          "width": 1270.01,
+          "x": 9.99,
+          "y": 118.91,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"b8ddc5140eec8dcef3e6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":7.781155015197569,\"z\":1000,\"width\":462.97872340425533,\"height\":110.88145896656536,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Director\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Director\"},\"Name\":\"projectsummary.Director\",\"NativeReferenceName\":\"Director\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Director\"}}}]},\"syncGroup\":{\"groupName\":\"Director1\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 110.88,
+          "width": 462.98,
+          "x": 0.00,
+          "y": 7.78,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Project Summary",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "b9520e6a9e22a02a20e1",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"01717544570bc3692c0a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":675.0151975683891,\"y\":0,\"z\":3000,\"width\":226.6261398176292,\"height\":119.63525835866263,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Unattended Projects\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Unattended Projects\"},\"Name\":\"projectsummary.Unattended Projects\",\"NativeReferenceName\":\"Projects not linked to RAP\"}]},\"columnProperties\":{\"projectsummary.Unattended Projects\":{\"displayName\":\"Projects not linked to RAP\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 119.64,
+          "width": 226.63,
+          "x": 675.02,
+          "y": 0.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"1af20a5920c0b2c7e232\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1044.6200607902736,\"y\":0,\"z\":5000,\"width\":235.37993920972644,\"height\":119.63525835866263,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Proposed_Funding_Source\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Proposed_Funding_Source\"},\"Name\":\"projectsummary.Proposed_Funding_Source\",\"NativeReferenceName\":\"Proposed_Funding_Source\"}]},\"syncGroup\":{\"groupName\":\"Proposed_Funding_Source\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 119.64,
+          "width": 235.38,
+          "x": 1044.62,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"7f648d431c20040a0da2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":499.9392097264438,\"y\":0,\"z\":2000,\"width\":156.59574468085108,\"height\":119.63525835866263,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Not in app\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Not in app\"},\"Name\":\"projectsummary.Not in app\",\"NativeReferenceName\":\"Projects linked to RAP but not in the APP\"}]},\"columnProperties\":{\"projectsummary.Not in app\":{\"displayName\":\"Projects linked to RAP but not in the APP\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}],\"header\":[{\"properties\":{\"showRestatement\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 119.64,
+          "width": 156.60,
+          "x": 499.94,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"87ee4abb2ba5d03ac502\",\"layouts\":[{\"id\":0,\"position\":{\"x\":901.6413373860182,\"y\":0,\"z\":4000,\"width\":142.00607902735564,\"height\":119.63525835866263,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Cuttoffscore\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Cuttoffscore\"},\"Name\":\"projectsummary.Cuttoffscore\",\"NativeReferenceName\":\"Cuttoffscore\"}]},\"syncGroup\":{\"groupName\":\"Cuttoffscore\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 119.64,
+          "width": 142.01,
+          "x": 901.64,
+          "y": 0.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"bf9665fe94dbc894a49d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":124,\"z\":0,\"width\":1280,\"height\":596,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(projectsummary.Score)\"},{\"queryRef\":\"projectsummary.Location\"},{\"queryRef\":\"projectsummary.Property_Name\"},{\"queryRef\":\"projectsummary.ProjectName\"},{\"queryRef\":\"Sum(projectsummary.EstCost)\"},{\"queryRef\":\"Sum(projectsummary.CostFactoredTPC)\"},{\"queryRef\":\"projectsummary.Proposed_Funding_Source\"},{\"queryRef\":\"projectsummary.RAPProjectID\"},{\"queryRef\":\"projectsummary.AppStatus\"},{\"queryRef\":\"projectsummary.Director\"},{\"queryRef\":\"projectsummary.FM\"},{\"queryRef\":\"projectsummary.FC\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Score\"},\"Name\":\"Sum(projectsummary.Score)\",\"NativeReferenceName\":\"Score\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Location\"},\"Name\":\"projectsummary.Location\",\"NativeReferenceName\":\"Location\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Property_Name\"},\"Name\":\"projectsummary.Property_Name\",\"NativeReferenceName\":\"Property_Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"ProjectName\"},\"Name\":\"projectsummary.ProjectName\",\"NativeReferenceName\":\"ProjectName\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"EstCost\"}},\"Function\":0},\"Name\":\"Sum(projectsummary.EstCost)\",\"NativeReferenceName\":\"Sum of EstCost\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"CostFactoredTPC\"}},\"Function\":0},\"Name\":\"Sum(projectsummary.CostFactoredTPC)\",\"NativeReferenceName\":\"Sum of CostFactoredTPC\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Director\"},\"Name\":\"projectsummary.Director\",\"NativeReferenceName\":\"Director\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"FM\"},\"Name\":\"projectsummary.FM\",\"NativeReferenceName\":\"FM\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"FC\"},\"Name\":\"projectsummary.FC\",\"NativeReferenceName\":\"FC\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Proposed_Funding_Source\"},\"Name\":\"projectsummary.Proposed_Funding_Source\",\"NativeReferenceName\":\"Proposed_Funding_Source\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"AppStatus\"},\"Name\":\"projectsummary.AppStatus\",\"NativeReferenceName\":\"AppStatus\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"RAPProjectID\"},\"Name\":\"projectsummary.RAPProjectID\",\"NativeReferenceName\":\"RAPProjectID\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Score\"}}}]},\"columnProperties\":{\"Sum(projectsummary.EstCost)\":{\"formatString\":\"\\\\$#,0.###############;-\\\\$#,0.###############;\\\\$#,0.###############\"},\"Sum(projectsummary.CostFactoredTPC)\":{\"formatString\":\"\\\\$#,0.###############;-\\\\$#,0.###############;\\\\$#,0.###############\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnFormatting\":[{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}},\"selector\":{\"metadata\":\"Sum(projectsummary.Score)\"}},{\"properties\":{\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}},\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"styleTotal\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"styleHeader\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"styleValues\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}},\"selector\":{\"metadata\":\"Sum(projectsummary.EstCost)\"}}],\"columnHeaders\":[{\"properties\":{\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}],\"values\":[{\"properties\":{\"backColorSecondary\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}},\"backColorPrimary\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 596.00,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 124.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"fe733a24bdeda89ce88e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":10,\"z\":1000,\"width\":490,\"height\":110,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Director\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Director\"},\"Name\":\"projectsummary.Director\",\"NativeReferenceName\":\"Director\"}]},\"syncGroup\":{\"groupName\":\"Director1\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 110.00,
+          "width": 490.00,
+          "x": 10.00,
+          "y": 10.00,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"193L\"}}}}}]}}",
+      "displayName": "Director Dashboard",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "d5c487a359c33c020971",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"03a79fda7b0ab8424910\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":2000,\"width\":647.8713339640492,\"height\":110.19867549668874,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Director\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Director\"},\"Name\":\"projectsummary.Director\",\"NativeReferenceName\":\"Director\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Director\"}}}]},\"syncGroup\":{\"groupName\":\"Director1\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 110.20,
+          "width": 647.87,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"2b3e663fa3094e36a2ad\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":534,\"z\":0,\"width\":235,\"height\":186,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(projectsummary.Not in app)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Not in app\"}},\"Function\":5},\"Name\":\"Min(projectsummary.Not in app)\",\"NativeReferenceName\":\"Projects linked to RAP but not in APP\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Not in app\"}},\"Function\":5}}}]},\"columnProperties\":{\"Min(projectsummary.Not in app)\":{\"displayName\":\"Projects linked to RAP but not in APP\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Projects linked to RAP but not in the App'\"}}}}}],\"visualTooltip\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"general\":[{\"properties\":{\"altText\":{\"expr\":{\"Literal\":{\"Value\":\"'Projects linked to RAP but not submitted to the app'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"d1f601e008ac34d133ed\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"projectsummary\"}},\"Property\":\"Not in app\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Not in app\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Yes'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 186.00,
+          "width": 235.00,
+          "x": 0.00,
+          "y": 534.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"4c0f9684d788b8009f29\",\"layouts\":[{\"id\":0,\"position\":{\"x\":753.9450980392157,\"y\":534.086274509804,\"z\":9000,\"width\":526.0549019607843,\"height\":185.72549019607843,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"requirementlist.Building_Priority_Detail\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"requirementlist\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Building_Priority_Detail\"},\"Name\":\"requirementlist.Building_Priority_Detail\",\"NativeReferenceName\":\"Building Priority\"}]},\"columnProperties\":{\"requirementlist.Building_Priority_Detail\":{\"displayName\":\"Building Priority\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 185.73,
+          "width": 526.05,
+          "x": 753.95,
+          "y": 534.09,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"533d8b15b3e06210c1c7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640,\"y\":0,\"z\":7000,\"width\":144,\"height\":103,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Cuttoffscore\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Cuttoffscore\"},\"Name\":\"projectsummary.Cuttoffscore\",\"NativeReferenceName\":\"Cuttoffscore\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 103.00,
+          "width": 144.00,
+          "x": 640.00,
+          "y": 0.00,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"65e11e90bae474c936ab\",\"layouts\":[{\"id\":0,\"position\":{\"x\":235,\"y\":534,\"z\":1000,\"width\":259,\"height\":186,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(projectsummary.Unattended Projects)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Unattended Projects\"}},\"Function\":5},\"Name\":\"Min(projectsummary.Unattended Projects)\",\"NativeReferenceName\":\"Projects not linked to RAP\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Unattended Projects\"}},\"Function\":5}}}]},\"columnProperties\":{\"Min(projectsummary.Unattended Projects)\":{\"displayName\":\"Projects not linked to RAP\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.4}}}}}}}]}}}",
+          "filters": "[{\"name\":\"1d5cd38228b963097851\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"projectsummary\"}},\"Property\":\"Unattended Projects\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Unattended Projects\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Yes'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 186.00,
+          "width": 259.00,
+          "x": 235.00,
+          "y": 534.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"746072fc4b8d8cb0cd34\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1032,\"y\":0,\"z\":8000,\"width\":248,\"height\":105,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Action_FY\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Action_FY\"},\"Name\":\"projectsummary.Action_FY\",\"NativeReferenceName\":\"Action_FY\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"numericStart\":{\"expr\":{\"Literal\":{\"Value\":\"2026D\"}}},\"numericEnd\":{\"expr\":{\"Literal\":{\"Value\":\"2031D\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Action_FY\"}},\"Right\":{\"Literal\":{\"Value\":\"2026D\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":4,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Action_FY\"}},\"Right\":{\"Literal\":{\"Value\":\"2031D\"}}}}}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 105.00,
+          "width": 248.00,
+          "x": 1032.00,
+          "y": 0.00,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"7daec061d390624d0925\",\"layouts\":[{\"id\":0,\"position\":{\"x\":648.0757097791799,\"y\":102.96529968454259,\"z\":4000,\"width\":631.9242902208202,\"height\":431.0410094637224,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"projectsummary.Planned_vs_Unplanned\",\"active\":true},{\"queryRef\":\"projectsummary.FM\"},{\"queryRef\":\"projectsummary.FC\"}],\"Y\":[{\"queryRef\":\"CountNonNull(projectsummary.ProjectName)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Planned_vs_Unplanned\"},\"Name\":\"projectsummary.Planned_vs_Unplanned\",\"NativeReferenceName\":\"Planned_vs_Unplanned\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"ProjectName\"}},\"Function\":2},\"Name\":\"CountNonNull(projectsummary.ProjectName)\",\"NativeReferenceName\":\"Count of ProjectName\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"FM\"},\"Name\":\"projectsummary.FM\",\"NativeReferenceName\":\"Count of FM\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"FC\"},\"Name\":\"projectsummary.FC\",\"NativeReferenceName\":\"FC\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Planned_vs_Unplanned\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"FM\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"FC\"}}}]},\"columnProperties\":{\"CountNonNull(projectsummary.ProjectName)\":{\"displayName\":\"Planned v/s Unplanned Projects\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 431.04,
+          "width": 631.92,
+          "x": 648.08,
+          "y": 102.97,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"9594598802d04a74c43d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":118,\"z\":3000,\"width\":640,\"height\":416,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"projectsummary.AppStatus\",\"active\":true},{\"queryRef\":\"projectsummary.FM\"}],\"Y\":[{\"queryRef\":\"CountNonNull(projectsummary.ProjectName)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"AppStatus\"},\"Name\":\"projectsummary.AppStatus\",\"NativeReferenceName\":\"AppStatus\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"ProjectName\"}},\"Function\":5},\"Name\":\"CountNonNull(projectsummary.ProjectName)\",\"NativeReferenceName\":\"Projects in the App\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"FM\"},\"Name\":\"projectsummary.FM\",\"NativeReferenceName\":\"FM\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"AppStatus\"}}}]},\"columnProperties\":{\"CountNonNull(projectsummary.ProjectName)\":{\"displayName\":\"Projects in the App\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"valueAxis\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"categoryAxis\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"name\":\"a1a6031989e3ac03b966\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"projectsummary\"}},\"Property\":\"AppStatus\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"AppStatus\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}],[{\"Literal\":{\"Value\":\"'Cancelled'\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 416.00,
+          "width": 640.00,
+          "x": 0.00,
+          "y": 118.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"af19ee242d5c00b0b920\",\"layouts\":[{\"id\":0,\"position\":{\"x\":494.1033434650456,\"y\":533.9817629179331,\"z\":6000,\"width\":259.69604863221883,\"height\":185.77507598784194,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(projectsummary.CostFactoredTPC)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"CostFactoredTPC\"}},\"Function\":0},\"Name\":\"Sum(projectsummary.CostFactoredTPC)\",\"NativeReferenceName\":\"Sum of CostFactoredTPC\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"CostFactoredTPC\"}},\"Function\":0}}}]},\"columnProperties\":{\"Sum(projectsummary.CostFactoredTPC)\":{\"formatString\":\"\\\\$#,0.###############;-\\\\$#,0.###############;\\\\$#,0.###############\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}]}}}",
+          "filters": "[{\"name\":\"b2ad9842a24c35831a4b\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"projectsummary\"}},\"Property\":\"Cuttoffscore\"}},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 185.78,
+          "width": 259.70,
+          "x": 494.10,
+          "y": 533.98,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"fbdcf2c10d570090d7e8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":784,\"y\":0,\"z\":5000,\"width\":248,\"height\":103,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Proposed_Funding_Source\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Proposed_Funding_Source\"},\"Name\":\"projectsummary.Proposed_Funding_Source\",\"NativeReferenceName\":\"Proposed_Funding_Source\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 103.00,
+          "width": 248.00,
+          "x": 784.00,
+          "y": 0.00,
+          "z": 5000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Requirement List",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "efadf6fe902ca434dd25",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"16da1369d9be2b9e50c7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":695,\"y\":0,\"z\":3000,\"width\":247,\"height\":116,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Proposed_Funding_Source\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Proposed_Funding_Source\"},\"Name\":\"projectsummary.Proposed_Funding_Source\",\"NativeReferenceName\":\"Proposed_Funding_Source\"}]},\"syncGroup\":{\"groupName\":\"Proposed_Funding_Source\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 116.00,
+          "width": 247.00,
+          "x": 695.00,
+          "y": 0.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"45bd7c8696ae9466160c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":116,\"z\":0,\"width\":1280,\"height\":604,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"requirementlist.Location\"},{\"queryRef\":\"requirementlist.Property_Name\"},{\"queryRef\":\"Sum(projectsummary.Score)\"},{\"queryRef\":\"requirementlist.Requirement_EID\"},{\"queryRef\":\"requirementlist.Requirement_Name\"},{\"queryRef\":\"Sum(requirementlist.EstimatedCost)\"},{\"queryRef\":\"Sum(requirementlist.CostFactoredTPC)\"},{\"queryRef\":\"requirementlist.Linked_System\"},{\"queryRef\":\"requirementlist.System_Group\"},{\"queryRef\":\"requirementlist.Category\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0},{\"Name\":\"r\",\"Entity\":\"requirementlist\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Score\"},\"Name\":\"Sum(projectsummary.Score)\",\"NativeReferenceName\":\"Score\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Requirement_Name\"},\"Name\":\"requirementlist.Requirement_Name\",\"NativeReferenceName\":\"Requirement_Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Requirement_EID\"},\"Name\":\"requirementlist.Requirement_EID\",\"NativeReferenceName\":\"Requirement_EID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Location\"},\"Name\":\"requirementlist.Location\",\"NativeReferenceName\":\"Location\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Property_Name\"},\"Name\":\"requirementlist.Property_Name\",\"NativeReferenceName\":\"Property_Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Linked_System\"},\"Name\":\"requirementlist.Linked_System\",\"NativeReferenceName\":\"Linked_System\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"System_Group\"},\"Name\":\"requirementlist.System_Group\",\"NativeReferenceName\":\"System_Group\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Category\"},\"Name\":\"requirementlist.Category\",\"NativeReferenceName\":\"Category\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"EstimatedCost\"}},\"Function\":0},\"Name\":\"Sum(requirementlist.EstimatedCost)\",\"NativeReferenceName\":\"Sum of EstimatedCost\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"CostFactoredTPC\"}},\"Function\":0},\"Name\":\"Sum(requirementlist.CostFactoredTPC)\",\"NativeReferenceName\":\"Sum of CostFactoredTPC\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Score\"}}}]},\"columnProperties\":{\"Sum(requirementlist.EstimatedCost)\":{\"formatString\":\"\\\\$#,0.###############;-\\\\$#,0.###############;\\\\$#,0.###############\"},\"Sum(requirementlist.CostFactoredTPC)\":{\"formatString\":\"\\\\$#,0.###############;-\\\\$#,0.###############;\\\\$#,0.###############\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"503D\"}}}},\"selector\":{\"metadata\":\"requirementlist.Linked_System\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"322D\"}}}},\"selector\":{\"metadata\":\"requirementlist.Requirement_Name\"}}],\"values\":[{\"properties\":{\"backColorSecondary\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"columnHeaders\":[{\"properties\":{\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 604.00,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 116.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"8ed614e9341bd2eade96\",\"layouts\":[{\"id\":0,\"position\":{\"x\":942,\"y\":0,\"z\":4000,\"width\":338,\"height\":116,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Action_FY\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Action_FY\"},\"Name\":\"projectsummary.Action_FY\",\"NativeReferenceName\":\"Action_FY\"}]},\"syncGroup\":{\"groupName\":\"Action_FY\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 116.00,
+          "width": 338.00,
+          "x": 942.00,
+          "y": 0.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"91ad4e800c4520dd08b4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":511,\"y\":0,\"z\":2000,\"width\":184,\"height\":116,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Cuttoffscore\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Cuttoffscore\"},\"Name\":\"projectsummary.Cuttoffscore\",\"NativeReferenceName\":\"Cuttoffscore\"}]},\"syncGroup\":{\"groupName\":\"Cuttoffscore\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 116.00,
+          "width": 184.00,
+          "x": 511.00,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"f4f8111cd63e63849466\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":1000,\"width\":511,\"height\":102,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"projectsummary.Director\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"projectsummary\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Director\"},\"Name\":\"projectsummary.Director\",\"NativeReferenceName\":\"Director\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Director\"}}}]},\"syncGroup\":{\"groupName\":\"Director1\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 102.00,
+          "width": 511.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

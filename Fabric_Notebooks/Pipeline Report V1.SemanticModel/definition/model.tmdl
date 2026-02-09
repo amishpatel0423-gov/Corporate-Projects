@@ -1,0 +1,74 @@
+model Model
+	culture: en-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-CA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup Reporting_Tables
+
+	annotation PBI_QueryGroupOrder = 6
+
+annotation PBI_QueryOrder = ["PROD_cmrprojreqmain","PROD_cmrrequestprocess","DEV_VFADataValidation","DEV_ProjectRequestSummary","PROD_ProjectRequestSummary","PROD_VFADataValidation","Capital Plan 2025-26","Capital Plan 2025-26 (Tota)","Last_Refreshed"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.128.952.0 (24.04)
+
+ref table PROD_cmrprojreqmain
+ref table DateTableTemplate_acaec7f1-2447-44bd-bd30-0d2639a9cbec
+ref table LocalDateTable_1fcdb57c-af0a-4f8d-a0ee-c21e287304b0
+ref table LocalDateTable_46db7fb3-7686-468f-abcf-08b7d71f9eed
+ref table LocalDateTable_773ed036-2996-4d3b-bb6e-41568a86c79a
+ref table LocalDateTable_d0cae90a-48ca-47c1-9c0e-b2cdf5cdbdef
+ref table LocalDateTable_fb1df0b5-e05e-44d9-8ff8-ae2e77abfa75
+ref table LocalDateTable_28b2dbe4-bbd8-4b88-b4e9-62e5e15df71b
+ref table LocalDateTable_399c2dba-809e-4634-a02f-facb0ce696fa
+ref table LocalDateTable_91d5f470-7611-4aab-a135-3581fb4151dd
+ref table LocalDateTable_961a6a15-bf5b-436e-a6ca-c9a824f480bb
+ref table LocalDateTable_a651941a-41ba-4556-aaa7-ef1bfc14e8cf
+ref table LocalDateTable_b4475e3f-1644-460a-8ca0-02559bba9902
+ref table LocalDateTable_f4e8ea86-4652-4b3e-8ea9-7cc77f620c44
+ref table LocalDateTable_9ef17384-bd1a-40f5-aef3-92765076c24e
+ref table LocalDateTable_2fac0327-4e54-47a7-97fe-0fd2c4204f54
+ref table LocalDateTable_318d9f43-9fca-43ef-af4c-f1a29f189627
+ref table LocalDateTable_373b6582-c27a-4597-bbe3-b94e10f57b7b
+ref table LocalDateTable_ca6ae3bd-a6ec-487c-b275-152789ded806
+ref table LocalDateTable_2775e3df-eb72-4f2f-bfb3-abc7f29d95df
+ref table LocalDateTable_38ef3e40-522c-46a9-86b2-8f598cd1bd04
+ref table LocalDateTable_c6f3c19c-38af-4e29-b5b5-02411be9b1ac
+ref table LocalDateTable_50edb8a3-7641-4496-8882-de4cd771c1a2
+ref table LocalDateTable_0d4b2fe4-b6b5-4579-ba2d-dbe004509120
+ref table LocalDateTable_b7d6dd3a-df8f-451c-9178-2af3ea2322db
+ref table LocalDateTable_68afeacc-f701-4af9-9246-60ac087f4d90
+ref table PROD_cmrrequestprocess
+ref table LocalDateTable_a3efa750-73e5-4bf4-9f09-1142095b0743
+ref table LocalDateTable_1c818d88-6182-4987-99e7-716062ca4415
+ref table LocalDateTable_28c3cd9e-8255-46ca-8022-8ed1158695f2
+ref table LocalDateTable_915ab50e-fe23-4285-a365-45fa02e3d34b
+ref table LocalDateTable_00bce354-1c4f-46b5-9b31-cc26ea17b2fd
+ref table DEV_VFADataValidation
+ref table LocalDateTable_471f58ab-dc5c-4dd4-bdef-c299eaeaf896
+ref table LocalDateTable_0c3e07a2-e346-46de-a058-bae5cc32d37f
+ref table LocalDateTable_a2521120-8ccc-4f55-b23b-83d05e354640
+ref table DEV_ProjectRequestSummary
+ref table LocalDateTable_8bec0a57-ff91-4f31-b460-ef20b11693de
+ref table LocalDateTable_7676f97c-c6ae-49b7-bd9e-57b5ea0973a8
+ref table LocalDateTable_e71e0a50-b97b-43df-8e25-3378769655db
+ref table PROD_ProjectRequestSummary
+ref table LocalDateTable_ec7c1c58-a4df-467c-bc67-d50e2e1fead7
+ref table LocalDateTable_8a0f2341-b80f-4c10-b8a0-16de8434690a
+ref table LocalDateTable_7396b622-6009-48bd-82ff-e76d9969c8bb
+ref table PROD_VFADataValidation
+ref table LocalDateTable_fee9f97e-b184-48d7-bf72-5c537ba68a4c
+ref table LocalDateTable_1aac346e-a32b-47cc-892c-a4dd7d126e5f
+ref table LocalDateTable_c4d5ffd3-f574-4b82-a905-ec2ea33b98d6
+ref table 'Capital Plan 2025-26'
+ref table LocalDateTable_b4f83d40-2dec-495b-aeab-1241f4a38355
+ref table 'Capital Plan 2025-26 (Tota)'
+ref table Last_Refreshed
+ref table LocalDateTable_89bc7808-f7f5-4501-81ce-92ede602df47
+
+ref cultureInfo en-CA
+

@@ -1,0 +1,57 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "PROD_CMRMasterScoring",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "PROD_IoAF": {
+      "queryId": "2e068086-9fdb-47c6-860a-c4318a773553",
+      "queryName": "PROD_IoAF",
+      "loadEnabled": false
+    },
+    "PROD_IoSF": {
+      "queryId": "73c9016b-6e7a-4ae0-80ed-b3d79b89952a",
+      "queryName": "PROD_IoSF",
+      "loadEnabled": false
+    },
+    "PROD_PlanForAsset": {
+      "queryId": "891b48b8-bb9b-487c-8acd-29b128d255a6",
+      "queryName": "PROD_PlanForAsset",
+      "loadEnabled": false
+    },
+    "PROD_ImpactOfFailure": {
+      "queryId": "b5d930ba-fb82-4ba1-a876-79e54e85a579",
+      "queryName": "PROD_ImpactOfFailure",
+      "loadEnabled": false
+    },
+    "PROD_ReasonForWork": {
+      "queryId": "35a783a1-ae77-4964-9e83-c32a99567ad8",
+      "queryName": "PROD_ReasonForWork",
+      "loadEnabled": false
+    },
+    "PROD_ConditionOfSystem": {
+      "queryId": "e741df02-4bee-41b1-b807-f02d8b76a975",
+      "queryName": "PROD_ConditionOfSystem",
+      "loadEnabled": false
+    },
+    "DefaultDestination": {
+      "queryId": "e29d0c44-6b46-4dc8-9c46-2d1b6338ace6",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"34b4e100-bf5b-4fd3-ac3c-c14dc8ab6d08\"}"
+    },
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/CMR%20Source%20Code%20Repo/CommonModules/CommonMasterScoring/Master_CMR_ScoringTables.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"c6c1488d-073b-4a7b-8681-3a7b6c5f1731\"}"
+    }
+  ]
+}

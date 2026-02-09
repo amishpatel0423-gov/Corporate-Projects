@@ -1,0 +1,130 @@
+table System
+	lineageTag: 5eff1ee5-567d-41ba-a29d-465ad37667be
+
+	measure 'Total System' = COUNTROWS(System)
+		formatString: 0
+		lineageTag: f78e4f08-e3e7-466d-809e-be9440153f5c
+
+	column 'System - Portfolio Name'
+		dataType: string
+		lineageTag: 5f7778f2-9dd8-4d6b-8c5e-aaa89f26bca3
+		summarizeBy: none
+		sourceColumn: System - Portfolio Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - Property Name'
+		dataType: string
+		lineageTag: 83124bb9-6ea0-4928-9c49-5ba407adce6d
+		summarizeBy: none
+		sourceColumn: System - Property Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - Asset Name'
+		dataType: string
+		lineageTag: 6a163d2f-1b7f-4407-925b-d0f05c61919a
+		summarizeBy: none
+		sourceColumn: System - Asset Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - Asset Number'
+		dataType: string
+		lineageTag: de274cd9-56f8-49a7-94d8-1832611f8294
+		summarizeBy: none
+		sourceColumn: System - Asset Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - ID'
+		dataType: string
+		lineageTag: 5e59922d-35e2-484f-8562-4aa16c089bdd
+		summarizeBy: none
+		sourceColumn: System - ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - System Name'
+		dataType: string
+		lineageTag: 88617455-e48c-4140-981c-e317d3573f9d
+		summarizeBy: none
+		sourceColumn: System - System Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - Lifetime'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0c83474-e0e9-4e37-804f-d2792fdddc4f
+		summarizeBy: none
+		sourceColumn: System - Lifetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - System Condition Rating'
+		dataType: string
+		lineageTag: 661a30d4-3e01-4233-930b-0f6f256c69cd
+		summarizeBy: none
+		sourceColumn: System - System Condition Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - Year Installed'
+		dataType: int64
+		formatString: 0
+		lineageTag: fdcc527a-a996-4185-b317-143f4a19b158
+		summarizeBy: none
+		sourceColumn: System - Year Installed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - Description'
+		dataType: string
+		lineageTag: 10906f2a-2c09-4660-8786-a1e61977ede3
+		summarizeBy: none
+		sourceColumn: System - Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - Replacement Cost'
+		dataType: double
+		lineageTag: 3b82add1-23b8-4af3-bcc2-ab7efe3c04de
+		summarizeBy: none
+		sourceColumn: System - Replacement Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'System - System Group'
+		dataType: string
+		lineageTag: fbc59633-f6d4-4615-ac43-60dd1dbdc4a5
+		summarizeBy: none
+		sourceColumn: System - System Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System - Uniformat Code'
+		dataType: string
+		lineageTag: 7ec963a6-cb63-42f8-8594-42cda592bb49
+		summarizeBy: none
+		sourceColumn: System - Uniformat Code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition System = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\amish.patel\Downloads\System.xlsx"), null, true),
+				    #"result (62)_Sheet" = Source{[Item="result (62)",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"result (62)_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"System - Portfolio Name", type text}, {"System - Property Name", type text}, {"System - Asset Name", type text}, {"System - Asset Number", type text}, {"System - ID", type text}, {"System - System Name", type text}, {"System - Lifetime", Int64.Type}, {"System - System Condition Rating", type text}, {"System - Year Installed", Int64.Type}, {"System - Description", type text}, {"System - Replacement Cost", type number}, {"System - System Group", type text}, {"System - Uniformat Code", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

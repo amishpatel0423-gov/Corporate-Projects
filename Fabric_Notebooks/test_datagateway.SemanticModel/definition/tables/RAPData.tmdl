@@ -1,0 +1,156 @@
+table RAPData
+	lineageTag: 7e3349bc-d81d-4719-9be1-af45f1bcf7b0
+
+	column Property
+		dataType: string
+		lineageTag: 764c19f8-4f04-44fe-8309-e596e200b7ef
+		summarizeBy: none
+		sourceColumn: Property
+
+		annotation SummarizationSetBy = Automatic
+
+	column Number
+		dataType: int64
+		formatString: 0
+		lineageTag: 21cbb0e6-fc92-4bee-9496-d4fb7a8f2328
+		summarizeBy: sum
+		sourceColumn: Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 2027b7f3-a37e-4f94-9db9-752751fb9110
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: 580d6ce1-01ce-44a6-ade0-5b28032f5eee
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: e6af328a-5298-4e89-bb2b-63bbe23315cd
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column raApprovedTPC
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 94c5f58b-d434-47ab-8451-128949470c3a
+		summarizeBy: sum
+		sourceColumn: raApprovedTPC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column raProjMgr
+		dataType: string
+		lineageTag: 08409d0d-f397-4341-9592-9969ebc56f9f
+		summarizeBy: none
+		sourceColumn: raProjMgr
+
+		annotation SummarizationSetBy = Automatic
+
+	column Initiator
+		dataType: string
+		lineageTag: aca7c01b-76b4-4545-8285-244e6faea4fb
+		summarizeBy: none
+		sourceColumn: Initiator
+
+		annotation SummarizationSetBy = Automatic
+
+	column FUDesc
+		dataType: string
+		lineageTag: aac50ff9-b431-4054-bc61-afac8234c783
+		summarizeBy: none
+		sourceColumn: FUDesc
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: edb7eb2f-cbbf-481a-aaf9-0b57f5a2d9cd
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: 91f12adf-7f21-4b3e-86b1-385712d2a93d
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Consequences
+		dataType: string
+		lineageTag: 93310844-747f-48b5-b856-102f3f70dab6
+		summarizeBy: none
+		sourceColumn: Consequences
+
+		annotation SummarizationSetBy = Automatic
+
+	column Critical
+		dataType: string
+		lineageTag: b0b4b00b-2d33-4188-806d-f515066c057a
+		summarizeBy: none
+		sourceColumn: Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column Record_Created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bc99de48-ff3e-4dcc-845b-9e94fabdd4b8
+		summarizeBy: none
+		sourceColumn: Record_Created
+
+		variation Variation
+			isDefault
+			relationship: 0380d385-3749-4506-b2d5-fff64341645a
+			defaultHierarchy: LocalDateTable_83f2a2db-c151-41b9-99e2-8a0708611d6a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Deleted
+		dataType: string
+		lineageTag: b84b335f-8df5-43db-96c2-faa9c1e03cba
+		summarizeBy: none
+		sourceColumn: Deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column Completed
+		dataType: string
+		lineageTag: 8025540d-f84f-473f-94aa-d84f3ce1204e
+		summarizeBy: none
+		sourceColumn: Completed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RAPData = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://rpt.infrastructure.alberta.ca/ReportServer?%2FRAP-PM%2FRAP-Project%20Information%20Report&rs:Command=Render&rs:Format=CSV"),[Delimiter=",", Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Property", type text}, {"Number", Int64.Type}, {"Name", type text}, {"Title", type text}, {"Status", type text}, {"raApprovedTPC", Currency.Type}, {"raProjMgr", type text}, {"Initiator", type text}, {"FUDesc", type text}, {"Description", type text}, {"Reason", type text}, {"Consequences", type text}, {"Critical", type text}, {"Record_Created", type datetime}, {"Deleted", type text}, {"Completed", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Record_Created] > #datetime(2021, 1, 1, 0, 0, 0))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

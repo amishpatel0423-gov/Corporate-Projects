@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_PROD_RAP_SSRS",
+    "description": "RAP SSRS Data flow into prod lakehouse. Has connection to lakehouse configuration settings table (use domain account for connection) for determining the RAP create date limit. Connection to the SSRS source uses the On-prem data gateway and requires the Windows (username and password) service account credentials for authentication. "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cf0fe86c-e503-beac-489b-62785aafd027"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Director Dashboard refresh"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d88426de-9a96-afef-41b6-7f4c9b9f663b"
+  }
+}

@@ -1,0 +1,396 @@
+relationship 4918b8a3-cbd3-4c55-bb6e-4ef648d3e79e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Created On'
+	toColumn: LocalDateTable_1fcdb57c-af0a-4f8d-a0ee-c21e287304b0.Date
+
+relationship 423074c4-cc38-4e7a-844d-3b2c003e9a1b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Budget Available Date'
+	toColumn: LocalDateTable_46db7fb3-7686-468f-abcf-08b7d71f9eed.Date
+
+relationship 7a058c3b-0493-4065-b0fd-d541881caf86
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Cancelled Date'
+	toColumn: LocalDateTable_773ed036-2996-4d3b-bb6e-41568a86c79a.Date
+
+relationship ea5e9aba-f330-490f-ba81-7aaa83bb2d9e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Complete Date'
+	toColumn: LocalDateTable_d0cae90a-48ca-47c1-9c0e-b2cdf5cdbdef.Date
+
+relationship 0b4447aa-e466-4f4f-aae3-db4942f044f1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Director Decision Date'
+	toColumn: LocalDateTable_fb1df0b5-e05e-44d9-8ff8-ae2e77abfa75.Date
+
+relationship f18603f3-310c-4de8-a5c2-eb25b9f74e7f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'ED Decision Date'
+	toColumn: LocalDateTable_28b2dbe4-bbd8-4b88-b4e9-62e5e15df71b.Date
+
+relationship 6afaa81e-893e-45e6-9668-c1b11e369df5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Sent to EDO'
+	toColumn: LocalDateTable_399c2dba-809e-4634-a02f-facb0ce696fa.Date
+
+relationship 7300f459-ce73-4dae-818b-7975386b0c0b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Executive Review - Sent to PMPI Director'
+	toColumn: LocalDateTable_91d5f470-7611-4aab-a135-3581fb4151dd.Date
+
+relationship 0bfdd12e-78f0-4ace-a708-9a72b92045c9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Executive Review - Sent to PD Director'
+	toColumn: LocalDateTable_961a6a15-bf5b-436e-a6ca-c9a824f480bb.Date
+
+relationship 145145e5-4081-48e4-a3b0-8017bd4806a8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Executive Review Start Date'
+	toColumn: LocalDateTable_a651941a-41ba-4556-aaa7-ef1bfc14e8cf.Date
+
+relationship 979e4387-fa46-4d7f-9d39-0b07cce0b6ea
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Facilities Finalization Date'
+	toColumn: LocalDateTable_b4475e3f-1644-460a-8ca0-02559bba9902.Date
+
+relationship 3ae6db53-37a6-4d69-947b-4b78bc8a453b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Finance Response Date'
+	toColumn: LocalDateTable_f4e8ea86-4652-4b3e-8ea9-7cc77f620c44.Date
+
+relationship 2a7b719f-3b4a-42ab-aab8-c59a1ea51059
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Sent to Finance Date'
+	toColumn: LocalDateTable_9ef17384-bd1a-40f5-aef3-92765076c24e.Date
+
+relationship dc83d143-12ed-4146-8d25-89006bc21b52
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'FM Initial Decision Date'
+	toColumn: LocalDateTable_2fac0327-4e54-47a7-97fe-0fd2c4204f54.Date
+
+relationship f54bcad5-07e6-4299-86cd-6c28a5127d58
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'PD PAR Received Date'
+	toColumn: LocalDateTable_318d9f43-9fca-43ef-af4c-f1a29f189627.Date
+
+relationship 6618a791-e35f-42a9-b6a3-114655072906
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'PD Director Complete Date'
+	toColumn: LocalDateTable_373b6582-c27a-4597-bbe3-b94e10f57b7b.Date
+
+relationship 6bace3fa-5f32-45a1-826a-8aa3c6ac26fe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'PMPI Director Complete Date'
+	toColumn: LocalDateTable_ca6ae3bd-a6ec-487c-b275-152789ded806.Date
+
+relationship 67147342-210b-41dc-aa0e-c44dbe06b1b2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Project Server Setup Complete Date'
+	toColumn: LocalDateTable_2775e3df-eb72-4f2f-bfb3-abc7f29d95df.Date
+
+relationship b4772a73-6d29-45af-8cfc-b593d75e00f9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Sent to Project Delivery'
+	toColumn: LocalDateTable_38ef3e40-522c-46a9-86b2-8f598cd1bd04.Date
+
+relationship f3648431-915c-452f-819e-b0feacbf1665
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Tech Review BDS Manager Complete Date'
+	toColumn: LocalDateTable_c6f3c19c-38af-4e29-b5b5-02411be9b1ac.Date
+
+relationship fecdd3c3-2b42-4e02-b297-4cd8d0428b1d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Tech Review Draft Complete'
+	toColumn: LocalDateTable_50edb8a3-7641-4496-8882-de4cd771c1a2.Date
+
+relationship cb22edda-9bb9-4ade-9fbe-884ee8460254
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Tech Review PMPI Director Complete Date'
+	toColumn: LocalDateTable_0d4b2fe4-b6b5-4579-ba2d-dbe004509120.Date
+
+relationship 1c2d8f91-732b-4bbf-99ca-9a65e31b936e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'Tech Review Waived Date'
+	toColumn: LocalDateTable_b7d6dd3a-df8f-451c-9178-2af3ea2322db.Date
+
+relationship 6425f7c9-f042-4471-b840-90b069aa2280
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrprojreqmain.'WBS Sent Date'
+	toColumn: LocalDateTable_68afeacc-f701-4af9-9246-60ac087f4d90.Date
+
+relationship db3869d1-df0a-4e25-a005-f69b039898f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrrequestprocess.'Created On'
+	toColumn: LocalDateTable_a3efa750-73e5-4bf4-9f09-1142095b0743.Date
+
+relationship e78043cf-4c20-48f7-8207-049468b8399f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrrequestprocess.'Modified On'
+	toColumn: LocalDateTable_1c818d88-6182-4987-99e7-716062ca4415.Date
+
+relationship 4c74e6e1-57b4-4580-9e93-0b3008441a83
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrrequestprocess.'Record Created On'
+	toColumn: LocalDateTable_28c3cd9e-8255-46ca-8022-8ed1158695f2.Date
+
+relationship 6c14497e-d69f-4783-847a-afeaa554d658
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrrequestprocess.'Completed On'
+	toColumn: LocalDateTable_915ab50e-fe23-4285-a365-45fa02e3d34b.Date
+
+relationship 53cc97c2-2a95-4c91-a0df-6e99cfefac9c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_cmrrequestprocess.'Active Stage Started On'
+	toColumn: LocalDateTable_00bce354-1c4f-46b5-9b31-cc26ea17b2fd.Date
+
+relationship 1c380209-b60d-625c-c873-2f4653c64183
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: PROD_cmrrequestprocess.Pmbcp_Cmrprojreqmain
+	toColumn: PROD_cmrprojreqmain.'Request ID'
+
+relationship 3b2ab505-613e-47b8-bb29-4f4af799848a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Budget Available Date'
+	toColumn: LocalDateTable_cab1b5e4-62d4-4eed-93b7-f16bc8b198e4.Date
+
+relationship ffc6d8af-e4ba-4e7f-afe4-9aa8366e74c6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Created On'
+	toColumn: LocalDateTable_560f475d-8aa7-4b45-b4b6-b811457d530c.Date
+
+relationship 59939bcf-d808-4c13-b9ee-89b674847bef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'FM Initial Decision Date'
+	toColumn: LocalDateTable_a57cfd43-e4d6-4638-8f7b-ae0e6e405f4d.Date
+
+relationship 3ffce13b-9a02-489b-a73b-6f4f55b1cbd9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Director Decision Date'
+	toColumn: LocalDateTable_d33bffbc-0d69-4fc5-9a06-e718306008d1.Date
+
+relationship c7c90bc1-48b4-4d57-aa3d-c18df2448e86
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Facilities Finalization Date'
+	toColumn: LocalDateTable_6d5422d2-2441-4f22-b0fb-2063f61b961f.Date
+
+relationship 32cb39a8-9f1f-4351-8c36-6b300f930506
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Finance Response Date'
+	toColumn: LocalDateTable_d833b10c-0531-4c9a-8272-c35d2e124817.Date
+
+relationship 5aea571d-d6c8-4079-b90c-aac7875a9d8a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'ED Decision Date'
+	toColumn: LocalDateTable_83277ef6-7562-4e34-90d6-e321637dec54.Date
+
+relationship 02d79fce-693a-48ca-a017-03a0e4c5a1de
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Sent to EDO'
+	toColumn: LocalDateTable_e05e5c02-22bd-4036-9cef-00bfd9c098cb.Date
+
+relationship 5467a19d-aef2-4dac-ba94-da0f039c3606
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Executive Review - Sent to PMPI Director'
+	toColumn: LocalDateTable_7dcf8d0d-9816-41ca-9982-573f0f5b71d2.Date
+
+relationship 43a5b6bb-60ae-4859-a070-e42c20d66ac1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Executive Review - Sent to PD Director'
+	toColumn: LocalDateTable_69750336-834f-4376-b12e-57517b5790e8.Date
+
+relationship d4747a1d-dde1-41c4-9f15-95ed66ae6767
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Executive Review Start Date'
+	toColumn: LocalDateTable_4a550a09-8266-4382-b179-0fe9b9f51734.Date
+
+relationship 330bf805-bbbb-47a4-b91f-e0d60fc7d7d9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Sent to Finance Date'
+	toColumn: LocalDateTable_dc043836-2fbb-4c4a-bfb3-0638605a5a9a.Date
+
+relationship 83a76b14-3266-48bf-9e83-03f82a3269c3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'PD PAR Received Date'
+	toColumn: LocalDateTable_f59f7b3d-08ef-45a4-975d-3d5767be507b.Date
+
+relationship 54529cf5-d902-41d7-af21-0d525f37f11f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'PD Director Complete Date'
+	toColumn: LocalDateTable_bd5ec495-6804-4a7f-b05d-766ac8bc9443.Date
+
+relationship 15f33745-23ac-49f1-a702-0c6781dd1ff1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'PMPI Director Complete Date'
+	toColumn: LocalDateTable_8f7ea95a-df7e-4329-a649-0e6d2e2eac2e.Date
+
+relationship 0b448610-9ab3-4dd7-b1db-a0e3454d816c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Project Server Setup Complete Date'
+	toColumn: LocalDateTable_1695d456-c195-4d01-8184-f70316ffc0ad.Date
+
+relationship c9f52bf1-2f7a-4a0f-9690-4363e1b5f987
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Sent to Project Delivery'
+	toColumn: LocalDateTable_b48387a6-8d0b-4e98-b32b-ec900dff3855.Date
+
+relationship 9e27dd31-203b-4ac8-81fd-a93b6797e970
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Tech Review BDS Manager Complete Date'
+	toColumn: LocalDateTable_b303b2e1-c554-4360-83f9-caf3ee68c3e3.Date
+
+relationship f3d1b19f-bcc4-450a-bc80-d0983ed5ac68
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Tech Review Draft Complete'
+	toColumn: LocalDateTable_d3b17e3e-ac29-4fec-839c-f55a1f8666e5.Date
+
+relationship 5c62ac1e-d95b-4fa2-8e48-873a70bfd654
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Tech Review PMPI Director Complete Date'
+	toColumn: LocalDateTable_e1f3efa8-c47c-4fa1-8d59-c139a980d28e.Date
+
+relationship 77b82f21-c906-4dc0-9fba-ec1afeda4e5a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Tech Review Waived Date'
+	toColumn: LocalDateTable_058faa4c-e048-4388-a8c4-850fa84b5c25.Date
+
+relationship 1fac2b08-b4ab-419b-86ed-5a70d308cfc1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'WBS Sent Date'
+	toColumn: LocalDateTable_5360177f-2075-4ac6-b751-01423706af2e.Date
+
+relationship ae2310e6-d517-4d7c-945e-9700684c311b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Complete Date'
+	toColumn: LocalDateTable_01d07700-52ac-40a1-811f-2eba36234c9f.Date
+
+relationship 400b15c1-7e99-47ee-bbe5-22cd0b27fa0e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrprojreqmain.'Cancelled Date'
+	toColumn: LocalDateTable_765e18a0-6b49-4b75-b303-1e7dfda6ff4c.Date
+
+relationship e113b12e-209d-49a2-91dc-9ca85828ce2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrrequestprocess.'Created On'
+	toColumn: LocalDateTable_8868d7be-3fc5-4d48-9d34-95aff809bafe.Date
+
+relationship 815873fe-3418-407c-8979-e8ba858ca760
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrrequestprocess.'Modified On'
+	toColumn: LocalDateTable_7da4a5f0-0f1b-4055-a99a-4ebacbe143fa.Date
+
+relationship eeded486-029d-4aa3-a802-0b53162b5edc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrrequestprocess.'Record Created On'
+	toColumn: LocalDateTable_0ba083c3-eede-4ae5-ab05-55845d7f77d9.Date
+
+relationship 3e562bd5-4820-4b09-8378-c8ca4315e0b5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrrequestprocess.'Completed On'
+	toColumn: LocalDateTable_838cf9af-7757-476a-8dfd-b0ada50b49f1.Date
+
+relationship 86b32dd5-33d9-4cd7-897f-66035a71bad5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_cmrrequestprocess.'Active Stage Started On'
+	toColumn: LocalDateTable_6d10fa38-9900-4b0f-9cad-30742297571c.Date
+
+relationship 3e6a11e9-39b3-443a-9530-bae90f5bbb1d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_VFADataValidation.'Created On'
+	toColumn: LocalDateTable_471f58ab-dc5c-4dd4-bdef-c299eaeaf896.Date
+
+relationship 63e3c114-7e15-4fc9-86d9-2e78633e2b37
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_VFADataValidation.'Modified On'
+	toColumn: LocalDateTable_0c3e07a2-e346-46de-a058-bae5cc32d37f.Date
+
+relationship c9f37246-c3e4-42e0-8c5d-78398de247c7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_VFADataValidation.'Record Created On'
+	toColumn: LocalDateTable_a2521120-8ccc-4f55-b23b-83d05e354640.Date
+
+relationship c99dc749-afdb-4596-bd4b-e2b9da6bba39
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_ProjectRequestSummary.'Created On'
+	toColumn: LocalDateTable_8bec0a57-ff91-4f31-b460-ef20b11693de.Date
+
+relationship 7bb81b5e-662f-48be-9f06-a1178c2a3d96
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_ProjectRequestSummary.'Modified On'
+	toColumn: LocalDateTable_7676f97c-c6ae-49b7-bd9e-57b5ea0973a8.Date
+
+relationship 9fad8411-bbeb-4ca1-bc1a-07068b87de3c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DEV_ProjectRequestSummary.'Record Created On'
+	toColumn: LocalDateTable_e71e0a50-b97b-43df-8e25-3378769655db.Date
+
+relationship bc7d18d8-a400-490a-832a-520dd679d81a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_ProjectRequestSummary.'Created On'
+	toColumn: LocalDateTable_ec7c1c58-a4df-467c-bc67-d50e2e1fead7.Date
+
+relationship c30e56ec-882b-48dc-bc38-49f5adc7a9cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_ProjectRequestSummary.'Modified On'
+	toColumn: LocalDateTable_8a0f2341-b80f-4c10-b8a0-16de8434690a.Date
+
+relationship 0847d1d6-5d0c-49e6-820b-b1b948695fcc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_ProjectRequestSummary.'Record Created On'
+	toColumn: LocalDateTable_7396b622-6009-48bd-82ff-e76d9969c8bb.Date
+
+relationship 49f04669-ee0a-46a1-9aff-651ce6283db3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_VFADataValidation.'Created On'
+	toColumn: LocalDateTable_fee9f97e-b184-48d7-bf72-5c537ba68a4c.Date
+
+relationship 3eadc3a0-9a04-46b5-9588-9bc81820fed4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_VFADataValidation.'Modified On'
+	toColumn: LocalDateTable_1aac346e-a32b-47cc-892c-a4dd7d126e5f.Date
+
+relationship 076a53d1-1e51-4800-a1c7-5fb169dcfbda
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PROD_VFADataValidation.'Record Created On'
+	toColumn: LocalDateTable_c4d5ffd3-f574-4b82-a905-ec2ea33b98d6.Date
+
+relationship AutoDetected_39d50cdc-51c2-416a-8ac7-a12dfd30f429
+	fromColumn: PROD_cmrprojreqmain.'RAP ID'
+	toColumn: PROD_ProjectRequestSummary.'RAP ID'
+
+relationship AutoDetected_e5196f13-a595-46bd-a4dc-58d2289dbcc1
+	isActive: false
+	fromColumn: DEV_cmrprojreqmain.'RAP ID'
+	toColumn: PROD_ProjectRequestSummary.'RAP ID'
+
+relationship AutoDetected_96270f47-528e-4cbb-8033-50c5ef367bde
+	fromColumn: DEV_VFADataValidation.'RAP ID'
+	toColumn: PROD_ProjectRequestSummary.'RAP ID'
+
+relationship AutoDetected_1f960c62-5673-4b0f-8612-2b762626f789
+	fromColumn: PROD_VFADataValidation.'RAP ID'
+	toColumn: PROD_ProjectRequestSummary.'RAP ID'
+
+relationship AutoDetected_e67e3341-cce1-4bc5-927b-ffbcf6c9a655
+	fromColumn: PROD_cmrprojreqmain.'RAP ID'
+	toColumn: DEV_ProjectRequestSummary.'RAP ID'
+
+relationship AutoDetected_234dc133-0d6a-460e-be78-a17e9f1318e4
+	fromColumn: DEV_cmrprojreqmain.'RAP ID'
+	toColumn: DEV_ProjectRequestSummary.'RAP ID'
+
+relationship AutoDetected_b3eeeb20-113b-47d6-9d6c-0de2faec72fa
+	fromColumn: DEV_VFADataValidation.'RAP ID'
+	toColumn: DEV_ProjectRequestSummary.'RAP ID'
+
+relationship AutoDetected_48a41d21-47a2-452a-8389-e1b6f3f95a85
+	fromColumn: PROD_VFADataValidation.'RAP ID'
+	toColumn: DEV_ProjectRequestSummary.'RAP ID'
+
+relationship AutoDetected_5191f51e-085e-4836-b663-e7116ff3eb83
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: DEV_VFADataValidation.'REQ ID'
+	toColumn: PROD_VFADataValidation.'REQ ID'
+

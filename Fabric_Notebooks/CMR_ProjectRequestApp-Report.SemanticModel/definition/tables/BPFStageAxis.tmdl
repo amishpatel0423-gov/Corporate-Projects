@@ -1,0 +1,44 @@
+table BPFStageAxis
+	lineageTag: fa518bab-e2f4-47a2-bd2e-cb9380002be0
+
+	column Stage
+		lineageTag: e5ee2a69-1160-42ac-a483-c075b5f35f83
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Stage]
+		sortByColumn: SortOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column SortOrder
+		formatString: 0
+		lineageTag: 5b91e4bd-dc7d-47c7-b644-9cc67fb4d418
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [SortOrder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BPFStageAxis = calculated
+		mode: import
+		source = ```
+				DATATABLE(
+				    "Stage", STRING,
+				    "SortOrder", INTEGER,
+				    {
+				        {"Initial FM Decision",1},
+				        {"Technical Review",2},
+				        {"Finalize",3},
+				        {"Director Decision",4},
+				        {"Funding Classification",5},
+				        {"Project Delivery Initiation",6},
+				        {"Prepare for Approval",7},
+				        {"Executive Review",8},
+				        {"Project Setup",9}
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = 42ae1664ae0a46b1b8fb2e4e8011ef4d
+

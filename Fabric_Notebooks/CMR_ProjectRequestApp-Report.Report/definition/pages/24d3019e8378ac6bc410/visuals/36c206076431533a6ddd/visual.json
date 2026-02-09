@@ -1,0 +1,166 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "36c206076431533a6ddd",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 10000,
+    "height": 64,
+    "width": 1152,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "DaysforPD"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaysforPD)",
+              "nativeQueryRef": "Avg Days for PD Initiation",
+              "displayName": "Avg Days for PD Initiation"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "DaystoApprove"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.DaystoComplete)",
+              "nativeQueryRef": "Avg Days to Approve",
+              "displayName": "Avg Days to Approve"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pmbcp_cmrprojreqmain"
+                    }
+                  },
+                  "Property": "Requests Above PD Average"
+                }
+              },
+              "queryRef": "pmbcp_cmrprojreqmain.Requests Above PD Average",
+              "nativeQueryRef": "# Requests Above PD Average",
+              "displayName": "# Requests Above PD Average"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pmbcp_cmrprojreqmain"
+                        }
+                      },
+                      "Property": "PD Cost Difference Percent"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(pmbcp_cmrprojreqmain.PD Cost Difference Percent)",
+              "nativeQueryRef": "Avg of PD Cost Percent Difference",
+              "displayName": "Avg of PD Cost Percent Difference",
+              "format": "#,0%;-#,0%;#,0%"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "pmbcp_cmrprojreqmain"
+                      }
+                    },
+                    "Property": "DaysforPD"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "card": [
+        {
+          "properties": {
+            "barShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

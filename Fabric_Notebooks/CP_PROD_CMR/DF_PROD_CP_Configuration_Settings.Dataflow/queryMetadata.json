@@ -1,0 +1,47 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "VFA_SSRS",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "PROD_ConfigurationTable": {
+      "queryId": "9d1e1fe8-7aad-4cee-b258-cbc9aa4d2b0c",
+      "queryName": "PROD_ConfigurationTable",
+      "loadEnabled": false
+    },
+    "PROD_ConfigurationTable_DataDestination": {
+      "queryId": "1c6fe5d9-954a-48ce-a827-9de1561bfba3",
+      "queryName": "PROD_ConfigurationTable_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/Python/CMRExternalDataSource_MCode/Configurations.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"5b2a4327-e40b-4ed9-b8cc-9f28c17350dc\"}"
+    },
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/CMR%20Source%20Code%20Repo/Releases/Fabric/ConfigurationSettings.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"dee0aa03-a280-4220-adfa-877adff5d570\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"46b261aa-40e5-48ad-a690-b3cb7aac0674\"}"
+    },
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/CMR%20Lakehouse/Release/Fabric/CP_PROD_CMR_PL/CP_PROD_CMR_PL/DataFlow_Source/ConfigurationSettings.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"23889f01-13c0-467d-ada1-1b3b86da72b5\"}"
+    },
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source_Documentation/CMR%20Lakehouse/Release/DataFlow_Source/ConfigurationSettings.xlsx",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"6133f20b-bba0-4d10-b386-7ba994fefcd9\"}"
+    }
+  ]
+}

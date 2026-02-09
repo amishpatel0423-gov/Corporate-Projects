@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_DEV_CP_CMR_ExternalData",
+    "description": "Pipeline for ETL of VFA, RAP, and Building list, transformation in PySpark Notebook into the development lakehouse tables that are connected to the CMR project request app Dev environment.  "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7c15dfb3-d427-a9eb-4182-53033a5a5e1b"
+  }
+}

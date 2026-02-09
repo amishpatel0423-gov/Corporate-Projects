@@ -1,0 +1,2041 @@
+expression Building_List = ```
+		/*
+		Query Name: Building_List
+		Source: sharepoint building list
+		Dependencies: working (query)
+		About: A straight pull in from the sharepoint building list excel file. This is a resource for PMB buildings information, contacts, portfolios, address, financial codes etc. 
+		
+		https://abgov.sharepoint.com/sites/S300D13-PMBL/Shared%20Documents/PMB%20Building-Contact%20List.xlsx
+		
+		Version: 1.2
+		Last Update Date (mmddyyyy): 11-26-2025
+		Last Updated By: CM
+		Release Date (mmddyyyy): 11-26-2024
+		
+		Version History: 
+		- updated link to new SharePoint library
+		
+		TODO: 
+		- parameterize the location of the file. Note, this file may be replaced with a dataverse table in the future.
+		
+		*/
+		//******************start of query*****************************//
+		
+		let
+		    // Connect to the SharePoint site
+		    SharePointSite = "https://abgov.sharepoint.com/sites/S300D13-PMBL",
+		    Source = SharePoint.Files(SharePointSite, [ApiVersion = 15]),
+		
+		    // Filter to the specific file
+		    FilteredFile = Table.SelectRows(Source, each 
+		        [Name] = "PMB Building-Contact List.xlsx" and 
+		        Text.Contains([Folder Path], "Shared Documents")
+		    ),
+		
+		    // Get the file content
+		    FileBinary = FilteredFile{0}[Content],
+		
+		    // Load the Excel workbook
+		    ExcelData = Excel.Workbook(FileBinary, null, true),
+		
+		    // Extract the desired table
+		    BuildingListTable = ExcelData{[Item="Building_List", Kind="Table"]}[Data],
+		
+		    // Promote headers and set data types
+		    ChangedTypes = Table.TransformColumnTypes(BuildingListTable, {
+		        {"LOCATION", type text},
+		        {"BLDGID", type text},
+		        {"BLDGNAME", type text},
+		        {"ADDRESS", type text},
+		        {"OWNER", type text},
+		        {"Director Level", type text},
+		        {"Director Level Contact Name", type text},
+		        {"Internal Order", type text},
+		        {"Cost Center", Int64.Type},
+		        {"Org", Int64.Type},
+		        {"Facility Manager", type text},
+		        {"Facility Manager Contact Name", type text},
+		        {"Facility Manager Phone #", type text},
+		        {"Facility Coordinator Contact Name", type text},
+		        {"Facility Coordinator Phone #", type text},
+		        {"TPM", type text},
+		        {"TPM Contact Name", type text},
+		        {"INSPECT_TYPID", type text},
+		        {"INSPECT_TYPNAM", type text},
+		        {"Director Email", type text},
+		        {"FM Email", type text},
+		        {"__PowerAppsId__", type text}
+		    })
+		in
+		 ChangedTypes
+		```
+	lineageTag: 2b4832e6-66fd-4584-bad1-a3a0db3ef7da
+	queryGroup: DataSources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression ImpactOfFailure = ```
+		/*
+		Query Name: ImpactOfFailure
+		Source: MasterScoringConnection
+		Dependencies: CommonScoringModel
+		About: Provides connection to the master scoring table impact as impact of failure
+		
+		https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source%20&%20Documentation/CMR%20Source%20Code%20Repo/CommonModules/CommonMasterScoring/Master_CMR_ScoringTables.xlsx
+		
+		Version: 2.2
+		Last Update Date (ddmmyyy): 03-17-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		These connections used to be managed by a sheet in the workbook, this was changed to ensure consistent application of the scoring tables from a single source for all tools. 
+		
+		TODO: 
+		- 
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    //connect to the master file
+		    Source = #"MasterScoringConnection",
+		    // connect to the master file
+		    ImpactOfFailure_Table = Source{[Item = "ImpactOfFailure", Kind = "Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(
+		        ImpactOfFailure_Table,
+		        {
+		            {"Requirement Impact", type text},
+		            {"Impact of Failure", type text},
+		            {"Score", Int64.Type},
+		            {"Score with Weight", Int64.Type},
+		            {"Weight", Int64.Type}
+		        }
+		    )
+		in
+		    #"Changed Type"
+		```
+	lineageTag: b99e93c1-70af-4181-ba69-72cd5780ec9e
+	queryGroup: CommonModels\MasterScoring
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression IoAF = ```
+		/*
+		Query Name: IoAF
+		Source: MasterScoringConnection
+		Dependencies: CommonScoringModel
+		About: Provides connection to the master scoring table for asset use as importance of asset functionality
+		
+		https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source%20&%20Documentation/CMR%20Source%20Code%20Repo/CommonModules/CommonMasterScoring/Master_CMR_ScoringTables.xlsx
+		
+		Version: 2.2
+		Last Update Date (mmddyyyy): 03-17-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		These connections used to be managed by a sheet in the workbook, this was changed to ensure consistent application of the scoring tables from a single source for all tools. 
+		
+		TODO: 
+		- parameterize the source url to the master file so it is easier to update in one place if the location of the file changes
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    //connect to the master file
+		    Source = #"MasterScoringConnection",
+		    // connect to the master file
+		    IoAF_Table = Source{[Item = "IoAF", Kind = "Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(
+		        IoAF_Table,
+		        {
+		            {"Asset Use", type text},
+		            {"Importance of Asset Functionality", type text},
+		            {"Score", Int64.Type},
+		            {"Score with Weight", Int64.Type},
+		            {"Weight", Int64.Type}
+		        }
+		    )
+		in
+		    #"Changed Type"
+		```
+	lineageTag: b8e8973a-e1e9-4931-b8f6-9a37a29c33df
+	queryGroup: CommonModels\MasterScoring
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression IoSF = ```
+		/*
+		Query Name: IoSF
+		Source: MasterScoringConnection
+		Dependencies: CommonScoringModel
+		About: Provides connection to the master scoring table for linked system (uniformat) as importance of system functionality
+		
+		https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source%20&%20Documentation/CMR%20Source%20Code%20Repo/CommonModules/CommonMasterScoring/Master_CMR_ScoringTables.xlsx
+		
+		Version: 2.2
+		Last Update Date (mmddyyyy): 03-17-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		These connections used to be managed by a sheet in the workbook, this was changed to ensure consistent application of the scoring tables from a single source for all tools. 
+		
+		TODO: 
+		- 
+		*/
+		//******************start of query*****************************//
+		let
+		    //connect to the master file
+		    Source = #"MasterScoringConnection",
+		    // connect to the master file
+		    IoSF_Table = Source{[Item = "IoSF", Kind = "Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(
+		        IoSF_Table,
+		        {
+		            {"System - Uniformat", type text},
+		            {"System Group", type text},
+		            {"System - Uniformat Code", type text},
+		            {"Importance of System Functionality", type text},
+		            {"Score", Int64.Type},
+		            {"Score with Weight", Int64.Type},
+		            {"Weight", Int64.Type}
+		        }
+		    )
+		in
+		    #"Changed Type"
+		```
+	lineageTag: c04adcbf-94c8-4afd-9faf-c98edea359fc
+	queryGroup: CommonModels\MasterScoring
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression PlanForAsset = ```
+		/*
+		Query Name: PlanForAsset
+		Source: MasterScoringConnection
+		Dependencies: CommonScoringModel
+		About: Provides connection to the master scoring table for building priority detail as plan for asset
+		
+		https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source%20&%20Documentation/CMR%20Source%20Code%20Repo/CommonModules/CommonMasterScoring/Master_CMR_ScoringTables.xlsx
+		
+		Version: 2.2
+		Last Update Date (mmddyyyy): 03-17-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		These connections used to be managed by a sheet in the workbook, this was changed to ensure consistent application of the scoring tables from a single source for all tools. 
+		
+		TODO: 
+		- 
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    //connect to the master file
+		    Source = #"MasterScoringConnection",
+		    // connect to the master file
+		    PlanForAsset_Table = Source{[Item = "PlanForAsset", Kind = "Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(
+		        PlanForAsset_Table,
+		        {
+		            {"Building Priority Detail", type text},
+		            {"Plan for Asset", type text},
+		            {"Score", Int64.Type},
+		            {"Score with Weight", Int64.Type},
+		            {"Weight", Int64.Type}
+		        }
+		    )
+		in
+		    #"Changed Type"
+		```
+	lineageTag: 3aa7f2ed-4a3e-4f36-a49b-fd066f148613
+	queryGroup: CommonModels\MasterScoring
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression ReasonForWork = ```
+		/*
+		Query Name: ReasonForWork
+		Source: MasterScoringConnection
+		Dependencies: CommonScoringModel
+		About: Provides connection to the master scoring table for category as reason for work
+		
+		https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source%20&%20Documentation/CMR%20Source%20Code%20Repo/CommonModules/CommonMasterScoring/Master_CMR_ScoringTables.xlsx
+		
+		Version: 2.2
+		Last Update Date(mmddyyyy): 03-17-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		These connections used to be managed by a sheet in the workbook, this was changed to ensure consistent application of the scoring tables from a single source for all tools. 
+		
+		TODO: 
+		- 
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    //connect to the master file
+		    Source = #"MasterScoringConnection",
+		    // connect to the master file
+		    ReasonForWork_Table = Source{[Item = "ReasonForWork", Kind = "Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(
+		        ReasonForWork_Table,
+		        {
+		            {"Requirement Category", type text},
+		            {"Reason for Work", type text},
+		            {"Score", Int64.Type},
+		            {"Score with Weight", Int64.Type},
+		            {"Weight", Int64.Type}
+		        }
+		    )
+		in
+		    #"Changed Type"
+		```
+	lineageTag: 13cafe50-1466-41a8-a20b-fbb6c3d5629d
+	queryGroup: CommonModels\MasterScoring
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression ConditionOfSystem = ```
+		/*
+		Query Name: ConditionOfSystem
+		Source: MasterScoringConnection
+		Dependencies: CommonScoringModel
+		About: Provides connection to the master scoring table for priority as condition of system
+		
+		Version: 2.2
+		Last Update Date: 03-17-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		source url to the master file MasterScoringConnection query so it is easier to update in one place if the location of the file changes
+		
+		TODO: 
+		- 
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    //connect to the master file
+		    Source = #"MasterScoringConnection",
+		    // connect to the master file
+		    ConditionOfSystem_Table = Source{[Item = "ConditionOfSystem", Kind = "Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(
+		        ConditionOfSystem_Table,
+		        {
+		            {"Requirement Priority", type text},
+		            {"Condition of System", type text},
+		            {"Score", Int64.Type},
+		            {"Score with Weight", Int64.Type},
+		            {"Weight", Int64.Type}
+		        }
+		    )
+		in
+		    #"Changed Type"
+		```
+	lineageTag: 20e8c6a1-a32f-42fc-9322-bd03346012c4
+	queryGroup: CommonModels\MasterScoring
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+/// function to lookup variables from the configuration table and use in power query
+expression fnGetParameters = ```
+		/*
+		Function Name: fnGetParameters
+		Source: Parameters (table)
+		Dependencies: Working (query)
+		About: This function takes the user input on the Score Tool worksheet and returns the requirements by RAP ID, Requirement ID or B/SID. Also includes a swich for also returning RAP project status APP => default is blank, DFT, REC status. 
+		
+		https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/ToolDevelopment/Funding%20Request%20Form/CMR%202.0/App/DataFlowSources/Dataflow/CMRProjectRequestExternalData_05272025.xlsx?web=1
+		
+		Version: 2.0
+		Last Update Date (mmddyyyy): 04-0-10-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		- updated meta version and release date
+		TODO: 
+		- adjust the functionality according to the data source selection (vfa extract vs vfalinkedrequirements report)
+		
+		*/
+		//******************start of query*****************************//
+		
+		let
+		    Source = (ConfigName as text) as any =>
+		let
+		    //ConfigSource = Excel.CurrentWorkbook(){[Name = "ConfigurationTable"]}[Content],
+		    ConfigSourceFile = Excel.Workbook(Web.Contents("https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/ToolDevelopment/Funding%20Request%20Form/CMR%202.0/App/DataFlowSources/Dataflow/CMRProjectRequestExternalData_05272025.xlsx"), null, true),
+		    ConfigSource = ConfigSourceFile{[Item="ConfigurationTable",Kind="Table"]}[Data],
+		    AddLowerCase = Table.AddColumn(ConfigSource, "ConfigNameLower", each Text.Lower([ConfigurationName]), type text),
+		    ConfigRow = Table.SelectRows(AddLowerCase, each [ConfigNameLower] = Text.Lower(ConfigName)),
+		    HasRow = not Table.IsEmpty(ConfigRow),
+		    MsgTxt = if HasRow then ConfigRow{0}[Value] else null,
+		    MsgLevel = if HasRow and Record.HasFields(ConfigRow{0}, "MessageLevel") then ConfigRow{0}[MessageLevel] else null,
+		    Output = if MsgLevel = null or MsgLevel = 0 then MsgTxt else [MsgTxt = MsgTxt, MessageLevel = MsgLevel]
+		in
+		    Output
+		in
+		    Source
+		
+		
+		/* (ConfigName as text) as any =>
+		let
+		    ConfigSource = Excel.CurrentWorkbook(){[Name = "ConfigurationTable"]}[Content],
+		    AddLowerCase = Table.AddColumn(ConfigSource, "ConfigNameLower", each Text.Lower([ConfigurationName]), type text),
+		    ConfigRow = Table.SelectRows(AddLowerCase, each [ConfigNameLower] = Text.Lower(ConfigName)),
+		    HasRow = not Table.IsEmpty(ConfigRow),
+		    MsgTxt = if HasRow then ConfigRow{0}[Value] else null,
+		    MessageLevel = if HasRow and Record.HasFields(ConfigRow{0}, "MsgTxt") then ConfigRow{0}[MsgTxt] else 0,
+		    Output = 
+		        if MessageLevel = null or MessageLevel = 0 then
+		            MsgTxt
+		        else
+		            [MsgTxt = MsgTxt, MessageLevel = MessageLevel]
+		in
+		    Output */
+		```
+	lineageTag: f9eefea3-3541-463a-87f2-0af5946e7531
+	queryGroup: ConfigurationParameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+/// Model for the VFA Data - this query has been modified for use in the power apps - additional join to the rap staging table to limit the rows to those filterd in the rap data
+expression VFA_EMPMI_Staging = ```
+		/*
+		Query Name: VFA_EMPMI_Staging
+		Source: VFA_EMPMI, Building_List
+		Dependencies: Tool specific dependencies
+		About: Joins to the building list for location and contact names. Prepares the VFA data for use in other queries. 
+		
+		Version: 2.2
+		Last Update Date(mmddyyyy): 04-10-2025
+		Last Updated By: CM
+		Release Date:
+		
+		Version History: 
+		- prepare dataset for project request app
+		- Added new OutForAudit and IsRenewal columns
+		- Updated to use the full uniformat text for the uniformat errors.
+		
+		TODO: 
+		
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    Source = Table.Buffer(Table.SelectColumns(
+		        VFA_EMPMI,
+		        {
+		            "Portfolio_Name", //transformation removes the Win1252 characters and rename to data model
+		            //{"Property_Name", type text},
+		            //{"Asset_EID", type any},
+		            "Asset_Name", //rename to data model
+		            "Building_ID", //renamed to Asset ID in data model
+		            //renamed to Asset Use
+		            "Use_Type", //rename to asset use, set to site for blank and building_id starts with S
+		            //{"Constructed_Year",  Int64.Type},
+		            "Building_Priority_Detail", //rename to data model
+		            "Requirement_EID", //rename to data model as REQ ID
+		            "Requirement_Name", //rename to data model
+		            "Requirement_Description", //rename to data model
+		            "Category", //rename to data model
+		            "Priority", //rename to data model
+		            "Impact", //rename to data model
+		            "EstimatedCost", //rename to data model
+		            //{"RankingOne", type text},
+		            //{"RankingTwo",type text},
+		            "RAPProjectID", //rename to data model
+		            "RAPProjectStatus", //rename to data model used to check if status COM
+		            "System_EID", //need this for error checking against the VFA SSRS
+		            "System_Name", //rename to data model
+		            "Uniformat", //UNIFORMAT renamed to Requirement - Linked System
+		            "System_Group", //rename to data model
+		            "OutForAudit",
+		            "IsRenewal"
+		        }
+		    )),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Portfolio_Name", type text}}),
+		    #"Replace Win1252 Encoded Dash Portfolio" = Table.ReplaceValue(#"Changed Type","â€“","-",Replacer.ReplaceText,{"Portfolio_Name"}),
+		    #"Replace Win1252 Encoded Dash Sys Name" = Table.ReplaceValue(#"Replace Win1252 Encoded Dash Portfolio","â??","-",Replacer.ReplaceText,{"System_Name"}),
+		    #"Removed Blank Rows" = Table.SelectRows(#"Replace Win1252 Encoded Dash Sys Name", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+		    //asset use is blank for sites, VFA SSRS manages trailers and parking lots already, this is different than when using a vfa data extract where three separate use columns are present. 
+		    #"Set Blank Site Use" = Table.ReplaceValue(#"Removed Blank Rows", "", "Site", Replacer.ReplaceValue, {"Use_Type"}),
+		    #"Rename to Data Model" = Table.RenameColumns(
+		        #"Set Blank Site Use",
+		        {
+		            {"Portfolio_Name", "PortfolioName"},
+		            {"Asset_Name", "AssetName"}, 
+		            {"Building_ID", "AssetID"},
+		            {"RAPProjectID", "RAPID"},
+		            {"Requirement_EID", "REQID"},
+		            {"RAPProjectStatus", "RAPStatus"},
+		            {"Use_Type", "AssetUse"},
+		            {"Building_Priority_Detail", "BuildingPriorityDetail"},
+		            {"EstimatedCost", "EstimatedCost"},
+		            {"Requirement_Description", "RequirementDescription"},
+		            {"Requirement_Name", "RequirementName"},
+		            {"System_Group", "VFASystemGroup"}, //distict the vfa system group from master system group in output of scoring model
+		            {"System_Name", "SystemName"}
+		        }
+		    ),
+		    #"Join to Building List" = Table.NestedJoin(#"Rename to Data Model", {"AssetID"}, Building_List, {"BLDGID"}, "Building_List", JoinKind.LeftOuter),
+		    #"Get Location" = Table.ExpandTableColumn(
+		        #"Join to Building List",
+		        "Building_List",
+		        {"LOCATION"},
+		        {"Location"}
+		    ),
+		        //The Uniformat text in the SSRS doesn't have exta spaces between the uniformat code and the hyphen like the IoSF table does. (example: A1010 - Standard Foundations* on IoSF but A1010-Standard Foundations* in the report). Adds the extra spaces to the Uniformat column so the strings will match exactly. Using the full string to catch and check error condition messages for 150 year lifetimes have an * in dependent queries
+		    #"Uniformat Text Match Replace" = Table.TransformColumns(
+		        #"Get Location",
+		        {
+		            "Uniformat",
+		            each
+		                let
+		                    pos = Text.PositionOf(_, "-")
+		                    // Find first occurrence of "-"
+		                in
+		                    if pos <> -1 then
+		                        Text.Start(_, pos) & " - " & Text.Middle(_, pos + 1)
+		                    else
+		                        _,
+		            type text
+		        }
+		    ),
+		    //the VFA SSRS has empty string instead of null values. Replace all blanks (empty string) to null for condition check in dependent queries
+		        #"Replace Blank Report Values with Null" = Table.ReplaceValue(
+		        #"Uniformat Text Match Replace",
+		        "",
+		        null,
+		        Replacer.ReplaceValue,
+		        {"RequirementName", "RequirementDescription", "Category", "Priority", "Impact", "Uniformat", "VFASystemGroup" }
+		    ),
+		    //make sure requirement estimated cost is not null for any of the rows
+		    #"Replace Null Est Cost with 0" = Table.ReplaceValue(#"Replace Blank Report Values with Null",null,0,Replacer.ReplaceValue,{"EstimatedCost"}),
+		    #"Reordered Columns" = Table.ReorderColumns(#"Replace Null Est Cost with 0",{"RAPID", "RAPStatus", "PortfolioName", "AssetName", "AssetID", "AssetUse", "BuildingPriorityDetail", "REQID", "RequirementName", "RequirementDescription", "Category", "Priority", "Impact", "EstimatedCost", "SystemName", "Uniformat", "VFASystemGroup", "System_EID", "OutForAudit", "IsRenewal"
+		    , "Location"
+		    }
+		    ),
+		    //limiting the amount of data processing for the vfa project staging - only those RAP ID's. Don't want to include all the VFA data in the output
+		    #"Limit VFA To ONLY RAP Query" = Table.NestedJoin(#"Reordered Columns", {"RAPID"}, RAP_Projects_Staging, {"RAPID"}, "RAP_Projects_Staging", JoinKind.Inner),
+		    #"Cleaned Text" = Table.TransformColumns(#"Limit VFA To ONLY RAP Query",{{"RequirementDescription", Text.Clean, type text}})
+		in
+		    #"Cleaned Text"
+		```
+	lineageTag: 24a47086-1b22-4e8d-9fda-e8baea79e79f
+	queryGroup: StagingModels
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+/// Source RAP SSRS with Date Filter from config table (or default now - 5yrs), includes rap data validation flag and messages within the query.
+expression RAP_Projects_Staging = ```
+		/*
+		Query Name:RAP_Project_Staging
+		Source: RAP_Project_SSRS
+		Dependencies: ProjectRequestSummary
+		About: Provides the RAP lookups and related infomration for the CMR Project Request App
+		
+		Version: 1.0
+		Last Update Date (mmddyyyy): 05-28-2025 
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		- release version
+		TODO: 
+		
+		
+		*/
+		//******************start of query*****************************//
+		
+		let
+		    //the SSRS does not have null for blank values, blanks have a space.
+		    Source = Table.Buffer(Table.SelectColumns(RAP_Projects_SSRS, 
+		    //confirm data types, the number field needs to stay text. pq will try to make this a number
+		        {
+		            "Property",
+		            "Number",
+		            //"Name",
+		            "Title",
+		            "Status",
+		            //"raApprovedTPC",
+		            //"raProjMgr",
+		            //"Initiator",
+		            //"FUDesc",
+		            "Description",
+		            "Reason",
+		            "Consequences",
+		            "Critical",
+		            "Record_Created"
+		        }
+		    )),
+		    //combine property and number into a single RAP ID column with a hyphen delimeter
+		    #"Combine for RAP ID" = Table.CombineColumns(
+		        Source, {"Property", "Number"}, Combiner.CombineTextByDelimiter("-", QuoteStyle.None), "RAPID"
+		    ),
+		    #"Rename to dataModel" = Table.RenameColumns(
+		        #"Combine for RAP ID",
+		        {
+		            //{"Name", "Asset Name"},
+		            {"Title", "RAPTitle"},
+		            {"Status", "RAPStatus"},
+		            //{"raProjMgr", "RAP Project Manager"},
+		            //{"FUDesc", "Funding Description"},
+		            {"Description", "RAPProjectDescription"},
+		            {"Reason", "RAPProjectReason"},
+		            {"Consequences", "RAPProjectConsequence"},
+		            {"Critical", "RAPProjectComments"}
+		        }
+		    ),
+		    #"Trimmed Blanks" = Table.TransformColumns(
+		        #"Rename to dataModel",
+		        {
+		            {"RAPProjectComments", Text.Trim, type text},
+		            {"RAPProjectConsequence", Text.Trim, type text},
+		            {"RAPProjectReason", Text.Trim, type text},
+		            {"RAPProjectDescription", Text.Trim, type text}
+		        }
+		    ),
+		    #"Replace Blanks with Null" = Table.ReplaceValue(
+		        #"Trimmed Blanks",
+		        "",
+		        null,
+		        Replacer.ReplaceValue,
+		        {"RAPProjectDescription", "RAPProjectReason", "RAPProjectConsequence", "RAPProjectComments"}
+		    ),
+		    //filter out cancelled and the DE
+		    #"Filter by RAP Status" = Table.SelectRows(
+		        #"Replace Blanks with Null", each ([RAPStatus] <> "CAN" and [RAPStatus] <> "DE")
+		    ),
+		    #"Trim RAP ID" = Table.TransformColumns(#"Filter by RAP Status", {{"RAPID", Text.Trim, type text}}),
+		         // YYYY-MM-DD hh,mm,ss
+		    // Retrieve the configuration date value
+		    RAPFilterConfigDateRow = Table.SelectRows(ConfigurationTable, each [ConfigurationName] = "RAPFilterDate"),
+		    RAPFilterConfigDate = if Table.RowCount(RAPFilterConfigDateRow) > 0 then RAPFilterConfigDateRow{0}[Value] else DateTime.LocalNow(),  // Fallback to current date if no match
+		    
+		    // Default to 5 years ago if no match was found
+		    RAPFilterConfigDateDefault = Date.AddYears(DateTime.LocalNow(), -5),
+		    
+		    // Ensure that RAPFilterConfigDate is of type datetime (if it's a text or date, convert it)
+		    RAPFilterConfigDateConverted = if Value.Is(RAPFilterConfigDate, type datetime) then RAPFilterConfigDate else RAPFilterConfigDateDefault,
+		    
+		    // Filter rows by the date from the configuration table
+		    #"Filter by Create_Date" = Table.SelectRows(#"Trim RAP ID", each [Record_Created] > RAPFilterConfigDateConverted),
+		
+		    #"Sort by Create Date" = Table.Sort(#"Filter by Create_Date", {{"Record_Created", Order.Descending}}),
+		    #"Check RAP Title Length" = Table.AddColumn(
+		        #"Sort by Create Date",
+		        "RAPTitleLengthCheck",
+		        each
+		            if Text.Length([#"RAPTitle"]) > 40 then
+		                fnGetParameters("msg_warnRAPTitleLength")[MsgTxt]
+		            else
+		                "--"
+		    ),
+		    #"Check RAP Description" = Table.AddColumn(
+		        #"Check RAP Title Length",
+		        "RAPDescCheck",
+		        each if ([RAPProjectDescription] = null) or ([RAPProjectDescription] = "") then fnGetParameters("msg_errorRAPDesc")[MsgTxt] 
+		        else fnGetParameters("msg_passRAPDescValidation")[MsgTxt]
+		    ),
+		    #"Get RAP Description Error Level" = Table.AddColumn(
+		        #"Check RAP Description",
+		        "RAPDescLevel",
+		        each if ([RAPDescCheck] <> "--") 
+		            then fnGetParameters("msg_errorRAPDesc")[MessageLevel] 
+		            else null
+		    ),
+		
+		    #"Check RAP Consequence" = Table.AddColumn(
+		        #"Get RAP Description Error Level",
+		        "RAPConseqCheck",
+		        each if ([RAPProjectConsequence] = null) or ([RAPProjectConsequence] = "") then fnGetParameters("msg_errorRAPConsequence")[MsgTxt] 
+		        else fnGetParameters("msg_passRAPConsValidation")[MsgTxt]
+		    ),
+		    #"Get RAP Consequence Error Level" = Table.AddColumn(
+		    #"Check RAP Consequence",
+		    "RAPConseqLevel",
+		    each if ([RAPConseqCheck] <> "--") 
+		        then fnGetParameters("msg_errorRAPDesc")[MessageLevel] 
+		        else null
+		),
+		    #"Check RAP Reason" = Table.AddColumn(
+		        #"Get RAP Consequence Error Level",
+		        "RAPReasonCheck",
+		        each if ([RAPProjectReason] = null) or ([RAPProjectReason] = "") then fnGetParameters("msg_errorRAPReason")[MsgTxt]  
+		        else fnGetParameters("msg_passRAPReasonValidation")[MsgTxt] 
+		    ),
+		    #"Get RAP Reason Error Level" = Table.AddColumn(
+		    #"Check RAP Reason",
+		    "RAPReasonLevel",
+		    each if ([RAPReasonCheck] <> "--") 
+		        then fnGetParameters("msg_errorRAPDesc")[MessageLevel] 
+		        else null
+		),
+		/*     #"Data Validation Flag" = Table.AddColumn(#"Get RAP Reason Error Level", "RAPDataValidation", 
+		    each 
+		    let
+		        columns = {
+		            [RAPDescLevel],
+		            [RAPConseqLevel],
+		            [RAPReasonLevel]
+		        },
+		        errorCount = List.Count(List.Select(columns, each _ = 1)),  
+		        //warningCount = List.Count(List.Select(columns, each _ = 2)),  
+		        //totalColumns = List.Count(columns),
+		        //totalIssues = errorCount + warningCount,
+		        validationText = 
+		            if errorCount > 0 then
+		                fnGetParameters("msg_errorRAPDataValidation")[MsgTxt]
+		            else
+		                fnGetParameters("msg_passRAPDataValidation")
+		        //totalIssuesText = Text.From(totalIssues)
+		    in
+		        validationText */
+		        #"check function" = fnGetParameters("msg_errorRAPDataValidation"),
+		#"Data Validation Flag" = Table.AddColumn(#"Get RAP Reason Error Level", "RAPDataValidation",  
+		    each 
+		    let
+		        columns = {
+		            Record.FieldOrDefault(_, "RAPDescLevel", null),
+		            Record.FieldOrDefault(_, "RAPConseqLevel", null),
+		            Record.FieldOrDefault(_, "RAPReasonLevel", null)
+		        },
+		        errorCount = List.Count(
+		            List.Select(columns, each _ = 1)
+		        ),
+		        validationText = 
+		            if errorCount > 0 then
+		               Text.From(errorCount) //fnGetParameters("msg_errorRAPDataValidation")[MsgTxt] & " " & Text.From(errorCount)
+		            else
+		                0
+		    in
+		        validationText
+		)
+		in
+		    #"Data Validation Flag"
+		```
+	lineageTag: ee273236-c019-45c0-87b6-163333d22968
+	queryGroup: StagingModels
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+/// configuration table for variables used in power query
+expression ConfigurationTable =
+		let
+		    ConfigSourceFile = Excel.Workbook(Web.Contents("https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/ToolDevelopment/Funding%20Request%20Form/CMR%202.0/App/DataFlowSources/Dataflow/CMRProjectRequestExternalData_05272025.xlsx"), null, true),
+		    ConfigSource = ConfigSourceFile{[Item="ConfigurationTable",Kind="Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(ConfigSource,{{"ConfigurationName", type text}, {"Value", type any}, {"Description", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: b4616d84-adab-4983-a846-0c36137a80ea
+	queryGroup: ConfigurationParameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+/// Source VFA_EMPMI_Staging for requirement scoring. Data validation happens in the VFADataValidation Query
+expression CommonScoringModel = ```
+		/*
+		Query Name: ProjectRequestScoring
+		Source: VFA_EMPMI_Staging
+		Dependencies: 
+		About: a version of the common scoring model adapted for the CMR Project Request Power App
+		
+		Version: 2.2
+		Last Update Date(mmddyyyy): 03-17-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		- added the isrenewal lifecycle category error
+		- fixed a bug with the missing uniformat error
+		- modified the code to use the full requirement uniformat for the join instead of the uniformat code split
+		- other changes to update this one-off model
+		- removes the switch of data source
+		
+		TODO: 
+		- 
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    Source = VFA_EMPMI_Staging,
+		    //#"Changed Type" = Table.TransformColumnTypes(Switch, {{"Estimated Cost", Int64.Type}}),
+		    //#"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([RAP ID] = fnGetParameters("RAP ID"))),
+		    #"Join to IoSF" = Table.NestedJoin(
+		        Source, {"Uniformat"}, #"IoSF", {"System - Uniformat"}, "IoSF", JoinKind.LeftOuter
+		    ),
+		    #"Get IoSF Data" = Table.ExpandTableColumn(#"Join to IoSF", "IoSF", {"Importance of System Functionality", "Score with Weight", "System - Uniformat", "System Group"}, {"IoSF.ImportanceofSystemFunctionality", "IoSF.ScorewithWeight", "IoSF.System - Uniformat", "IoSF.System Group"}),
+		
+		    #"Renamed System Columns" = Table.RenameColumns(
+		        #"Get IoSF Data",
+		        {{"IoSF.System - Uniformat", "MasterSystemUniformat"}, {"IoSF.System Group", "MasterSystemGroup"}}
+		    ),
+		    #"Join to PlanForAsset" = Table.NestedJoin(
+		        #"Renamed System Columns",
+		        {"BuildingPriorityDetail"},
+		        #"PlanForAsset",
+		        {"Building Priority Detail"},
+		        "PlanForAsset",
+		        JoinKind.LeftOuter
+		    ),
+		    #"Expanded PlanForAsset" = Table.ExpandTableColumn(#"Join to PlanForAsset", "PlanForAsset", {"Plan for Asset", "Score with Weight"}, {"PFA.PlanForAsset", "PFA.ScorewithWeight"}),
+		    #"Join to IoAF" = Table.NestedJoin(
+		        #"Expanded PlanForAsset", {"AssetUse"}, #"IoAF", {"Asset Use"}, "IoAF", JoinKind.LeftOuter
+		    ),
+		    #"Expanded IoAF" = Table.ExpandTableColumn(#"Join to IoAF", "IoAF", {"Importance of Asset Functionality", "Score with Weight"}, {"IoAF.ImportanceofAssetFunctionality", "IoAF.ScorewithWeight"}),
+		
+		    #"Join Priority to ConditionOfSystem" = Table.NestedJoin(
+		        #"Expanded IoAF",
+		        {"Priority"},
+		        #"ConditionOfSystem",
+		        {"Requirement Priority"},
+		        "ConditionOfSystem",
+		        JoinKind.LeftOuter
+		    ),
+		    #"Expanded ConditionOfSystem" = Table.ExpandTableColumn(#"Join Priority to ConditionOfSystem", "ConditionOfSystem", {"Condition of System", "Score with Weight"}, {"Condition.ConditionofSystem", "Condition.ScorewithWeight"}),
+		    #"Join Category to Reason for Work" = Table.NestedJoin(
+		        #"Expanded ConditionOfSystem",
+		        {"Category"},
+		        #"ReasonForWork",
+		        {"Requirement Category"},
+		        "ReasonForWork",
+		        JoinKind.LeftOuter
+		    ),
+		    #"Expanded ReasonForWork" = Table.ExpandTableColumn(#"Join Category to Reason for Work", "ReasonForWork", {"Reason for Work", "Score with Weight"}, {"Reason.ReasonforWork", "Reason.ScorewithWeight"}),
+		    #"Join to ImpactOfFailure" = Table.NestedJoin(
+		        #"Expanded ReasonForWork",
+		        {"Impact"},
+		        #"ImpactOfFailure",
+		        {"Requirement Impact"},
+		        "ImpactOfFailure",
+		        JoinKind.LeftOuter
+		    ),
+		    #"Expanded ImpactOfFailure" = Table.ExpandTableColumn(#"Join to ImpactOfFailure", "ImpactOfFailure", {"Impact of Failure", "Score with Weight"}, {"Impact.ImpactofFailure", "Impact.ScorewithWeight"}),
+		    #"Renamed CMR Scoring Columns" = Table.RenameColumns(
+		        #"Expanded ImpactOfFailure",
+		        {
+		            {"PFA.PlanForAsset", "PlanForAsset"},
+		            {"PFA.ScorewithWeight", "PFA.Score"},
+		            {"IoAF.ImportanceofAssetFunctionality", "IoAF"},
+		            {"IoAF.ScorewithWeight", "IoAF.Score"},
+		            {"IoSF.ImportanceofSystemFunctionality", "IoSF"},
+		            {"IoSF.ScorewithWeight", "IoSF.Score"},
+		            {"Condition.ConditionofSystem", "ConditionofSystem"},
+		            {"Condition.ScorewithWeight", "Condition.Score"},
+		            {"Reason.ReasonforWork", "ReasonforWork"},
+		            {"Reason.ScorewithWeight", "Reason.Score"},
+		            {"Impact.ImpactofFailure", "ImpactofFailure"},
+		            {"Impact.ScorewithWeight", "Impact.Score"}
+		        }
+		    ),
+		    #"Inserted Sum of Ratings" = Table.AddColumn(
+		        #"Renamed CMR Scoring Columns",
+		        "Addition",
+		        each
+		            List.Sum(
+		                {[PFA.Score], [IoAF.Score], [IoSF.Score], [Condition.Score], [Reason.Score], [Impact.Score]}
+		            ),
+		        Int64.Type
+		    ),
+		    #"Change Score to Text" = Table.TransformColumnTypes(#"Inserted Sum of Ratings",{{"Addition", type text}}),
+		    #"End" = Table.RenameColumns(#"Change Score to Text", {{"Addition", "PriorityScore"}})
+		in
+		    End
+		```
+	lineageTag: 3df00615-4e84-4327-b744-700225172be3
+	queryGroup: CommonModels
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+/// Source VFA_EMPMI_Staging. Includes cashflow y1=3 but not used
+expression CostFactorModel = ```
+		/*
+		Query Name: CostFactorModel
+		Source: 
+		Dependencies:
+		About: A common query that does the estimated cost adjustments, applies a cost factor and applies the cashflow business rules. Use this when requirement estimated costs are padded with the standard cost factor. The same code as is used on the project planner to do the cashflows. Differences are the column names. Modify the sources to reflect the query names of the file that it is being used in. This version does not apply the cost factor to study requirements, avoids over inflation becuase study costs are usually based on actual cost not estimated cost.
+		
+		CashFactorModel Requires these fields, from VFA (SSRS or Extract):
+		
+		REQ ID (each)
+		Estimated Cost (each req)
+		Requirement - Category (each req)
+		
+		Version: 2.2
+		Last Update Date: 08-30-2024
+		Last Updated By: CM
+		Release Date: 08-30-2024
+		
+		Version History: 
+		(ver 2.1) add an exception for _Study requirements - these are usually entered as straight-cost from a quote and should not be escalated.
+		* Renamed to CostFactorModel
+		
+		 
+		TODO: 
+		* add a switch function to pass the source of the requirement data. Data could come from one of three places: VFA SSRS, VFA Extract to SPO File, VFA Extract Copy/Paste to workbook. Allow users to set which data source they want to use and pass that to the query to determine the source.
+		* make the cost factor adjustable by the users
+		* enhance the grouping into projects to make this more flexible, the annual and monthly project planners use the system group as the key group by. Otherwise use RAP ID, as currently hardcoded.
+		* don't really need all the other fields referenced by this code. Remove the ones that are at a high risk of breaking the query.
+		* make this code more generic
+		* include proper type casting
+		* include error handling
+		* add cashflow YR 4, 5, 6
+		
+		*/
+		//******************start of query*****************************//
+		
+		let
+		    //modify the source after including in the file it is being used in
+		    //define a function that passes in the name of the source - handing for possible missing columns
+		    //change this to a select query to only get the column names needed, reduces the risk of breaking the query when swtiching sources
+		    //Source = Scoring_Tool,
+		    Source = Table.SelectColumns(VFA_EMPMI_Staging, {"RAPID","REQID", "AssetID", "EstimatedCost", "Category", "VFASystemGroup"}),
+		    //02052025 - removing the assignment of 10000 for estimated cost 0
+		    #"Adjust Req Est Cost" = Table.AddColumn(Source, 
+		    "Adjusted Est Cost", 
+		    each 
+		        //if [#"Estimated Cost"] = 0 then 10000
+		        if [#"EstimatedCost"] = null then 0
+		        //case that handles study requirements - they are not cost factored
+		        else if  Text.Contains([#"Category"], "_Study [Non-FCI]") then [#"EstimatedCost"]
+		        //else if [#"Estimated Cost"] = null then 0
+		        else if [#"EstimatedCost"] < 1000 then 1000
+		        else [#"EstimatedCost"] * 1.48),
+		    //performs the rounding method according to business rule nearest thousand dollars
+		    //changed column name from PAR TPC to CostFactoredTPC
+		    #"Round Up Nearest 1000" = Table.AddColumn(#"Adjust Req Est Cost", 
+		    "CostFactoredTPC", 
+		    each if [Category] = "_Study [Non-FCI]" then Number.RoundUp([Adjusted Est Cost]/100, 0)*100 else
+		        Number.RoundUp([Adjusted Est Cost]/1000,0)*1000),
+		    //show the study estimated cost as a separate column - used in various places for display
+		    #"Get Study Est Cost" = Table.AddColumn(#"Round Up Nearest 1000", 
+		    "CIAmount", 
+		    each 
+		        if Text.Contains([#"Category"], "_Study [Non-FCI]") then [EstimatedCost] 
+		        else null),
+		    //add a column that shows if a requirement is missing estimated cost (0 or null) and display the requirement id(s) in this new column
+		    //#"Missing Est Cost" = 
+		    //must group into projects by RAP ID before doing the year cashflows
+		    //modify to swich which key field is the group by - could be RAP ID (PRL, FRF, PAR) or could be System Group (planners)
+		    //remove the extra scoring columns, they are not needed here - this model is specific to the cost factoring now. handle the missing est cost and the CI amount. projects may be missing more than one est cost and may have more than one CI requirement in cases where the rap project has multiple requirements from different assets.
+		    #"Grouped by RAP ID" = Table.Group(#"Get Study Est Cost", 
+		    {"RAPID"}, 
+		    {
+		        {"EstimatedTPC", each List.Sum([EstimatedCost]), type nullable number}, 
+		        {"CostFactoredTPC", each List.Sum([CostFactoredTPC]), type number}, 
+		        {"CIEstimatedCost", each List.Sum([CIAmount]), type nullable number}, 
+		        {"AllRows", 
+		        each _, type table 
+		        [
+		        //RAP ID may not be availalbe if this is being called from a project planner see note above for switch between key field to group by
+		        //don't need all the scoring related columns in this module
+		        RAPID=nullable text, 
+		        REQID=nullable text, 
+		        //#"Requirement - Linked System"=nullable text, 
+		        System_Group=nullable text, 
+		       // Uniformat=nullable text, 
+		       // Building Priority Detail=nullable text, 
+		       // Asset Use=nullable text, 
+		       // #"Requirement - Priority"=nullable text, 
+		        Category=nullable text, 
+		       // #"Requirement - Impact"=nullable text, 
+		        /* Estimated Cost=nullable number, 
+		        Plan for Asset=nullable text, 
+		        PFA_Rating=nullable number, 
+		        Importance of Asset Functionality=nullable text, 
+		        IoAF_Rating=nullable number, 
+		        Importance of System Functionality=nullable text,
+		        IoSF_Rating=nullable number, 
+		        Condition of System=nullable text, 
+		        Condition_Rating=nullable number, 
+		        Reason for Work=nullable text, 
+		        Reason_Rating=nullable number, 
+		        Impact of Failure=nullable text, 
+		        Impact_Rating=nullable number, 
+		        Priority Score=number,  */
+		        MissingEstCost=text, 
+		        /* Missing Impact=text,
+		        Missing Req Priority=text, 
+		        Missing Reason For Work Category=text, 
+		        Missing Linked System=text, 
+		        Missing System Group=text, 
+		        Missing Uniformat=text,  */
+		        AdjustedEstCost=number, 
+		        PAREstCost=number, 
+		        CIAmount=nullable number]}
+		    }
+		        ),
+		    //move this to a module where it makes more sense to do this. this query should be specific to the cost factors only
+		/*     #"Project Includes CI" = 
+		    Table.AddColumn(#"Grouped Rows", "Includes CI", 
+		    each if List.Contains([AllRows][#"Requirement - Category"],"_Study [Non-FCI]") then "Yes" else "No"), */
+		    //begin the year cashflow logic according to the business rules
+		    //fix this step reference as it will error out
+		//business rule Y1: if CostFactoredTPC less than five hundred thousand, all CostFactoredTPC to Y1, else over five hundred thousand but less than two million then 8% of CostFactoredTPC in Y1
+		    CashFlowY1 = Table.AddColumn(#"Grouped by RAP ID", 
+		    "CashFlowYear1",
+		    each 
+		        if [#"CostFactoredTPC"] < 500000 then [#"CostFactoredTPC"]
+		        else if [#"CostFactoredTPC"] > 500000 and [#"CostFactoredTPC"] < 2000000 then [#"CostFactoredTPC"] * .08
+		        else [#"CostFactoredTPC"] * .08),
+		//business rule Y2: if CostFactoredTPC is only Y1 then Y2 is 0, if CostFactoredTPC greater than $500,000 and less than $2M then Y2 is 92% of CostFactoredTPC, if CostFactoredTPC greater than $2M then flow into Y3 and set Y2 as 62% of CostFactoredTPC
+		    CashFlowY2 = Table.AddColumn(#"CashFlowY1", 
+		    "CashFlowYear2", 
+		    each if [#"CashFlowYear1"] = [#"CostFactoredTPC"] then 0
+		        else if [#"CostFactoredTPC"] > 500000 and [#"CostFactoredTPC"] < 2000000 then [#"CostFactoredTPC"] * .92
+		        else if ([#"CostFactoredTPC"] * .62) > 5000000 then 5000000
+		        else [#"CostFactoredTPC"] * .62),
+		//business rule: for projects CostFactoredTPC greater than $2M, Year 3 cash flow as 30% of TPC to a max of $5M each subsequent cashflow year
+		//PAR's are only cashflowed to year 3, but to make the model standardized for more things, cash flow to 6 - 10. 
+		    CashFlowY3 = Table.AddColumn(#"CashFlowY2", 
+		    "CashFlowYear3", 
+		    each 
+		    if ([#"CashFlowYear1"] + [#"CashFlowYear2"]) = [#"CostFactoredTPC"] then 0
+		    else if ([#"CostFactoredTPC"] * .30) > 5000000 then 5000000
+		    else [#"CostFactoredTPC"] * .30)
+		in
+		    CashFlowY3
+		```
+	lineageTag: 7d62d83c-4791-4693-adc2-558611fda70c
+	queryGroup: CommonModels
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression AnnualProjectPlanner = ```
+		let
+		    // Connect to the SharePoint site
+		    SharePointSite = "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424",
+		    Source = SharePoint.Files(SharePointSite, [ApiVersion = 15]),
+		
+		    // Filter to the specific file
+		    FilteredFile = Table.SelectRows(Source, each 
+		        [Name] = "CMR Annual Project Planner B2025.xlsx" and 
+		        Text.Contains([Folder Path], "CMR Template Source & Documentation/CMR Annual Project Planner/Budget 2025")
+		    ),
+		
+		    // Get the file content
+		    FileBinary = FilteredFile{0}[Content],
+		
+		    // Load the Excel workbook
+		    ExcelData = Excel.Workbook(FileBinary, null, true),
+		
+		    // Extract the desired sheet
+		    PlannedStatusModelSheet = ExcelData{[Item="PlannedStatusModel_dev", Kind="Sheet"]}[Data],
+		
+		    // Promote headers and set data types
+		    PromotedHeaders = Table.PromoteHeaders(PlannedStatusModelSheet, [PromoteAllScalars=true]),
+		    ChangedTypes = Table.TransformColumnTypes(PromotedHeaders, {
+		        {"CMR Number", Int64.Type},
+		        {"Project Priority Score", type text},
+		        {"Asset Number", type text},
+		        {"Asset Name", type text},
+		        {"REQ ID", type text},
+		        {"System Group", type text},
+		        {"Linked System", type text}
+		    })
+		in
+		    ChangedTypes
+		```
+	lineageTag: e844feab-7470-4c02-80b8-61fe569433e7
+	queryGroup: DataSources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression VFA_Project_Staging = ```
+		/*
+		Query Name: VFA_Project_Staging
+		Source: VFA_EMPMI_Staging
+		Dependencies: RAP Projects Staging (join left anti), VFADataValidation, Annual Project Planner
+		About: Prepares the vfa data for import into the app. only contains rows matching the filtered rap_projects_staging to limit the amount of data getting into the app. Groups by rap id and prepares the data to join to the projectrequestsummary data model
+		
+		Version: 1.0
+		Last Update Date(mmddyyyy): 06-05-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		- release version
+		
+		TODO: 
+		- 
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    // Load the vfa empmi staging source table
+		    Source = Table.SelectColumns(
+		        VFA_EMPMI_Staging,
+		        {
+		            "RAPID",
+		            "RAPStatus",
+		            "PortfolioName",
+		            "AssetName",
+		            "AssetID",
+		            "AssetUse",
+		            "BuildingPriorityDetail",
+		            "REQID",
+		            "RequirementName",
+		            "RequirementDescription",
+		            "Category",
+		            "Priority",
+		            "Impact",
+		            "EstimatedCost",
+		            "SystemName",
+		            "Uniformat",
+		            "VFASystemGroup",
+		            "OutForAudit",
+		            "IsRenewal"
+		            , "Location"
+		        }
+		    ),
+		    GetPlannerColumns = Table.SelectColumns(AnnualProjectPlanner, {"Asset Number", "REQ ID"}),
+		    //prepare the annual project planner for the join - buffering because sharepoint is slow and it's safe because that file is static.
+		        CleanedPlannerRAPID = (Table.TransformColumns(
+		        GetPlannerColumns,
+		        {
+		            {"Asset Number", each Text.Trim(Text.From(_)), type text},
+		            {"REQ ID", each Text.Trim(Text.From(_)), type text}
+		        }
+		    )),
+		        // Add a column marking whether each requirement is Planned or Unplanned. planned = on the annual project planner, unplanned = not on the annual project planner
+		    #"Add Planned Status" = Table.AddColumn(
+		        Source,
+		        "Requirement Planning Status",
+		        each
+		            if Table.Contains(CleanedPlannerRAPID, [Asset Number = [AssetID], REQ ID = [REQID]]) then
+		                "Planned"
+		            else
+		                "Unplanned",
+		        type text
+		    ),
+		    #"Join to CommonScoringModel" = Table.NestedJoin(#"Add Planned Status", {"REQID"}, CommonScoringModel, {"REQID"}, "CommonScoringModel", JoinKind.LeftOuter),
+		    #"Get CommonScoringModel" = Table.ExpandTableColumn(#"Join to CommonScoringModel", "CommonScoringModel", {"IoSF", "IoSF.Score", "MasterSystemUniformat", "MasterSystemGroup", "PlanForAsset", "PFA.Score", "IoAF", "IoAF.Score", "ConditionofSystem", "Condition.Score", "ReasonforWork", "Reason.Score", "ImpactofFailure", "Impact.Score", "PriorityScore"}, { "IoSF", "IoSF.Score", "MasterSystemUniformat", "MasterSystemGroup", "PlanForAsset", "PFA.Score", "IoAF", "IoAF.Score", "ConditionofSystem", "Condition.Score", "ReasonforWork", "Reason.Score", "ImpactofFailure", "Impact.Score", "PriorityScore"}),
+		    #"Join to VFADataValidation" = Table.NestedJoin(#"Get CommonScoringModel", {"REQID"}, VFADataValidation, {"REQID"}, "VFADataValidation", JoinKind.LeftOuter),
+		    #"Get VFADataValidation" = Table.ExpandTableColumn(#"Join to VFADataValidation", "VFADataValidation", {"EstCostErrorLevel", "UniformatErrorLevel", "SystemGroupErrorLevel", "ImpactErrorLevel", "CategoryErrorLevel", "PriorityErrorLevel", "ReqNameErrorLevel", "ReqDescErrorLevel"}, {"EstCostErrorLevel", "UniformatErrorLevel", "SystemGroupErrorLevel", "ImpactErrorLevel", "CategoryErrorLevel", "PriorityErrorLevel", "ReqNameErrorLevel", "ReqDescErrorLevel"}),
+		    #"Grouped Rows" = Table.Group(
+		        #"Get VFADataValidation",
+		        {"RAPID"},
+		        {
+		            {
+		                "AllRows",
+		                each _,
+		                type table [
+		                    RAPID = nullable text,
+		                    RAPStatus = nullable text,
+		                    PortfolioName = nullable text,
+		                    AssetName = nullable text,
+		                    AssetID = nullable text,
+		                    AssetUse = nullable text,
+		                    BuildingPriorityDetail = nullable text,
+		                    REQID = nullable text,
+		                    RequirementName = nullable text,
+		                    RequirementDescription = text,
+		                    Category = nullable text,
+		                    Priority = nullable text,
+		                    Impact = nullable text,
+		                    EstimatedCost = nullable number,
+		                    SystemName = nullable text,
+		                    Uniformat = nullable text,
+		                    VFASystemGroup = text,
+		                    OutForAudit = nullable logical,
+		                    IsRenewal = nullable logical,
+		                    Location = nullable text,
+		                    Requirement Planning Status = text,
+		                    IoSF = nullable text,
+		                    IoSF.Score = nullable number,
+		                    PlanForAsset = nullable text,
+		                    PFA.Score = nullable number,
+		                    IoAF = nullable text,
+		                    IoAF.Score = nullable number,
+		                    ConditionofSystem = nullable text,
+		                    Condition.Score = nullable number,
+		                    ReasonforWork = nullable text,
+		                    Reason.Score = nullable number,
+		                    ImpactofFailure = nullable text,
+		                    Impact.Score = nullable number,
+		                    PriorityScore = nullable text,
+		                    EstCostErrorLevel = number,
+		                    UniformatErrorLevel = number,
+		                    SystemGroupErrorLevel = number,
+		                    ImpactErrorLevel = number,
+		                    CategoryErrorLevel = number,
+		                    PriorityErrorLevel = number,
+		                    ReqNameErrorLevel = number,
+		                    ReqDescErrorLevel = number
+		                ]
+		            },
+		            
+		                {"ImpactErrorCount", each 
+		                List.Sum(List.Select([ImpactErrorLevel], each _ = 1)
+		                ), 
+		                type number
+		                },
+		
+		            {"CategoryErrorCount", each List.Sum(List.Select([CategoryErrorLevel], each _ = 1)), type number},
+		            {"CategoryWarnCount", each List.Sum(List.Select([CategoryErrorLevel], each _ = 2)), type number},
+		
+		            {"PriorityErrorCount", each List.Sum(List.Select([PriorityErrorLevel], each _ = 1)), type number},
+		            {"PriorityWarnCount", each List.Sum(List.Select([PriorityErrorLevel], each _ = 2)), type number},
+		
+		            {"ReqNameErrorCount", each List.Sum(List.Select([ReqNameErrorLevel], each _ = 1)), type number},
+		            {"ReqNameWarnCount", each List.Sum(List.Select([ReqNameErrorLevel], each _ = 2)), type number},
+		
+		            {"ReqDescErrorCount", each List.Sum(List.Select([ReqDescErrorLevel], each _ = 1)), type number},
+		            {"ReqDescWarnCount", each List.Sum(List.Select([ReqDescErrorLevel], each _ = 2)), type number},
+		
+		            {"SystemGrpErrorCount", each List.Sum(List.Select([SystemGroupErrorLevel], each _ = 1)), type number},
+		
+		            {"UniformatErrorCount", each List.Sum(List.Select([UniformatErrorLevel], each _ = 1)), type number},
+		            
+		            {"EstCostErrorCount", each List.Sum(List.Select([EstCostErrorLevel], each _ = 1)), type number}
+		        }
+		    ),
+		    #"Added VFA Scoring Error Sum" = Table.AddColumn(
+		    #"Grouped Rows",
+		    "VFA Scoring Error(s)",
+		    each
+		        let
+		            i = if [ImpactErrorCount] <> null then [ImpactErrorCount] else 0,
+		            c = if [CategoryErrorCount] <> null then [CategoryErrorCount] else 0,
+		            p = if [PriorityErrorCount] <> null then [PriorityErrorCount] else 0,
+		            u = if [UniformatErrorCount] <> null then [UniformatErrorCount] else 0
+		         in
+		            i + c + p + u,
+		    type number
+		    ),
+		    #"Added VFA Scoping Error Sum" = Table.AddColumn(
+		    #"Added VFA Scoring Error Sum",
+		    "VFA Scoping Error(s)",
+		    each
+		        let
+		            n = if [ReqNameErrorCount] <> null then [ReqNameErrorCount] else 0,
+		            b = if [ReqNameWarnCount] <> null then [ReqNameWarnCount] else 0,
+		            d = if [ReqDescErrorCount] <> null then [ReqDescErrorCount] else 0
+		            
+		        in
+		            n + b + d,
+		    type number
+		    ),
+		    #"Added VFA Maint Plan Error Sum" = Table.AddColumn(
+		    #"Added VFA Scoping Error Sum",
+		    "VFA Maintenance Planning Error(s)",
+		    each
+		        let
+		            s = if [SystemGrpErrorCount] <> null then [SystemGrpErrorCount] else 0,
+		            c = if [CategoryWarnCount] <> null then [CategoryWarnCount] else 0
+		        in
+		            s + c,
+		    type number
+		    ),
+		    #"Added VFA Costing Error Sum" = Table.AddColumn(
+		    #"Added VFA Maint Plan Error Sum",
+		    "VFA Costing Error(s)",
+		    each
+		        let
+		            c = if [EstCostErrorCount] <> null then [EstCostErrorCount] else 0
+		        in
+		            c,
+		    type number
+		    ),
+		    // Add derived fields using the grouped data
+		    #"Added Portfolio Name" = Table.AddColumn(
+		        #"Added VFA Costing Error Sum", "Portfolio Name(s)", each Text.Combine(List.Distinct([AllRows][PortfolioName]), ", ")
+		    ),
+		    #"Added Asset ID(s)" = Table.AddColumn(
+		        #"Added Portfolio Name", "Asset ID(s)", each Text.Combine(List.Distinct([AllRows][#"AssetID"]), ", ")
+		    ),
+		    #"Added Asset Name" = Table.AddColumn(
+		        #"Added Asset ID(s)", "Asset Name(s)", each Text.Combine(List.Distinct([AllRows][AssetName]), ", ")
+		    ),
+		    #"Added Asset Use" = Table.AddColumn(
+		        #"Added Asset Name", "Asset Use(s)", each Text.Combine(List.Distinct([AllRows][AssetUse]), ", ")
+		    ),
+		    #"Added Building Priority Detail" = Table.AddColumn(
+		        #"Added Asset Use",
+		        "Building Priority Detail(s)",
+		        each Text.Combine(List.Distinct([AllRows][BuildingPriorityDetail]), ", ")
+		    ),
+		    #"Added Req ID" = Table.AddColumn(
+		        #"Added Building Priority Detail", "REQ ID(s)", each Text.Combine(List.Distinct([AllRows][#"REQID"]), ", ")
+		    ),
+		    #"Added Requirement Name" = Table.AddColumn(
+		        #"Added Req ID", "Requirement Name(s)", each Text.Combine(List.Distinct([AllRows][RequirementName]), "; ")
+		    ),
+		    #"Added Uniformat" = Table.AddColumn(
+		        #"Added Requirement Name", "Linked System(s)", each Text.Combine(List.Distinct([AllRows][Uniformat]), "; ")
+		    ),
+		    #"Added System Names" = Table.AddColumn(
+		        #"Added Uniformat", "System Name(s)", each Text.Combine(List.Distinct([AllRows][SystemName]), "; ")
+		    ),
+		    #"Added System Groups" = Table.AddColumn(
+		        #"Added System Names", "System Groups(s)", each Text.Combine(List.Distinct([AllRows][VFASystemGroup]), "; ")
+		    ),
+		    #"Added Requirement Description" = Table.AddColumn(
+		        #"Added System Groups",
+		        "Requirement Description(s)",
+		        each Text.Combine(List.Distinct([AllRows][RequirementDescription]), "; ")
+		    ),
+		    #"Added Location" = Table.AddColumn(
+		        #"Added Requirement Description", "Location(s)", each Text.Combine(List.Distinct([AllRows][Location]), ", ")
+		    ),
+		    // Mark renewal
+		    //change this step name when location is added back
+		    #"Added IsRenewal" = Table.AddColumn(
+		        #"Added Location",
+		        "Project Includes Renewal Requirements",
+		        each if List.Contains([AllRows][IsRenewal], true) then "Yes" else "No"
+		    ),
+		    // Flag if the project includes an asset currently out for audit
+		    #"Added Asset out for Audit" = Table.AddColumn(
+		        #"Added IsRenewal",
+		        "Asset Out For Audit",
+		        each
+		            let
+		                assets = [AllRows],
+		                auditedAssets = Table.SelectRows(assets, each Record.FieldOrDefault(_, "OutForAudit", false) = true),
+		                auditedIDs = List.Distinct(Table.Column(auditedAssets, "AssetID")),
+		                allDistinctIDs = List.Distinct(Table.Column(assets, "AssetID"))
+		            in
+		                if List.Count(auditedIDs) = 0 then
+		                    "No"
+		                else if List.Count(allDistinctIDs) = 1 then
+		                    "Yes"
+		                else
+		                    "Yes: " & Text.Combine(auditedIDs, ", ")
+		    ),
+		    #"Project Planned Status" = Table.AddColumn(#"Added Asset out for Audit", "Planned Status", each List.First([AllRows][#"Requirement Planning Status"]))
+		in
+		    #"Project Planned Status"
+		```
+	lineageTag: 722e9084-8eeb-41a9-8ad6-8e619aeda495
+	queryGroup: StagingModels
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+
+expression ProjectScoreBreakdown = ```
+		/*
+		Query Name: ProjectScoreBreakdown
+		Source: CommonScoringModel
+		Dependencies: ProjectRequestSummary
+		About: this query gets the individual requirement scores from the score_tool then groups the projects by RAP ID. The score tool does no grouping
+		
+		Depends on the CommonScoringModel 
+		INPUTS:
+		
+		        {
+		            {"PlanForAsset.Plan for Asset", "Plan for Asset"},
+		            {"PlanForAsset.Score with Weight", "PFA.Score"},
+		            {"IoAF.Importance of Asset Functionality", "Importance of Asset Functionality"},
+		            {"IoAF.Score with Weight", "IoAF.Score"},
+		            {"IoSF.Importance of System Functionality", "Importance of System Functionality"},
+		            {"IoSF.Score with Weight", "IoSF.Score"},
+		            {"ConditionOfSystem.Condition of System", "Condition of System"},
+		            {"ConditionOfSystem.Score with Weight", "Condition.Score"},
+		            {"ReasonForWork.Reason for Work", "Reason for Work"},
+		            {"ReasonForWork.Score with Weight", "Reason.Score"},
+		            {"ImpactOfFailure.Impact of Failure", "Impact of Failure"},
+		            {"ImpactOfFailure.Score with Weight", "Impact.Score"}
+		        }
+		    ),
+		
+		Configurations
+		msg_infoScoreRAPCOM
+		
+		OUTPUTS:
+		
+		
+		Version: 1.1
+		Last Update Date: 02-21-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		
+		TODO: 
+		
+		
+		*/
+		//******************start of query*****************************//
+		let
+		    Source = CommonScoringModel,
+		    #"Grouped by RAP ID" = Table.Group(
+		        Source,
+		        {"RAPID"},
+		        {
+		            {"ProjectPriorityScore", each List.Max([PriorityScore]), type text},
+		            {"RAPStatus", each List.Max([RAPStatus]), type text},
+		            {"HighScoreReq", each Table.Max(_, "PriorityScore")[#"REQID"], type text},
+		            {"BuildingPriorityDetail", each Table.Max(_, "PriorityScore")[#"BuildingPriorityDetail"], type text},
+		            {"PlanForAsset", each Table.Max(_, "PriorityScore")[#"PlanForAsset"], type text},
+		            {"PFAScore", each Table.Max(_, "PriorityScore")[PFA.Score], type number},
+		            {"AssetUse", each Table.Max(_, "PriorityScore")[#"AssetUse"], type text},
+		            {"IoAF", each Table.Max(_, "PriorityScore")[#"IoAF"], type text},
+		            {"IoAFScore", each Table.Max(_, "PriorityScore")[#"IoAF.Score"], type number},
+		            {"Uniformat", each Table.Max(_, "PriorityScore")[#"Uniformat"], type text},
+		            {"IoSF", each Table.Max(_, "PriorityScore")[#"IoSF"], type text},
+		            {"IoSFScore", each Table.Max(_, "PriorityScore")[#"IoSF.Score"], type number},
+		            {"Priority", each Table.Max(_, "PriorityScore")[#"Priority"], type text},
+		            {"ConditionofSystem", each Table.Max(_, "PriorityScore")[#"ConditionofSystem"], type text},
+		            {"ConditionScore", each Table.Max(_, "PriorityScore")[#"Condition.Score"], type number},
+		            {"Category", each Table.Max(_, "PriorityScore")[#"Category"], type text},
+		            {"ReasonforWork", each Table.Max(_, "PriorityScore")[#"ReasonforWork"], type text},
+		            {"ReasonScore", each Table.Max(_, "PriorityScore")[#"Reason.Score"], type number},
+		            {"Impact", each Table.Max(_, "PriorityScore")[#"Impact"], type text},
+		            {"ImpactofFailure", each Table.Max(_, "PriorityScore")[#"ImpactofFailure"], type text},
+		            {"ImpactScore", each Table.Max(_, "PriorityScore")[#"Impact.Score"], type number}
+		        }
+		    ),
+		
+		    #"Reordered Columns" = Table.ReorderColumns(#"Grouped by RAP ID",{"RAPID", "ProjectPriorityScore", "RAPStatus", "HighScoreReq", "PlanForAsset", "BuildingPriorityDetail", "PFAScore", "IoAF", "IoAFScore", "AssetUse", "Uniformat", "IoSF", "IoSFScore", "ConditionofSystem", "ConditionScore", "Priority", "ReasonforWork", "ReasonScore", "Category", "ImpactofFailure", "ImpactScore", "Impact"}),
+		
+		    // Add new column with updated value
+		    #"With Adjusted Score" = Table.AddColumn(
+		        #"Reordered Columns",
+		        "AdjustedPriorityScore",
+		        each if [RAPStatus] = "COM" then fnGetParameters("msg_infoRAPStatusCOM")[MsgTxt] else Text.From([ProjectPriorityScore]),
+		        type text
+		    ),
+		
+		    // Optionally: remove original and rename
+		    #"Removed Old Score" = Table.RemoveColumns(#"With Adjusted Score", {"ProjectPriorityScore"}),
+		    #"Renamed Adjusted Score" = Table.RenameColumns(#"Removed Old Score", {{"AdjustedPriorityScore", "ProjectPriorityScore"}})
+		in
+		    #"Renamed Adjusted Score"
+		```
+	lineageTag: 5c8aacdf-bd16-48b3-a225-5930a71d500a
+	queryGroup: StagingModels
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression VFADataValidation = ```
+		/*
+		Query Name: VFADataValidation
+		Source: CommonScoringModel
+		Dependencies: ProjectRequestSummary, RAP Projects Staging, VFA_Project_Staging
+		About: Performs some of the data validation and error counting for the power app. Provides the requirement data for those linked to RAP projects. The vfa error categories and counts are calculated in VFA_Project_Staging
+		
+		Version: 1.1
+		Last Update Date(mmddyyyy): 06-03-2025
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		- added last refresh time stamp
+		
+		TODO: 
+		- not all of these support all data validation message levels. The configuration table is roughed in with variable names, but are not referenced by the query
+		
+		*/
+		//******************start of query*****************************//
+		
+		let
+		    Source = CommonScoringModel,
+		    CheckBlankRows = Table.SelectRows(Source, each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+		/* these call the function fnGetParameters to lookup the error message text and the message level for error reporting. The function returns a record with the msg = text and msglevel = value */
+		/* VFA Costing Error Category */
+		/* check the estimated cost of each requirement. including a null check - but this should always be 0 as handled by the vfa empmi staging query */
+		     #"Est Cost Check" = Table.AddColumn(
+		        CheckBlankRows,
+		        "EstCostCheck",
+		        each
+		        //check if the est cost is $0 and the requirement is a renewal, and the uniformat is not a 150 year lifetime system. Adjust cost at the system level, but if unit cost is 0 add a cost line.         
+		        if
+		            ([#"EstimatedCost"] = 0)
+		            and ([#"IsRenewal"] = true)
+		        //using master system uniformat to check this - uniformat can't be trusted becuase it could be not AI Custom Template library 
+		            and not ([#"MasterSystemUniformat"] = null )
+		            and not Text.Contains(Text.From([#"MasterSystemUniformat"]), "*")
+		            and not ([#"EstimatedCost"] = null) 
+		            then fnGetParameters("msg_errorReqEstCostRenewal")[MsgTxt]    
+		       //check if the est cost is $0 and the requirement is a renewal and the uniformat is 150 year lifetime. Adjust cost at the system level, but if the unit cost is 0 then add a cost line.
+		            else if
+		            ([#"EstimatedCost"] = 0) 
+		            and ([#"IsRenewal"] = true) 
+		            and not ([#"MasterSystemUniformat"] = null )
+		            and Text.Contains(Text.From([#"MasterSystemUniformat"]), "*")
+		            and not ([#"EstimatedCost"] = null)
+		                then fnGetParameters("msg_errorReqEstCostRenewal150")[MsgTxt]
+		        //check if the requirement is not a renewal. Add cost line at the requirement action level.
+		            else if
+		            ([#"EstimatedCost"] = 0) 
+		            and ([#"IsRenewal"] = false)
+		            //and not ([#"EstimatedCost"] = null)
+		            then fnGetParameters("msg_errorReqEstCostNonRenewal")[MsgTxt]
+		        //check if the requirement estimated cost is greater than the configured warning cost value and if true then show a message.
+		            else if 
+		                ([#"EstimatedCost"] <> 0)
+		                and not ([#"EstimatedCost"] = null)
+		                and [#"EstimatedCost"] > fnGetParameters("vfadata_warnReqEstCostVal")
+		                then fnGetParameters("msg_warnReqEstCost")[MsgTxt]
+		            else
+		                fnGetParameters("msg_passReqEstCost")[MsgTxt]),
+		    #"Get Est Cost Error Level" = Table.AddColumn(
+		    #"Est Cost Check",
+		    "EstCostErrorLevel",
+		    each
+		    let
+		        // Define expected message values
+		        passMsg = fnGetParameters("msg_passReqEstCost")[MsgTxt],
+		        renewalErrorMsg = fnGetParameters("msg_errorReqEstCostRenewal")[MsgTxt],
+		        nonrenewal150ErrorMsg = fnGetParameters("msg_errorReqEstCostRenewal150")[MsgTxt],
+		        nonrenewalErrorMsg = fnGetParameters("msg_errorReqEstCostNonRenewal")[MsgTxt],
+		
+		        // Compare the EstCostCheck value
+		        currentCheck = [EstCostCheck],
+		
+		        // Determine which message it matches
+		        errorLevel =
+		            if currentCheck = renewalErrorMsg then fnGetParameters("msg_errorReqEstCostRenewal")[MessageLevel]
+		            else if currentCheck = nonrenewal150ErrorMsg then fnGetParameters("msg_errorReqEstCostRenewal150")[MessageLevel]
+		            else if currentCheck = nonrenewalErrorMsg then fnGetParameters("msg_errorReqEstCostNonRenewal")[MessageLevel]
+		            else null // could also default to "Info" or something else
+		    in
+		        if currentCheck <> passMsg then errorLevel else null
+		),
+		    /* VFA Scoping Error Category */
+		/*  check if the uniformat is not missing - two cases for messages, or if it is not infras custom template library, or the requirement is a non-renewal and the 'system not linked' check box is selected. There are cases in this check to account for the source SSRS that gets it's data from the VFA-EMPMI Interface and when system and linked system are blank in the report. */
+		
+		        #"Uniformat Check" = Table.AddColumn(
+		            //CheckBlankRows,
+		            #"Get Est Cost Error Level",
+		            "UniformatCheck",
+		            each
+		            /* if RAP status is complete (COM) then the uniformat (linked system) and system_eid (system id in vfa) might not be in the SSRS Report - display a message because the requirement won't score properly and bypasses the other error checking in this case. Most of the cases found are because the 'System Not Linked' check box is selected. Another case was when the asset returned from Audit - the 'System Not Linked' check box was selected - assuming this is to 'hide' the requirement from the FCA report. */
+		                if 
+		                ([RAPStatus] = "COM") and ([System_EID] = "") or ([System_EID] = null)
+		                then fnGetParameters("msg_infoRAPStatusCOM")[MsgTxt] //msg_infoRAPStatusCOM = RAP Completed, Not Available (System Not Linked)
+		            else
+		/*the uniformat may be missing for a non-renewal requirement - display a customized message for how to fix. Uniformat won't ever be missing for a renewal requirement, because you cannot select the 'System Not Linked' check box (disabled). If uniformat doesn't match the infras custom template library that is a different uniformat not custom error. If RAP status is complete the linked system may not be in the SSRS for the check. */
+		                if
+		                ([Uniformat] = null) 
+		                    and ([IsRenewal] = false)
+		                    and ([RAPStatus] <> "COM")
+		                then fnGetParameters("msg_errorReqUniformatMissing")[MsgTxt]
+		            //the uniformat doesn't match the master scoring table, condition check on master system group and master system uniformat. if RAP status is complete this won't be in the SSRS for the check
+		            else 
+		                if ([Uniformat] = null) 
+		                    and ([MasterSystemGroup] = null) 
+		                    and ([MasterSystemUniformat] = null) 
+		                    and ([RAPStatus] = "COM") 
+		                then fnGetParameters("msg_infoRAPStatusCOM")[MsgTxt]
+		            //this is the real uniformat error that should be caught. the uniformat of the system (and subsequent requirement) is not infras custom template library
+		            else 
+		                if ([Uniformat] <> null)
+		                    and ([MasterSystemUniformat] = null)
+		                    and ([MasterSystemGroup] = null)
+		                    and ([RAPStatus] <> "COM") 
+		                then fnGetParameters("msg_errorReqUniformatNotCustom")[MsgTxt]
+		            else 
+		            fnGetParameters("msg_passReqUniformat")[MsgTxt]),
+		
+		  #"Get Uniformat Error Level" = Table.AddColumn(
+		    #"Uniformat Check",
+		    "UniformatErrorLevel",
+		    each
+		    let
+		        // Define expected message values
+		        passMsg = fnGetParameters("msg_passReqUniformat")[MsgTxt],
+		        missingUniformatErrorMsg = fnGetParameters("msg_errorReqUniformatMissing")[MsgTxt],
+		        uniformatErrorMsg = fnGetParameters("msg_errorReqUniformatNotCustom")[MsgTxt],
+		
+		        // Compare the EstCostCheck value
+		        currentCheck = [UniformatCheck],
+		
+		        // Determine which message it matches
+		        errorLevel =
+		            if currentCheck = missingUniformatErrorMsg then fnGetParameters("msg_errorReqUniformatMissing")[MessageLevel]
+		            else if currentCheck = uniformatErrorMsg then fnGetParameters("msg_errorReqUniformatNotCustom")[MessageLevel]
+		            else null // could also default to "Info" or something else
+		    in
+		        if currentCheck <> passMsg then errorLevel else null
+		),
+		    //check for null value in vfa system group - tested in training environment. This happens for a few reasons depending if req is renewal or non-renewal. There are cases in this check to account for the source SSRS that gets it's data from the VFA-EMPMI Interface and when the users close a project the system group and linked system are blank in the report
+		    #"System Group Check" = Table.AddColumn(
+		        #"Get Uniformat Error Level",
+		        //#"Uniformat Check",
+		        "SystemGroupCheck",
+		        each
+		        //system group missing is a cmr maint planning error. 
+		            if ([#"RAPStatus"] = "COM") 
+		                and ([System_EID] = "") or ([System_EID] = null)
+		            then
+		                fnGetParameters("msg_infoRAPStatusCOM")[MsgTxt]
+		            //system group is null because requirement is missing linked system. this will be captured by 'missing linked system' error.
+		            else if ([#"VFASystemGroup"] = null) and ([#"Uniformat"] = null) and ([#"RAPStatus"] <> "COM") then
+		                fnGetParameters("msg_infoReqSysGrpLinkedSystem")[MsgTxt]
+		            //if system group is not null and doesn't match master table for the uniformat then mis-matched system group error. If user didn't select a system group on create. After it is fixed, all requirements inherit the selected system group automatically. It is still possible for the incorrect system group error to appear after that change.
+		
+		            else if ([#"VFASystemGroup"] = null) and ([#"Uniformat"] <> null) then
+		                fnGetParameters("msg_errorReqSysGrpMissing")[MsgTxt]
+		            
+		            else if ([#"VFASystemGroup"] <> null) and (Text.Contains([#"VFASystemGroup"], "F20")) then 
+		                fnGetParameters("msg_infoReqSysGrpValidException")[MsgTxt]
+		/*             else if ([#"Uniformat"] = [#"Master System Uniformat"]) and ((not [#"VFA System Group"] = null) and [#"VFA System Group"] <> [#"Master System Group"]) and Text.Contains([#"Uniformat"], "K") then "Warning: Ensure the Correct K Uniformat Used in VFA." */
+		            else if
+		                ([#"VFASystemGroup"] <> null)
+		                and ([#"VFASystemGroup"] <> [#"MasterSystemGroup"])
+		                and ([#"Uniformat"] = [#"MasterSystemUniformat"])
+		            then
+		                fnGetParameters("msg_errorReqSysGrpMismatch")[MsgTxt]
+		            else
+		                fnGetParameters("msg_passReqSysGrp")[MsgTxt]
+		    ),
+		    #"Get System Group Error Level" = Table.AddColumn(
+		    #"System Group Check",
+		    "SystemGroupErrorLevel",
+		    each
+		    let
+		        // Define expected message values
+		        passMsg = fnGetParameters("msg_passReqSysGrp")[MsgTxt],
+		        mismatchSysGrpErrorMsg = fnGetParameters("msg_errorReqSysGrpMismatch")[MsgTxt],
+		        missingSysGrpErrorMsg = fnGetParameters("msg_errorReqSysGrpMissing")[MsgTxt],
+		
+		        // Compare the SystemGroupCheck value
+		        currentCheck = [SystemGroupCheck],
+		
+		        // Determine which message it matches
+		        errorLevel =
+		            if currentCheck = missingSysGrpErrorMsg then fnGetParameters("msg_errorReqSysGrpMissing")[MessageLevel]
+		            else if currentCheck = mismatchSysGrpErrorMsg then fnGetParameters("msg_errorReqSysGrpMismatch")[MessageLevel]
+		            else null // could also default to "Info" or something else
+		    in
+		        if currentCheck <> passMsg then errorLevel else null
+		),
+		    
+		    /*Scoring Error Category  */
+		    #"Impact Check" = Table.AddColumn(
+		        #"Get System Group Error Level",
+		        "ReqImpactCheck",
+		        each
+		        //if [RAP Status] = "COM" then "No Score RAP Project Completed" else
+		        if [#"Impact"] = null then fnGetParameters("msg_errorReqImpact")[MsgTxt] else fnGetParameters("msg_passReqImpact")[MsgTxt]
+		    ),
+		    #"Get Impact Error Level" = Table.AddColumn(
+		        #"Impact Check",
+		        "ImpactErrorLevel",
+		        each if ([ReqImpactCheck] <> fnGetParameters("msg_passReqImpact")[MsgTxt]) 
+		            then fnGetParameters("msg_errorReqImpact")[MessageLevel] 
+		            else null
+		    ),
+		    #"Category Check" = Table.AddColumn(
+		        #"Get Impact Error Level",
+		        "ReqCategoryCheck",
+		        each
+		            //if ([#"RAP Status"] = "COM") then "No Score RAP Project Completed"
+		            if ([#"Category"] = null) then
+		                fnGetParameters("msg_errorReqCategory")[MsgTxt]
+		            else if ([#"Category"] <> "Lifecycle") and ([#"IsRenewal"] = true) then
+		                fnGetParameters("msg_errorReqCategoryRenewal")[MsgTxt]
+		            else
+		                fnGetParameters("msg_passReqCategory")[MsgTxt]
+		    ),
+		    #"Get Category Error Level" = Table.AddColumn(
+		        #"Category Check",
+		        "CategoryErrorLevel",
+		        each if ([ReqCategoryCheck] <> fnGetParameters("msg_passReqCategory")[MsgTxt]) 
+		            then fnGetParameters("msg_errorReqCategory")[MessageLevel] 
+		            else null
+		    ),
+		    #"Priority Check" = Table.AddColumn(
+		        #"Get Category Error Level",
+		        "ReqPriorityCheck",
+		        each
+		            //the priority will only be missing for non-renewal requirements
+		            if [#"Priority"] = null then
+		                fnGetParameters("msg_errorReqPriority")[MsgTxt]
+		                //the priority is setup different depending if renewal requirement
+		                //renewal requirment message
+		            else if ([#"Priority"] = "Lifecycle Planning (at least 4 years remaining at inspection)" and [#"IsRenewal"] = true) then
+		                fnGetParameters("msg_warnReqPriorityRenewal")[MsgTxt]
+		                //no-renewal requirement message
+		            else if ([#"Priority"] = "Lifecycle Planning (at least 4 years remaining at inspection)" and [#"IsRenewal"] = false) then
+		                fnGetParameters("msg_warnReqPriorityNonRenewal")[MsgTxt]
+		            else
+		                fnGetParameters("msg_passReqPriority")[MsgTxt]
+		    ),    
+		    #"Get Priority Error Level" = Table.AddColumn(
+		    #"Priority Check",
+		    "PriorityErrorLevel",
+		    each
+		    let
+		        // Define expected message values
+		        passMsg = fnGetParameters("msg_passReqPriority")[MsgTxt],
+		        priorityErrorMsg = fnGetParameters("msg_errorReqPriority")[MessageLevel],
+		        //missingSysGrpErrorMsg = fnGetParameters("msg_errorReqSysGrpMissing")[MessageLevel],
+		
+		        // Compare the SystemGroupCheck value
+		        currentCheck = [ReqPriorityCheck],
+		
+		        // Determine which message it matches
+		        errorLevel =
+		            if currentCheck = priorityErrorMsg then fnGetParameters("msg_errorReqPriority")[MessageLevel]
+		            //else if currentCheck = priorityRenewalErrorMsg then fnGetParameters("msg_errorReqSysGrpMismatch")[MessageLevel]
+		            else null // could also default to "Info" or something else
+		    in
+		        if currentCheck <> passMsg then errorLevel else null
+		),
+		    /* vfa maint planning error category */
+		    #"Req Name Check" = Table.AddColumn(
+		        #"Get Priority Error Level",
+		        "ReqNameCheck",
+		        each
+		            if ([#"RequirementName"] = null) then
+		                fnGetParameters("msg_errorReqName")
+		            else if (Text.StartsWith([#"RequirementName"], "~")) or (Text.Trim([#"RequirementName"]) = "~") then fnGetParameters("msg_warnReqName")[MsgTxt]
+		            else
+		                fnGetParameters("msg_passReqName")[MsgTxt]
+		    ),
+		    //fix me
+		    #"Get Req Name Error Level" = Table.AddColumn(
+		        #"Req Name Check",
+		        "ReqNameErrorLevel",
+		        each if ([ReqNameCheck] <> fnGetParameters("msg_passReqName")[MsgTxt]) 
+		            then fnGetParameters("msg_errorReqName")[MessageLevel] 
+		            else null
+		    ),
+		    #"Req Desc Check" = Table.AddColumn(
+		        #"Get Req Name Error Level",
+		        "ReqDescCheck",
+		        each
+		            if ([#"RequirementDescription"] = null) then
+		                fnGetParameters("msg_warnReqDesc")[MsgTxt]
+		            else if Text.Length([#"RequirementDescription"]) = 4000 then 
+		            fnGetParameters("msg_infoReqDesc")[MsgTxt]
+		            else
+		                fnGetParameters("msg_passReqDesc")[MsgTxt]
+		    ),
+		    #"Get Req Desc Error Level" = Table.AddColumn(
+		        #"Req Desc Check",
+		        "ReqDescErrorLevel",
+		        each if ([ReqDescCheck] <> fnGetParameters("msg_passReqDesc")[MsgTxt]) 
+		            then fnGetParameters("msg_errorReqDesc")[MessageLevel] 
+		            else null
+		    ),
+		    #"Update System Group Message Text" = Table.ReplaceValue(
+		        #"Get Req Desc Error Level",
+		            each if Text.Contains([SystemGroupCheck], "{MasterSystemGroup}") 
+		            then "{MasterSystemGroup}" 
+		            else null, // nothing to replace
+		            each if Text.Contains([SystemGroupCheck], "{MasterSystemGroup}") 
+		         then Text.From([MasterSystemGroup]) 
+		         else null,
+		    Replacer.ReplaceText,
+		    {"SystemGroupCheck"}
+		),    
+		     /* data validation summary message */
+		    #"Data Validation Flag" = Table.AddColumn(
+		        #"Update System Group Message Text",
+		        "VFADataValidation",
+		        each
+		            let
+		                columns = {
+		                    [EstCostErrorLevel],
+		                    [UniformatErrorLevel],
+		                    [SystemGroupErrorLevel],
+		                    [ImpactErrorLevel],
+		                    [PriorityErrorLevel],
+		                    [CategoryErrorLevel],
+		                    [ReqNameErrorLevel],
+		                    [ReqDescErrorLevel]
+		                },
+		                errorCount = List.Count(List.Select(columns, each _ = 1)),
+		                // Fix the comparison
+		                warningCount = List.Count(List.Select(columns, each _ = 2)),
+		                // Fix the comparison
+		                totalColumns = List.Count(columns),
+		                totalIssues = errorCount + warningCount,
+		                // New total issues count column
+		                validationText =
+		                    if errorCount > 0 or warningCount > 0 then
+		                    Text.Combine({
+		                        fnGetParameters("msg_infoReqDataValidationMsg")[MsgTxt],
+		                        " (", Text.From(errorCount), " Errors, ",
+		                        Text.From(warningCount), " Warnings)"
+		                    })
+		                    else
+		                       fnGetParameters("msg_passReqDataValidationMsg")[MsgTxt],
+		                totalIssuesText = Text.From(totalIssues)
+		                // Display the total issues count
+		            in
+		                [ValidationMessage = validationText, TotalIssues = totalIssuesText]
+		        // Return both columns
+		    ),
+		    #"Expanded VFA Data Validation" = Table.ExpandRecordColumn(
+		        #"Data Validation Flag",
+		        "VFADataValidation",
+		        {"ValidationMessage", "TotalIssues"},
+		        {"VFADataValidation.ValidationMessage", "VFADataValidation.TotalIssues"}
+		    )
+		in
+		    #"Expanded VFA Data Validation"
+		```
+	lineageTag: 1c3c5ba6-9207-4dd0-91a0-f976c54b9970
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression LastRefresh =
+		let
+		    Source = #table(
+		        {"RAP_Projects_SSRS", "LastRefreshDate"},
+		        {
+		            {"RAP_Projects_SSRS", DateTime.LocalNow()}
+		        }
+		    )
+		in
+		    Source
+	lineageTag: 0e96ff9d-6810-4a6d-9d31-2227257f5669
+
+	annotation PBI_ResultType = Table
+
+expression ProjectRequestSummary = ```
+		/*
+		Query Name:ProjectRequestSummary
+		Source: RAP_Projects_Staging
+		Dependencies: 
+		About: Provides the dataflow table for the RAP lookup and related info for the CMR Project Request App
+		
+		Version: 1.1
+		Last Update Date (mmddyyyy): 06-03-2025 
+		Last Updated By: CM
+		
+		
+		Version History: 
+		-added refresh timestamp
+		TODO: 
+		-added a message info if the req description is too long (> 4000) and is truncated in the app. this message isn't actually shown and should be.
+		
+		*/
+		//******************start of query*****************************//
+		
+		let
+		    // Source data
+		    Source = Table.SelectColumns(RAP_Projects_Staging, {
+		        "RAPID",
+		        "RAPTitle",
+		        "RAPStatus",
+		        "RAPProjectDescription",
+		        "RAPProjectReason",
+		        "RAPProjectConsequence",
+		        "RAPProjectComments",
+		        "RAPTitleLengthCheck",
+		        "RAPDescCheck",
+		        "RAPConseqCheck",
+		        "RAPReasonCheck",
+		        "RAPDataValidation"
+		
+		    }),
+		    
+		    // Filter data early if possible (adjust the filter criteria to match your needs)
+		    //FilteredSource = Table.SelectRows(Source, each [SomeColumn] <> null),  // Add filter logic to reduce rows
+		    
+		    // Join with ProjectScoreBreakdown table
+		    #"Join to ProjectScoreBreakdown" = Table.NestedJoin(Source, {"RAPID"}, ProjectScoreBreakdown, {"RAPID"}, "ProjectScoreBreakdown", JoinKind.LeftOuter),
+		    
+		    // Expand only the necessary columns from ProjectScoreBreakdown to avoid excess data
+		    #"Get ProjectScoreBreakdown" = Table.ExpandTableColumn(#"Join to ProjectScoreBreakdown", "ProjectScoreBreakdown", {"ProjectPriorityScore", "HighScoreReq", "PlanForAsset", "BuildingPriorityDetail", "PFAScore", "IoAF", "IoAFScore", "AssetUse", "Uniformat", "IoSF", "IoSFScore", "ConditionofSystem", "ConditionScore", "Priority", "ReasonforWork", "ReasonScore", "Category", "ImpactofFailure", "ImpactScore", "Impact"}, {"ProjectPriorityScore", "HighScoreReq", "PlanForAsset", "BuildingPriorityDetail", "PFAScore", "IoAF", "IoAFScore", "AssetUse", "Uniformat", "IoSF", "IoSFScore", "ConditionofSystem", "ConditionScore", "Priority", "ReasonforWork", "ReasonScore", "Category", "ImpactofFailure", "ImpactScore", "Impact"}),
+		
+		/* The join to the project score breakdown is Left Outer, if there are no matching rows in that table for VFA source data, the scoring columns are null. Change the Project Priority Score and Highest Scoring Requirement to show a text message in that case. See the RAP_NoVFAData query for the ones that are not (yet) in VFA_EMPMI */
+		    VFADataWaiting = Table.TransformColumns(#"Get ProjectScoreBreakdown", {
+		        {"ProjectPriorityScore", each if _ = null then fnGetParameters("msg_infoRAPNoLinkedReq") else _, type text},
+		        {"HighScoreReq", each if _ = null then fnGetParameters("msg_infoRAPNoLinkedReq") else _, type text}
+		    }),
+		/* join to vfa project staging to get the error category and counts for display and reporting */
+		    #"Join to VFAProjectStaging" = Table.NestedJoin(VFADataWaiting, {"RAPID"}, VFA_Project_Staging, {"RAPID"}, "VFAProjectStaging", JoinKind.LeftOuter),
+		    #"Expanded VFAProjectStaging" = Table.ExpandTableColumn(#"Join to VFAProjectStaging", "VFAProjectStaging", {"VFA Scoring Error(s)", "VFA Scoping Error(s)", "VFA Maintenance Planning Error(s)", "VFA Costing Error(s)", "Portfolio Name(s)", "Asset ID(s)", "Asset Name(s)", "Asset Use(s)", "Building Priority Detail(s)", "REQ ID(s)", "Requirement Name(s)", "Linked System(s)", "System Name(s)", "System Groups(s)", "Requirement Description(s)", "Location(s)", "Project Includes Renewal Requirements", "Asset Out For Audit", "Planned Status"}, {"VFA Scoring Error(s)", "VFA Scoping Error(s)", "VFA Maintenance Planning Error(s)", "VFA Costing Error(s)", "Portfolio Name(s)", "Asset ID(s)", "Asset Name(s)", "Asset Use(s)", "Building Priority Detail(s)", "REQ ID(s)", "Requirement Name(s)", "Linked System(s)", "System Name(s)", "System Groups(s)", "Requirement Description(s)", "Location(s)", "Project Includes Renewal Requirements", "Asset Out For Audit", "Planned Status"}),
+		
+		    #"Join to CostFactorModel" = Table.NestedJoin(#"Expanded VFAProjectStaging", {"RAPID"}, CostFactorModel, {"RAPID"}, "CostFactorModel", JoinKind.LeftOuter),
+		    #"Get EstTPC and CostFactoredTPC" = Table.ExpandTableColumn(#"Join to CostFactorModel", "CostFactorModel", {"EstimatedTPC", "CostFactoredTPC"}, {"EstimatedTPC", "CostFactoredTPC"}),
+		/*     CostWarning = Table.AddColumn(#"Get EstTPC and CostFactoredTPC", "CostWarning", each if ([CostFactoredTPC] = null) then fnGetParameters("msg_infoProjSummaryCost")[MsgTxt] else if ([CostFactoredTPC] <> null) and ([CostFactoredTPC] > fnGetParameters("msg_warnProjSummaryCostVal")) then fnGetParameters("msg_warnProjsummaryCost")[MsgTxt] else fnGetParameters("msg_infoProjSummaryCost")[MsgTxt]), */
+		CostWarning = Table.AddColumn(
+		    #"Get EstTPC and CostFactoredTPC", 
+		    "CostWarning", 
+		    each 
+		        let
+		            cost = [CostFactoredTPC],
+		            warnThreshold = fnGetParameters("msg_warnProjSummaryCostVal"),
+		            infoMsg = fnGetParameters("msg_infoProjSummaryCost")[MsgTxt],
+		            warnMsg = fnGetParameters("msg_warnProjSummaryCost")[MsgTxt]
+		        in
+		            if cost = null then 
+		                infoMsg
+		            else if cost > warnThreshold then 
+		                warnMsg
+		            else 
+		                infoMsg
+		),
+		
+		    TruncateReqDesc = Table.TransformColumns(CostWarning, {{"Requirement Description(s)", each Text.Start(_, 4000), type text}})
+		in
+		    TruncateReqDesc
+		```
+	lineageTag: 1013b996-6489-44b1-a470-24bf79da7dfc
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+
+expression MasterScoringConnection = ```
+		/*
+		Query Name: MasterScoringTablesConnection
+		Source: SharePoint Excel File
+		Dependencies: Scoring Criteria Queries, CommonScoringModel
+		About: Provides the connection to the dependant scoring queries. Contains the five scoring tables used to calculate proiority scores for the CMR business process and methodology. The single source for all dependent modules and queries so if the location of the excel file moves,the link only has to be updated in one place.
+		
+		https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424/InfrasCMR/CMR%20Template%20Source%20&%20Documentation/CMR%20Source%20Code%20Repo/CommonModules/CommonMasterScoring/Master_CMR_ScoringTables.xlsx
+		
+		Version: 1.0
+		Last Update Date (mmddyyyy): 03-17-2025 
+		Last Updated By: CM
+		Release Date: 
+		
+		Version History: 
+		- Initial Version
+		
+		TODO: 
+		
+		*/
+		//******************start of query*****************************//
+		
+		let
+		    // Connect to the SharePoint site
+		    SharePointSite = "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424",
+		    Source = SharePoint.Files(SharePointSite, [ApiVersion = 15]),
+		
+		    // Filter to the specific file
+		    FilteredFile = Table.SelectRows(Source, each Text.Contains([Folder Path], "CMR Source Code Repo/CommonModules/CommonMasterScoring") 
+		        and [Name] = "Master_CMR_ScoringTables.xlsx"),
+		
+		    // Get the binary content of the file
+		    FileBinary = FilteredFile{0}[Content],
+		
+		    // Load the Excel workbook
+		    ExcelData = Excel.Workbook(FileBinary, null, true)
+		in
+		    ExcelData
+		```
+	lineageTag: 42714edb-8ee1-4ab8-a7eb-33026a714660
+	queryGroup: CommonModels\MasterScoring
+
+	annotation PBI_ResultType = Table
+
+expression RAP_Projects_SSRS =
+		let
+		    Source = Csv.Document(
+		        Web.Contents("https://rpt.infrastructure.alberta.ca/ReportServer?/RAP-PM/RAP-Project%20Information%20Report&rs:Format=CSV"),
+		        [Delimiter = ","]
+		    ),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+		    #"Make Record_Create DateTime" = Table.TransformColumnTypes(#"Promoted Headers",{{"Record_Created", type datetime}}),
+		
+		    BringRAPForwardToUpdate = {
+		        {"S0395", "006"},
+		        {"S0001", "253"},
+		        {"B0731A", "045"},
+		        {"B0531A", "034"}
+		    },
+		
+		    UpdatedTable = Table.FromRecords(
+		        List.Transform(
+		            Table.ToRecords(#"Make Record_Create DateTime"),
+		            each if List.Contains(BringRAPForwardToUpdate, {_[Property], _[Number]}) then
+		                Record.TransformFields(_, {{"Record_Created", each #date(2021, 1, 1)}})
+		            else _
+		        )
+		    ),
+		    #"Changed Type1" = Table.TransformColumnTypes(UpdatedTable,{{"Record_Created", type datetime}}),
+		    #"Filtered Rows" = Table.SelectRows(#"Changed Type1", each ([Property] = "B0663B") and ([Deleted] = "No"))
+		in
+		    #"Filtered Rows"
+	lineageTag: ed678d67-0f7c-447d-8c26-d80cf189678d
+	queryGroup: DataSources
+
+	annotation PBI_ResultType = Table
+
+expression VFA_EMPMI =
+		let
+		    // Direct static URL to the SSRS report in CSV format
+		    Source = Csv.Document(
+		        Web.Contents("https://rpt.infrastructure.alberta.ca/ReportServer?/RAP-PM/VFA-LinkedRequirments&rs:Format=CSV"),
+		        [Delimiter = ","]
+		    ),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+		    #"Changed Type Source" = Table.TransformColumnTypes(
+		        #"Promoted Headers",
+		        {
+		            {"Portfolio_Name", type text},
+		            {"Property_Name", type text},
+		            {"Asset_EID", type text},
+		            {"Asset_Name", type text},
+		            {"Building_ID", type text},
+		            {"Use_Type", type text},
+		            {"Building_Priority_Detail", type text},
+		            {"Requirement_EID", type text},
+		            {"Requirement_Name", type text},
+		            {"Requirement_Description", type text},
+		            {"Linked_System", type any},
+		            {"Category", type text},
+		            {"Priority", type text},
+		            {"Impact", type text},
+		            {"EstimatedCost", Int64.Type},
+		            {"RAPProjectID", type text},
+		            {"RAPProjectStatus", type text},
+		            {"System_EID", type text},
+		            {"System_Name", type text},
+		            {"Uniformat", type text},
+		            {"System_Group", type text},
+		            {"IsRenewal", type logical},
+		            {"OutForAudit", type logical}
+		        }
+		    ),
+		
+		    #"Filter Out NON-PR Portfolios" = Table.SelectRows(#"Changed Type Source", each ([Portfolio_Name] <> "" and [Portfolio_Name] <> "ABHS-Calgary" and [Portfolio_Name] <> "ABHS-Central" and [Portfolio_Name] <> "ABHS-Edmonton" and [Portfolio_Name] <> "ABHS-North" and [Portfolio_Name] <> "PR-PMDC-Plan 020482 L-TUC_EDON" and [Portfolio_Name] <> "PSI-Northern Lakes College" and [Portfolio_Name] <> "SEN-Owned/Operated by Mgmt Body")),
+		    LastRefreshDate = Table.AddColumn(#"Filter Out NON-PR Portfolios", "LastRefreshDate", each DateTime.LocalNow()),
+		    #"Filtered Rows" = Table.SelectRows(LastRefreshDate, each ([Building_ID] = "B0663B") and ([RAPProjectID] = "B0663B-070"))
+		in
+		    #"Filtered Rows"
+	lineageTag: 1fa73823-b7b7-41b0-9c55-0b1315c56a5c
+	queryGroup: DataSources
+
+	annotation PBI_ResultType = Table
+
