@@ -116,7 +116,7 @@
         "typeProperties": {
           "body": "<p>VFA Extract to Project Planner Dataflow Successful</p>",
           "to": "infras.pmpi-corp-proj@gov.ab.ca",
-          "subject": "Project Planner Dataflow Successful"
+          "subject": "Project Planner Dataflow Successful - @{formatDateTime(convertTimeZone(utcNow(), 'UTC', 'Mountain Standard Time'), 'MMMM d, yyyy')}"
         },
         "externalReferences": {
           "connection": "66fc72b1-5ccb-47c4-8e4c-9ffae03532e3"
@@ -205,12 +205,6 @@
             ]
           },
           {
-            "activity": "DMT Score Upload",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          },
-          {
             "activity": "Repeat Requirements",
             "dependencyConditions": [
               "Succeeded"
@@ -223,7 +217,7 @@
         "typeProperties": {
           "body": "<p>VFA Extract to Project Planner Dataflow Failed</p>",
           "to": "infras.pmpi-corp-proj@gov.ab.ca",
-          "subject": "Dataflow Failed"
+          "subject": "Dataflow Failed - @{formatDateTime(convertTimeZone(utcNow(), 'UTC', 'Mountain Standard Time'), 'MMMM d, yyyy')}"
         },
         "externalReferences": {
           "connection": "66fc72b1-5ccb-47c4-8e4c-9ffae03532e3"
@@ -239,12 +233,6 @@
         "dependsOn": [
           {
             "activity": "PowerBI Report Refresh",
-            "dependencyConditions": [
-              "Failed"
-            ]
-          },
-          {
-            "activity": "DMT Score Upload",
             "dependencyConditions": [
               "Failed"
             ]
@@ -307,35 +295,6 @@
           "secureOutput": false
         },
         "name": "Data Validation",
-        "dependsOn": [
-          {
-            "activity": "Building List",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          },
-          {
-            "activity": "App data",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ]
-      },
-      {
-        "type": "TridentNotebook",
-        "typeProperties": {
-          "notebookId": "4fc4f61a-6aad-8f6e-43cf-678cc4872bba",
-          "workspaceId": "00000000-0000-0000-0000-000000000000"
-        },
-        "policy": {
-          "timeout": "0.12:00:00",
-          "retry": 0,
-          "retryIntervalInSeconds": 30,
-          "secureInput": false,
-          "secureOutput": false
-        },
-        "name": "DMT Score Upload",
         "dependsOn": [
           {
             "activity": "Building List",

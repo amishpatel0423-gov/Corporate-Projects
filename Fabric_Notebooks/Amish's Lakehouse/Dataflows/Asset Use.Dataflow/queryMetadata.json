@@ -1,0 +1,38 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "Asset Use",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Asset_Use": {
+      "queryId": "4ae8aadd-2686-4abf-942a-a4a22210b4e5",
+      "queryName": "Asset_Use",
+      "loadEnabled": false
+    },
+    "Asset Use_DataDestination": {
+      "queryId": "0b8a2866-7418-49a5-8a0b-1694f9c5fea3",
+      "queryName": "Asset Use_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DefaultDestination": {
+      "queryId": "47c01075-68ab-4f30-b18b-4098bb99eff0",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://abgov.sharepoint.com/sites/S300D13-PMB-CORP-PROJ13424",
+      "kind": "SharePoint",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"3721db91-0955-4046-985f-884c7eb3f932\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f043524c-963c-4981-aba0-3507a73f5696\",\"DatasourceId\":\"5adeea00-43cf-4ce1-805d-ae027fa38726\"}"
+    }
+  ]
+}

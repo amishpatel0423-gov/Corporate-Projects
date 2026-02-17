@@ -1,0 +1,254 @@
+table requirementlist
+	lineageTag: 4c6a8ca0-7e10-4b47-a209-756118ea81fc
+
+	column Portfolio_Name
+		dataType: string
+		lineageTag: 6678a9fa-01d7-42fb-9d56-1a8ab7e498a1
+		summarizeBy: none
+		sourceColumn: Portfolio_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Property_Name
+		dataType: string
+		lineageTag: 4c9dde97-dbc9-4827-a386-ecbe9241c5ce
+		summarizeBy: none
+		sourceColumn: Property_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_ID
+		dataType: string
+		lineageTag: cf617090-45e5-4458-ba7a-3ca332da246b
+		summarizeBy: none
+		sourceColumn: Building_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Use
+		dataType: string
+		lineageTag: 9d23f86c-781e-4cff-ad96-aa767100faf3
+		summarizeBy: none
+		sourceColumn: Use
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Group
+		dataType: string
+		lineageTag: ff3346e0-fad1-4e80-8b32-c778affb0f56
+		summarizeBy: none
+		sourceColumn: System_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Linked_System
+		dataType: string
+		lineageTag: 97ca950a-1851-4d30-8696-75240511fdba
+		summarizeBy: none
+		sourceColumn: Linked_System
+
+		annotation SummarizationSetBy = Automatic
+
+	column Uniformat
+		dataType: string
+		lineageTag: 3e938b4a-e03c-494b-8336-7a982b26a413
+		summarizeBy: none
+		sourceColumn: Uniformat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Score
+		dataType: int64
+		formatString: 0
+		lineageTag: d3004f9c-a16f-4d78-8e70-7a13dd1015d8
+		summarizeBy: sum
+		sourceColumn: Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_EID
+		dataType: string
+		lineageTag: adef1079-98bc-4e05-9fd8-c9830e9303c3
+		summarizeBy: none
+		sourceColumn: Requirement_EID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Requirement_Name
+		dataType: string
+		lineageTag: db3e1148-73a9-42e9-930d-3f1abd07bbae
+		summarizeBy: none
+		sourceColumn: Requirement_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 5dd53779-cdb2-4fe5-9db5-03649d1a713f
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsRenewal
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6b586710-7284-4fe9-95e2-761951707c08
+		summarizeBy: none
+		sourceColumn: IsRenewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectID
+		dataType: string
+		lineageTag: c7da4990-c81d-46c4-897a-4523b015488e
+		summarizeBy: none
+		sourceColumn: RAPProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectStatus
+		dataType: string
+		lineageTag: c6ee9053-f445-4a5f-abc1-a9d6437acd78
+		summarizeBy: none
+		sourceColumn: RAPProjectStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppStatus
+		dataType: string
+		lineageTag: 4c3ebadb-6ac0-437f-9d5e-444606452c47
+		summarizeBy: none
+		sourceColumn: AppStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column planned
+		dataType: string
+		lineageTag: f963bb65-974c-4488-a364-709c4923e868
+		summarizeBy: none
+		sourceColumn: planned
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimatedCost
+		dataType: int64
+		formatString: 0
+		lineageTag: cd996916-5600-4139-8a31-4fd49af6a708
+		summarizeBy: sum
+		sourceColumn: EstimatedCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostFactoredTPC
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f1d83f0-f23b-4d3d-a422-6120cc761a6d
+		summarizeBy: sum
+		sourceColumn: CostFactoredTPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: dcd34cda-105a-4d00-b094-ae6391e83cd2
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: a51237c3-fde8-410c-8e92-c97291f3d715
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column FM
+		dataType: string
+		lineageTag: 7572779d-5db2-4623-9280-dc3095af369c
+		summarizeBy: none
+		sourceColumn: FM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FC
+		dataType: string
+		lineageTag: 28be6b68-ed11-4913-9518-3f9137692994
+		summarizeBy: none
+		sourceColumn: FC
+
+		annotation SummarizationSetBy = Automatic
+
+	column TPM
+		dataType: string
+		lineageTag: 8317e737-3f21-4db3-9a93-bb3476b8a051
+		summarizeBy: none
+		sourceColumn: TPM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuttoffscore
+		dataType: string
+		lineageTag: bf9457c0-902c-4e54-b1ef-af68173f4750
+		summarizeBy: none
+		sourceColumn: Cuttoffscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column Includes_CI
+		dataType: string
+		lineageTag: ad69a64d-c144-4b8a-8242-036568464e75
+		summarizeBy: none
+		sourceColumn: Includes_CI
+
+		annotation SummarizationSetBy = Automatic
+
+	column CI_Only
+		dataType: string
+		lineageTag: c2f83519-e15a-4b06-b034-4b0f0e2b8e5b
+		summarizeBy: none
+		sourceColumn: CI_Only
+
+		annotation SummarizationSetBy = Automatic
+
+	column Includes_Renewal
+		dataType: string
+		lineageTag: 9ce897b1-ee62-4a90-9812-5127a72205b3
+		summarizeBy: none
+		sourceColumn: Includes_Renewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Action_FY
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c0991a0-f0e4-42af-8112-851b8e660d1f
+		summarizeBy: sum
+		sourceColumn: Action_FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building_Priority_Detail
+		dataType: string
+		lineageTag: 3cea91ae-d6f5-4a2a-b701-846ea9b6eedd
+		summarizeBy: none
+		sourceColumn: Building_Priority_Detail
+
+		annotation SummarizationSetBy = Automatic
+
+	partition requirementlist = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("ayolkk43v7cufc7vhq5xweefbm-jbr53vt4fwpuviijf24dh26fny.datawarehouse.fabric.microsoft.com"),
+				    PMB_Data_Dev = Source{[Name="PMB_Data_Dev"]}[Data],
+				    dbo_requirementlist = PMB_Data_Dev{[Schema="dbo",Item="requirementlist"]}[Data]
+				in
+				    dbo_requirementlist
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

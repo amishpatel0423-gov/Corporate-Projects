@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "DMT Score Upload"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f6b4f44c-6278-9220-4f8f-63effbe54cd2"
+  }
+}

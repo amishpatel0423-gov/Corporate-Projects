@@ -28,7 +28,7 @@ from pyspark.sql import functions as F
 
 vfa = spark.table("VFAExtract")
 
-
+## adding a comment
 
 vfa = vfa.withColumnRenamed("Asset - Portfolio Name", "Portfolio_Name") \
        .withColumnRenamed("Asset - Asset Name", "Property_Name") \

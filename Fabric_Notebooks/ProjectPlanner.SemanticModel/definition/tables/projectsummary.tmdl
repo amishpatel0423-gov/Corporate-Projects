@@ -1,0 +1,203 @@
+table projectsummary
+	lineageTag: afc69d1e-1586-4a00-8175-c2e2052321e5
+
+	column Building_ID
+		dataType: string
+		lineageTag: 0d66e863-32c0-467e-975b-0551abc7a7be
+		summarizeBy: none
+		sourceColumn: Building_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Score
+		dataType: int64
+		formatString: 0
+		lineageTag: d4af9269-c50e-46b2-bdf3-3651e60e097b
+		summarizeBy: sum
+		sourceColumn: Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column Property_Name
+		dataType: string
+		lineageTag: 7db924ea-14c3-4924-bdde-0f81c4af9ee3
+		summarizeBy: none
+		sourceColumn: Property_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectName
+		dataType: string
+		lineageTag: 5de6ec98-afed-4136-a418-e96907f83979
+		summarizeBy: none
+		sourceColumn: ProjectName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostFactoredTPC
+		dataType: int64
+		formatString: 0
+		lineageTag: ba771a97-9122-40bf-aab1-fd9964cd43a9
+		summarizeBy: sum
+		sourceColumn: CostFactoredTPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: e98d30d5-4bc1-4a80-bd74-95f6d9c3bbf2
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: 1a4730f9-2952-43e7-a74b-bd9042ef45d8
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column FM
+		dataType: string
+		lineageTag: 1eb25645-5e18-43e9-8c2d-8fb5e06bc320
+		summarizeBy: none
+		sourceColumn: FM
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAPProjectID
+		dataType: string
+		lineageTag: 3a49e4b0-cf39-4a40-b2b3-974d466e8e7c
+		summarizeBy: none
+		sourceColumn: RAPProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AppStatus
+		dataType: string
+		lineageTag: ac8c11e1-cc5c-49f4-a4f9-be1d621b7e3f
+		summarizeBy: none
+		sourceColumn: AppStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstCost
+		dataType: int64
+		formatString: 0
+		lineageTag: fbfe2709-71f8-4d84-9b1c-cd661f925c2e
+		summarizeBy: sum
+		sourceColumn: EstCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column Planned_vs_Unplanned
+		dataType: string
+		lineageTag: b73e1510-4a6a-4314-8f54-49827ad96826
+		summarizeBy: none
+		sourceColumn: Planned_vs_Unplanned
+
+		annotation SummarizationSetBy = Automatic
+
+	column FC
+		dataType: string
+		lineageTag: 9f371b57-bb84-4c85-8667-42e8e3d5ae3f
+		summarizeBy: none
+		sourceColumn: FC
+
+		annotation SummarizationSetBy = Automatic
+
+	column TPM
+		dataType: string
+		lineageTag: acd77d23-6aba-4923-b177-2e4b9032662d
+		summarizeBy: none
+		sourceColumn: TPM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuttoffscore
+		dataType: string
+		lineageTag: 1a8e19cd-3a24-4de2-a51c-b9db2362f563
+		summarizeBy: none
+		sourceColumn: Cuttoffscore
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Group
+		dataType: string
+		lineageTag: 9e620652-2751-42a5-abc5-ea7459cb9f4b
+		summarizeBy: none
+		sourceColumn: System_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Renewal_Cost
+		dataType: int64
+		formatString: 0
+		lineageTag: 431d77db-a678-4809-a814-ce06a636a8bd
+		summarizeBy: sum
+		sourceColumn: Renewal_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column Non_Renewal_Cost
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c5e21d5-c336-45eb-98e5-c0dff6de7fcd
+		summarizeBy: sum
+		sourceColumn: Non_Renewal_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column Renewal_Percentage
+		dataType: double
+		lineageTag: c199e14f-bec8-47ff-a30f-5e2d42a37e77
+		summarizeBy: sum
+		sourceColumn: Renewal_Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Non_Renewal_Percentage
+		dataType: double
+		lineageTag: d73d0058-0f23-4b50-a95f-8d21070235c1
+		summarizeBy: sum
+		sourceColumn: Non_Renewal_Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Proposed_Funding_Source
+		dataType: string
+		lineageTag: db3eb328-0325-4c12-bc77-4976b7e27e1a
+		summarizeBy: none
+		sourceColumn: Proposed_Funding_Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column Action_FY
+		dataType: int64
+		formatString: 0
+		lineageTag: 89f49774-773a-4ca5-8900-66c1d60073b8
+		summarizeBy: sum
+		sourceColumn: Action_FY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition projectsummary = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("ayolkk43v7cufc7vhq5xweefbm-jbr53vt4fwpuviijf24dh26fny.datawarehouse.fabric.microsoft.com"),
+				    PMB_Data_Dev = Source{[Name="PMB_Data_Dev"]}[Data],
+				    dbo_projectsummary = PMB_Data_Dev{[Schema="dbo",Item="projectsummary"]}[Data]
+				in
+				    dbo_projectsummary
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

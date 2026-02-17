@@ -44,7 +44,7 @@
         },
         "typeProperties": {
           "to": "amish.patel@gov.ab.ca",
-          "subject": "Director Dashboard - Success",
+          "subject": "Director Dashboard - Success - @{formatDateTime(convertTimeZone(utcNow(), 'UTC', 'Mountain Standard Time'), 'MMMM d, yyyy')}",
           "body": "<p>Director Dashboard was refreshed successfully</p>"
         },
         "externalReferences": {
@@ -71,7 +71,7 @@
         },
         "typeProperties": {
           "to": "amish.patel@gov.ab.ca",
-          "subject": "Director Dashboard - Failed",
+          "subject": "Director Dashboard - Failed - @{formatDateTime(convertTimeZone(utcNow(), 'UTC', 'Mountain Standard Time'), 'MMMM d, yyyy')}",
           "body": "<p>Director Dashboard was refresh failed.</p>"
         },
         "externalReferences": {

@@ -1,0 +1,49 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "4fc4f61a-6aad-8f6e-43cf-678cc4872bba",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "DMT Score upload",
+        "dependsOn": []
+      },
+      {
+        "type": "Office365Email",
+        "typeProperties": {
+          "body": "<p>DMT Score upload failed</p>",
+          "to": "infras.pmpi-corp-proj@gov.ab.ca",
+          "subject": "DMT Score upload failed pipeline"
+        },
+        "externalReferences": {
+          "connection": "66fc72b1-5ccb-47c4-8e4c-9ffae03532e3"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "DMT Score Failed",
+        "dependsOn": [
+          {
+            "activity": "DMT Score upload",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
